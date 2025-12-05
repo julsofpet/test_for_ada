@@ -1,123 +1,228 @@
----
-layout: default
-title: Statistical Analysis
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Data Story: Through the Orange Lens</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  /* Simple reset and base typography */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #222;
+    background: #fff;
+  }
+  a {
+    color: #ff6600;
+    text-decoration: none;
+  }
 
-<div class="boring-container">
-  <h1>Statistical Analysis of Global User Interactions and Linguistic Patterns.</h1>
-  <p>A comprehensive study based on social media datasets (2014-2017)</p>
-  <p style="margin-top: 50px; font-size: 0.8rem;">Scroll to begin reading abstract...</p>
-</div>
+  /* Navigation */
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 102, 0, 0.9);
+    color: #fff;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  .nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+  }
+  .nav-brand {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+  }
+  nav li {
+    margin-left: 1rem;
+  }
 
-<div class="terminal-content">
+  /* Hero section */
+  .hero {
+    position: relative;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?fit=crop&w=1600&q=80') no-repeat center/cover;
+    color: #fff;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 102, 0, 0.5); /* Orange lens overlay */
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 80%;
+  }
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .hero p {
+    font-size: 1.1rem;
+  }
 
-  <section id="scene-disclaimer">
-    <div class="mr-reddit">
-      <img src="assets/images/mr-reddit.png" alt="Mr. Reddit">
-      <div class="dialogue">
-        <p>"Stop right there.</p>
-        <p>You were actually going to read that? It looked like a tax return form from 1995. How... quaint.</p>
-        <p>You are currently in the 'Real World'. Out there, people lie. They say they love art house cinema and eat kale. But I know the truth. I know what they really type at 3 AM.</p>
-        <p>I am Mr. Reddit. And I’m going to show you the world not as it is on a map, but as it actually exists in the hidden “Reddit realm”.</p>
-      </div>
-    </div>
-    <button class="enter-rabbit-hole" onclick="document.getElementById('scene-1').scrollIntoView({behavior: 'smooth'})">[ENTER THE RABBIT HOLE]</button>
-  </section>
+  /* Scenes */
+  section {
+    padding: 4rem 1rem;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .scene-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #ff6600;
+  }
+  .counter {
+    font-weight: bold;
+    font-size: 2rem;
+    color: #ff6600;
+  }
 
-  <section id="scene-1">
-    <h2>Scene 1: The Briefing</h2>
-    <div class="mr-reddit">
-      <div class="dialogue">"Okay, let’s check our inventory. 858,488 posts. 67,180 subreddits. We brought heavy machinery."</div>
-    </div>
-    <div class="narrative-text">
-      <p>TOOLS: SOURCE_SUBREDDIT, TARGET_SUBREDDIT, TIMESTAMP, POST_PROPERTIES (86-element vector).</p>
-      <p>VADER checks your mood. LIWC checks your soul.</p>
-    </div>
-  </section>
+  /* Responsive nav (mobile) */
+  @media (max-width: 768px) {
+    nav ul {
+      display: none;
+      flex-direction: column;
+      background: rgba(255,102,0,0.95);
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 200px;
+    }
+    nav ul.open {
+      display: flex;
+    }
+    .menu-toggle {
+      display: block;
+      cursor: pointer;
+      font-size: 1.5rem;
+      padding: 0.5rem;
+    }
+  }
+</style>
+</head>
+<body>
 
-  <section id="scene-2">
-    <h2>Scene 2: Identity Crisis</h2>
-    <div class="mr-reddit">
-      <div class="dialogue">"In Reddit, borders don't exist. Only Community Names. But can we trust the labels?"</div>
-    </div>
-    
-    <div class="data-slot">
-      <p>[PLACEHOLDER: TOP 5 SUBREDDITS BAR CHART]</p>
-      </div>
-    
-    <div class="narrative-text">
-      <p>Correlation Confirmed: Subreddits with high Money terms are actually about money.</p>
-    </div>
-  </section>
+<header>
+  <div class="nav-container">
+    <div class="nav-brand">Through the Orange Lens</div>
+    <div class="menu-toggle" id="menuToggle">&#9776;</div>
+    <nav>
+      <ul id="navList">
+        <li><a href="#scene0">Scene 0.5</a></li>
+        <li><a href="#scene1">Scene 1</a></li>
+        <li><a href="#scene2">Scene 2</a></li>
+        <li><a href="#scene3">Scene 3</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-  <section id="scene-3">
-    <h2>Scene 3: Chaos Theory</h2>
-    <div class="narrative-text">
-      <strong>Technical Brief:</strong> t-SNE Embeddings. Transforming text into vectors.
-    </div>
-    
-    <div class="data-slot">
-      <p>[PLACEHOLDER: T-SNE INTERACTIVE PLOT]</p>
-    </div>
+<!-- Hero area -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Decoding the Digital Jungle</h1>
+    <p>Navigate the chaotic landscape of global communities using data‑driven insights.</p>
+  </div>
+</section>
 
-    <div class="mr-reddit">
-      <div class="dialogue">"...Well. That looks like a clown sneezed on a windshield. The AI failed. We need Geography."</div>
-    </div>
-  </section>
+<!-- Scene 0.5 -->
+<section id="scene0">
+  <h2 class="scene-title">Scene 0.5: The Disclaimer (The Threshold)</h2>
+  <p class="counter" data-target="858488">0</p>
+  <p>We open with a chaotic dashboard that stabilizes into a holographic HUD.  Numbers start counting rapidly, filtering the world through an orange tint — our Orange Lens.</p>
+</section>
 
-  <section id="scene-4">
-    <h2>Scene 4: The Cartographer</h2>
-    <div class="mr-reddit">
-      <div class="dialogue">"Let's map subreddits to Countries using Fuzzy String Matching."</div>
-    </div>
+<!-- Scene 1 -->
+<section id="scene1">
+  <h2 class="scene-title">Scene 1: The Briefing (The Orange Lens)</h2>
+  <p>Our journey begins with data on over <span class="counter" data-target="67180">0</span> unique subreddits.  We explore connections through <strong>SOURCE_SUBREDDIT</strong>, <strong>TARGET_SUBREDDIT</strong> and <strong>TIMESTAMP</strong>, and a rich <em>86‑element POST_PROPERTIES vector</em> capturing sentiment (VADER) and linguistic markers (LIWC).</p>
+  <p><strong>Mr. Reddit says:</strong> “We brought heavy machinery.  With LIWC and VADER we can dissect a sentence 86 ways — from religious references to pronoun usage.  Now that you know how we listen... let's hear what the world is screaming.”</p>
+</section>
 
-    <div class="data-slot">
-       <p>[PLACEHOLDER: TOP COUNTRIES TABLE & NORMALIZED RELIGION CHART]</p>
-    </div>
-  </section>
+<!-- Scene 2 -->
+<section id="scene2">
+  <h2 class="scene-title">Scene 2: The Identity Crisis</h2>
+  <p>This section can discuss how community identities evolve, perhaps visualising clusters of subreddits that share common themes.  (Add plots or diagrams here later.)</p>
+</section>
 
-  <section id="scene-5">
-    <h2>Scene 5: Global Chatroom</h2>
-    <div class="mr-reddit">
-       <div class="dialogue">"Isolation is boring. Who is talking to whom?"</div>
-    </div>
-    
-    <div class="data-slot">
-       <p>[PLACEHOLDER: CHORD PLOT]</p>
-    </div>
-  </section>
+<!-- Scene 3 -->
+<section id="scene3">
+  <h2 class="scene-title">Scene 3: The Chaos Theory (Embeddings &amp; Clustering)</h2>
+  <p>Explain how embeddings and clustering algorithms help us organise the chaos.  You could embed interactive charts (e.g., a scatter plot of subreddit embeddings) or link to dashboards from your datastore.</p>
+</section>
 
-  <section id="scene-6">
-    <h2>Scene 6: Factions</h2>
-    <div class="narrative-text">
-      <strong>Algorithm:</strong> Greedy Modularity. Grouping countries that talk to each other.
-    </div>
-    
-    <div class="data-slot">
-       <p>[PLACEHOLDER: FACTION MAP]</p>
-    </div>
-  </section>
+<script>
+  /* Mobile nav toggle */
+  const menuToggle = document.getElementById('menuToggle');
+  const navList = document.getElementById('navList');
+  menuToggle.addEventListener('click', () => {
+    navList.classList.toggle('open');
+  });
 
-  <section id="scene-8">
-    <h2>Scene 8: The Echo Chamber</h2>
-    <div class="mr-reddit">
-       <div class="dialogue">"Stop laughing. Put on the lab coat. It's time for P-Values."</div>
-    </div>
-    
-    <div class="data-slot">
-       <p>[PLACEHOLDER: KDE PLOT / THE BUMP]</p>
-    </div>
-    <div class="narrative-text">
-      <p>T-Statistic: 12.65. P-Value: 0.000. It is not luck. It is style mirroring.</p>
-    </div>
-  </section>
+  /* Intersection Observer for fade‑in */
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  sections.forEach(section => observer.observe(section));
 
-  <section id="scene-10" style="text-align: center;">
-    <h2>End of Line</h2>
-    <div class="mr-reddit">
-      <div class="dialogue">"You've seen the code behind the matrix. Go touch some grass."</div>
-    </div>
-    <button class="enter-rabbit-hole" onclick="location.reload()">[EXIT TO REALITY]</button>
-  </section>
-
-</div>
+  /* Animated counters */
+  function animateCounter(el) {
+    const target = +el.getAttribute('data-target');
+    const duration = 2000;
+    const startTime = performance.now();
+    function update(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      el.textContent = Math.floor(progress * target).toLocaleString();
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    }
+    requestAnimationFrame(update);
+  }
+  const counters = document.querySelectorAll('.counter');
+  const counterObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.6 });
+  counters.forEach(counter => counterObserver.observe(counter));
+</script>
+</body>
+</html>
