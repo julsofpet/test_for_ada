@@ -1,6 +1,5 @@
 title: Reddit Data Story
 description: A Statistical Analysis of Global User Interactions
-theme: jekyll-theme-prime # We will actually override this, but this is a fallback
 markdown: kramdown
 sass:
   style: compressed
