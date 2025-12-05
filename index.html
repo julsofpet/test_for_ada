@@ -1,123 +1,161 @@
----
-layout: default
-title: Statistical Analysis
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistical Analysis 2014-2017</title> <link rel="stylesheet" href="assets/css/story-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body class="boring-mode">
 
-<div class="boring-container">
-  <h1>Statistical Analysis of Global User Interactions and Linguistic Patterns.</h1>
-  <p>A comprehensive study based on social media datasets (2014-2017)</p>
-  <p style="margin-top: 50px; font-size: 0.8rem;">Scroll to begin reading abstract...</p>
-</div>
+    <div id="boring-layer">
+        <div class="paper-content">
+    
+          <div class="paper-header-group">
+              <h1 class="paper-title">Statistical Analysis of Global User Interactions and Linguistic Patterns</h1>
+          </div>
 
-<div class="terminal-content">
+          <div class="authors-grid">
+              <div class="author-col">
+                  <p class="author-name">Samuel Howard</p>
+                  <p>Department of Statistics</p>
+                  <p>University of Oxford</p>
+              </div>
+              <div class="author-col">
+                  <p class="author-name">Nikolas Nüsken</p>
+                  <p>Department of Mathematics</p>
+                  <p>King’s College London</p>
+              </div>
+              <div class="author-col">
+                  <p class="author-name">Jakiw Pidstrigach</p>
+                  <p>Department of Statistics</p>
+                  <p>University of Oxford</p>
+              </div>
+              <div class="author-col">
+                  <p class="author-name">Nikolas Nüsken</p>
+                  <p>Department of Mathematics</p>
+                  <p>King’s College London</p>
+              </div>
+              <div class="author-col">
+                  <p class="author-name">Jakiw Pidstrigach</p>
+                  <p>Department of Statistics</p>
+                  <p>University of Oxford</p>
+              </div>
+          </div>
 
-  <section id="scene-disclaimer">
-    <div class="mr-reddit">
-      <img src="assets/images/mr-reddit.png" alt="Mr. Reddit">
-      <div class="dialogue">
-        <p>"Stop right there.</p>
-        <p>You were actually going to read that? It looked like a tax return form from 1995. How... quaint.</p>
-        <p>You are currently in the 'Real World'. Out there, people lie. They say they love art house cinema and eat kale. But I know the truth. I know what they really type at 3 AM.</p>
-        <p>I am Mr. Reddit. And I’m going to show you the world not as it is on a map, but as it actually exists in the hidden “Reddit realm”.</p>
+          <div class="paper-abstract">
+              <h3>Abstract</h3>
+              <p>
+                This study examines the geolinguistic properties of online communities, focusing on the correlation between subreddit nomenclature and semantic output. Utilizing a dataset of <strong>858,488 posts</strong> spanning <strong>67,180 unique subreddits</strong>, we analyze hyperlink behaviors to map global interactions.               
+              </p>
+          </div>
+
+          <div class="paper-footer">
+              <p class="blink-text">[ Scroll down to initialize review ]</p>
+          </div>
+          
       </div>
     </div>
-    <button class="enter-rabbit-hole" onclick="document.getElementById('scene-1').scrollIntoView({behavior: 'smooth'})">[ENTER THE RABBIT HOLE]</button>
-  </section>
 
-  <section id="scene-1">
-    <h2>Scene 1: The Briefing</h2>
-    <div class="mr-reddit">
-      <div class="dialogue">"Okay, let’s check our inventory. 858,488 posts. 67,180 subreddits. We brought heavy machinery."</div>
-    </div>
-    <div class="narrative-text">
-      <p>TOOLS: SOURCE_SUBREDDIT, TARGET_SUBREDDIT, TIMESTAMP, POST_PROPERTIES (86-element vector).</p>
-      <p>VADER checks your mood. LIWC checks your soul.</p>
-    </div>
-  </section>
-
-  <section id="scene-2">
-    <h2>Scene 2: Identity Crisis</h2>
-    <div class="mr-reddit">
-      <div class="dialogue">"In Reddit, borders don't exist. Only Community Names. But can we trust the labels?"</div>
-    </div>
+    <div id="reddit-layer" style="display: none;">
     
-    <div class="data-slot">
-      <p>[PLACEHOLDER: TOP 5 SUBREDDITS BAR CHART]</p>
-      </div>
-    
-    <div class="narrative-text">
-      <p>Correlation Confirmed: Subreddits with high Money terms are actually about money.</p>
-    </div>
-  </section>
+    <section id="scene-intro" class="step active-scene">
+        <div class="intro-layout">
+            
+            <div class="left-col">
+                <div class="avatar-sticky">
+                    <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar">
+                </div>
+            </div>
 
-  <section id="scene-3">
-    <h2>Scene 3: Chaos Theory</h2>
-    <div class="narrative-text">
-      <strong>Technical Brief:</strong> t-SNE Embeddings. Transforming text into vectors.
-    </div>
-    
-    <div class="data-slot">
-      <p>[PLACEHOLDER: T-SNE INTERACTIVE PLOT]</p>
-    </div>
+            <div class="right-col">
+                <div class="terminal-box">
+                    <p id="intro-text"></p><span class="cursor">_</span>
+                </div>
 
-    <div class="mr-reddit">
-      <div class="dialogue">"...Well. That looks like a clown sneezed on a windshield. The AI failed. We need Geography."</div>
-    </div>
-  </section>
+                <div class="action-area">
+                    <button class="enter-rabbit-hole" onclick="scrollToScene('scene-0-5')">
+                    [ENTER THE RABBIT HOLE]
+                    </button>
+                </div>
+            </div>
 
-  <section id="scene-4">
-    <h2>Scene 4: The Cartographer</h2>
-    <div class="mr-reddit">
-      <div class="dialogue">"Let's map subreddits to Countries using Fuzzy String Matching."</div>
-    </div>
+        </div>
+    </section>
 
-    <div class="data-slot">
-       <p>[PLACEHOLDER: TOP COUNTRIES TABLE & NORMALIZED RELIGION CHART]</p>
-    </div>
-  </section>
+    <section id="scene-0-5" class="step">
+    <div class="intro-layout"> <div class="left-col">
+            <div class="avatar-sticky">
+                <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar">
+            </div>
+        </div>
 
-  <section id="scene-5">
-    <h2>Scene 5: Global Chatroom</h2>
-    <div class="mr-reddit">
-       <div class="dialogue">"Isolation is boring. Who is talking to whom?"</div>
-    </div>
-    
-    <div class="data-slot">
-       <p>[PLACEHOLDER: CHORD PLOT]</p>
-    </div>
-  </section>
+        <div class="right-col">
+            <div class="dashboard-panel">
+                <div class="panel-header">
+                    <span class="panel-title">/// DEPT. OF INTERNET HONESTY ///</span>
+                    <span class="panel-status">STATUS: UNFILTERED</span>
+                </div>
+                
+                <div class="panel-body">
+                    <p id="disclaimer-text" class="type-target"></p><span class="cursor">_</span>
+                </div>
 
-  <section id="scene-6">
-    <h2>Scene 6: Factions</h2>
-    <div class="narrative-text">
-      <strong>Algorithm:</strong> Greedy Modularity. Grouping countries that talk to each other.
-    </div>
-    
-    <div class="data-slot">
-       <p>[PLACEHOLDER: FACTION MAP]</p>
-    </div>
-  </section>
+                <div class="chart-decoration"></div>
+            </div>
+            
+            <div class="action-area">
+                <button class="enter-rabbit-hole" onclick="scrollToScene('scene-1')">
+                    [RAW MATERIALS]
+                </button>
+            </div>
+        </div>
 
-  <section id="scene-8">
-    <h2>Scene 8: The Echo Chamber</h2>
-    <div class="mr-reddit">
-       <div class="dialogue">"Stop laughing. Put on the lab coat. It's time for P-Values."</div>
     </div>
-    
-    <div class="data-slot">
-       <p>[PLACEHOLDER: KDE PLOT / THE BUMP]</p>
-    </div>
-    <div class="narrative-text">
-      <p>T-Statistic: 12.65. P-Value: 0.000. It is not luck. It is style mirroring.</p>
-    </div>
-  </section>
+</section>
 
-  <section id="scene-10" style="text-align: center;">
-    <h2>End of Line</h2>
-    <div class="mr-reddit">
-      <div class="dialogue">"You've seen the code behind the matrix. Go touch some grass."</div>
+<section id="scene-1" class="step">
+    <div class="dialogue-container">
+        
+        <div id="row-part-1" class="speech-row">
+            <div class="avatar-wrapper">
+                <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+            </div>
+            <div class="terminal-box green-style">
+                <p id="s1-part1" class="type-target"></p>
+            </div>
+        </div>
+
+        <div id="narrator-cloud" class="narrator-cloud hidden-left">
+            <p>
+                Our journey is about looking through this <strong>"Orange Lens"</strong> to decode the vast, chaotic digital landscape of global communities.
+                <br><br>
+                We begin our odyssey equipped with data on over <strong>858,488 posts</strong> spanning <strong>67,180 unique subreddits</strong>.
+                <br><br>
+                Our tools include core variables like <strong>SOURCE_SUBREDDIT</strong> and <strong>TIMESTAMP</strong>, alongside rich text properties encapsulated in the <strong>86-element POST_PROPERTIES vector</strong> (VADER sentiment & LIWC linguistic features).
+            </p>
+        </div>
+
+        <div id="row-part-2" class="speech-row hidden-opacity">
+            <div class="avatar-wrapper">
+                <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+            </div>
+            <div class="terminal-box green-style">
+                <p id="s1-part2" class="type-target"></p><span class="cursor">_</span>
+            </div>
+        </div>
+
+        <div id="s1-action" class="action-area hidden-opacity" style="text-align: center; margin-top: 40px;">
+            <button class="enter-rabbit-hole" onclick="scrollToScene('scene-2')">
+                [LISTEN TO THE SCREAM]
+            </button>
+        </div>
+
     </div>
-    <button class="enter-rabbit-hole" onclick="location.reload()">[EXIT TO REALITY]</button>
-  </section>
+</section>
 
 </div>
+    <script src="assets/js/story-script.js"></script>
+</body>
+</html>
