@@ -3,15 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const boringContainer = document.querySelector('.boring-container');
   let hasGlitched = false;
 
-  // Function to trigger the glitch and switch worlds
   const triggerGlitch = () => {
     if (hasGlitched) return;
     hasGlitched = true;
 
-    // Add glitch effect
     body.classList.add('glitch-active');
 
-    // Wait 500ms then switch to Dark Mode
     setTimeout(() => {
       body.classList.remove('boring-mode');
       body.classList.add('dark-mode');
@@ -20,10 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 800);
   };
 
-  // Listen for interaction on the boring page
   if(boringContainer) {
-    window.addEventListener('scroll', triggerGlitch);
-    window.addEventListener('mousemove', triggerGlitch);
-    window.addEventListener('click', triggerGlitch);
+    // OLD CODE:
+    // window.addEventListener('mousemove', triggerGlitch); <--- DELETED
+    // window.addEventListener('click', triggerGlitch);     <--- DELETED
+    
+    // NEW CODE:
+    window.addEventListener('scroll', triggerGlitch);    // Detects actual scrolling
+    window.addEventListener('wheel', triggerGlitch);     // Detects mouse wheel movement
+    window.addEventListener('touchmove', triggerGlitch); // Detects mobile swiping
   }
 });
