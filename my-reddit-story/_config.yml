@@ -1,5 +1,5 @@
 title: Reddit Data Story
 description: A Statistical Analysis of Global User Interactions
+baseurl: "/test_for_ada"
+url: "https://julsofpet.github.io"
 markdown: kramdown
-sass:
-  style: compressed
