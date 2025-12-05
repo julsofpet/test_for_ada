@@ -18,29 +18,29 @@
 
           <div class="authors-grid">
               <div class="author-col">
-                  <p class="author-name">Samuel Howard</p>
-                  <p>Department of Statistics</p>
-                  <p>University of Oxford</p>
+                  <p class="author-name">Dario Liuzzo</p>
+                  <p>Applied Math</p>
+                  <p>EPFL</p>
               </div>
               <div class="author-col">
-                  <p class="author-name">Nikolas Nüsken</p>
-                  <p>Department of Mathematics</p>
-                  <p>King’s College London</p>
+                  <p class="author-name">Julie Pettersen</p>
+                  <p>Statistics</p>
+                  <p>EPFL</p>
               </div>
               <div class="author-col">
-                  <p class="author-name">Jakiw Pidstrigach</p>
-                  <p>Department of Statistics</p>
-                  <p>University of Oxford</p>
+                  <p class="author-name">Noemi Ortona</p>
+                  <p>Management, Technology and Entrepreneurship</p>
+                  <p>EPFL</p>
               </div>
               <div class="author-col">
-                  <p class="author-name">Nikolas Nüsken</p>
-                  <p>Department of Mathematics</p>
-                  <p>King’s College London</p>
+                  <p class="author-name">Simon Streuli</p>
+                  <p>Management, Technology and Entrepreneurship</p>
+                  <p>EPFL</p>
               </div>
               <div class="author-col">
-                  <p class="author-name">Jakiw Pidstrigach</p>
-                  <p>Department of Statistics</p>
-                  <p>University of Oxford</p>
+                  <p class="author-name">Pietro Casagrande</p>
+                  <p>Management, Technology and Entrepreneurship</p>
+                  <p>EPFL</p>
               </div>
           </div>
 
@@ -378,8 +378,58 @@
         </div>
 
         <div id="s4-action" class="action-area hidden-opacity" style="text-align: center; margin-top: 40px;">
-            <button class="enter-rabbit-hole" onclick="alert('To be continued...')">
+            <button class="enter-rabbit-hole" onclick="scrollToScene('scene-5')">
                 [ANALYZE THE SCREAMS]
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<section id="scene-5" class="step">
+    <div class="dialogue-container">
+
+        <div id="s5-row-1" class="speech-row">
+            <div class="avatar-wrapper">
+                <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+            </div>
+            <div class="terminal-box green-style">
+                <p id="s5-part1" class="type-target"></p>
+            </div>
+        </div>
+
+        <div id="s5-data-row" class="data-display-row hidden-opacity" style="justify-content: center;">
+            <div class="chart-wrapper" style="flex: unset; width: 100%; max-width: 1000px; height: 700px; margin: 0 auto; background: white;"> <div class="chart-header">/// INTERACTION_MATRIX: CHORD_DIAGRAM ///</div>
+                <iframe 
+                    src="assets/images/country_chord_diagram.html" 
+                    class="chart-iframe"
+                    title="Global Interactions Chord Plot"
+                    style="width: 100%; height: 100%; border: none;">
+                </iframe>
+            </div>
+        </div>
+
+        <div class="narrator-row hidden-opacity" id="s5-narrator-row-1">
+            <div id="s5-narrator-bubble-1" class="narrator-bubble-box">
+                <p id="s5-narrator-text-1"></p>
+            </div>
+            <div class="avatar-wrapper">
+                <img src="assets/images/nerd.png" alt="Nerd" class="pixel-avatar-speech">
+            </div>
+        </div>
+
+        <div id="s5-row-2" class="speech-row hidden-opacity">
+            <div class="avatar-wrapper">
+                <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+            </div>
+            <div class="terminal-box green-style">
+                <p id="s5-part2" class="type-target"></p><span class="cursor">_</span>
+            </div>
+        </div>
+
+        <div id="s5-action" class="action-area hidden-opacity" style="text-align: center; margin-top: 40px;">
+            <button class="enter-rabbit-hole" onclick="alert('Scene 6 Coming Soon...')">
+                [BUILD THE NETWORK]
             </button>
         </div>
 

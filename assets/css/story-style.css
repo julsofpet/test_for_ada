@@ -681,11 +681,22 @@ body.dark-mode #reddit-layer {
     max-width: 1400px;
     margin: 0 auto;
     border-left: 1px dashed #333;
-    display: flex; flex-direction: column; justify-content: center;
-    opacity: 0.3; transition: opacity 0.5s;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+    
+    /* MODIFICA QUI: Alziamo l'opacità di base da 0.3 a 0.5 o 0.6 per renderlo più leggibile */
+    opacity: 0.4; 
+    
+    /* MODIFICA QUI: Transizione fluida */
+    transition: opacity 0.8s ease-in-out;
+    
     color: var(--terminal-green);
 }
-.step.active-scene { opacity: 1; }
+
+.step.active-scene { 
+    opacity: 1 !important; /* Forza la visibilità totale */
+}
 .narrative-text { border-left: 3px solid var(--neon-orange); padding-left: 15px; color: #ccc; font-family: 'Roboto', sans-serif; }
 .chart-container { width: 100%; min-height: 500px; background: #111; border: 1px dashed #444; margin: 20px 0; }
 
