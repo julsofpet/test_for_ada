@@ -21,15 +21,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const s2_Part2 = "See? It’s not total anarchy. It makes sense.\n\nIf the label says 'Strawberry Jam', it contains strawberries.\n\nBut reading labels one by one is for amateurs. I don't want to just read the names. I want to cluster this entire universe.\n\nTo do that, words aren't enough. I need a magic weapon. A dataset that turns words into pure mathematics.\n\nLet me introduce you to The Embeddings.";
     const s2_Analysis = "By analyzing specific textual properties, a clear pattern emerges.<br><br>The correlation is undeniable: the linguistic content perfectly mirrors the <span class='gold-highlight'>community's label</span>.<br><br>Subreddits with the highest frequency of <span class='gold-highlight'>Money-related terms</span> are indeed money-related communities like <em>r/PersonalFinance</em>. Those scoring highest in <span class='gold-highlight'>Religious terms</span> are theology discussions.";
 
+    // --- SCENA 3 TEXTS ---
+    const s3_Part1 = "Words are slippery. Humans use sarcasm, slang, and memes that make no sense.\n\nIf I want to organize this entire universe, I can't just read the posts. I need to convert them into something pure. Something uncorrupted by human stupidity.\n\nMathematics.\n\nWe used a neural network to turn every subreddit into a vector—a coordinate in a multi-dimensional space. We call them Embeddings.";
+    
+    const s3_Narrator = "<h3>Technical Brief: The Embedding Layer</h3><p>An 'embedding' transforms high-dimensional data (like text) into a dense vector space.</p><p>By calculating the semantic similarity between subreddit descriptions and content, we projected all <strong>67,180 communities</strong> into a 2D interactive map using <strong>t-SNE</strong>.</p><p><strong>The Hypothesis:</strong> Distinct, isolated islands of topics (Sports, Politics, Gaming) should naturally emerge.</p>";
+    
+    const s3_Part2 = "It’s a map of meaning. In this space, r/cats should be right next to r/dogs, and r/wallstreetbets should be... well, probably in a casino.\n\nReady? Let's push the button and watch the order emerge from the chaos.\n\nBehold, the map of the Reddit Mind!";
+    
+    const s3_Part3 = "...Well. That’s disappointing.\n\nLook at it. It looks like a clown sneezed on a windshield.\n\nWhere are the clusters? Why is everything overlapping? The AI didn't find 'islands of meaning'. It found a giant, screaming soup of noise.\n\nYou know why? Because this is Reddit. Everything is connected to everything. You can't separate 'Politics' from 'Memes'.\n\nThe machine failed because it tried to use logic. Rookie mistake.\n\nWe need a simpler filter. Something rigid. Something old-school.\n\nGeography.";
 
-    // CONFIGURAZIONE
+    // --- SCENA 4 (Cartographer) ---
+    const s4_Part1 = "Okay, we ditched the AI clustering. We are going back to basics: Geography.\n\nBut we have a problem. The data doesn't come with GPS coordinates. It just comes with names.\n\nI look at r/france and I know it's France. I look at r/de and I know it's Germany. But the computer? The computer is stupid. It just sees strings of text.\n\nIf only there was a way to force these subreddit names to confess which country they belong to...";
+    const s4_Narrator1 = "<strong>Methodology: Fuzzy String Matching</strong><br><br>To bridge the gap between digital communities and physical borders, we utilized the <span class='gold-highlight'>thefuzz Python library</span>.<br><br>By cross-referencing subreddit names against a database of ISO country codes and demonyms (e.g., \"German\", \"Deutsch\"), we calculated the <span class='gold-highlight'>Levenshtein distance</span> to find the best matches. This allowed us to successfully map thousands of communities to their real-world counterparts.";
+    const s4_Part2 = "Gotcha. Now every subreddit has a flag.\n\nSo, who owns this place? Is Reddit a global democracy? Let's look at the sheer volume of posts per country.";
+    const s4_Part3 = "Well... that’s awkward.\n\nLook at the gap between Number 1 and Number 2.\n\nReddit isn't a 'Global Village'. It’s basically the United States, plus a few friends we invited to the party. The volume of content coming from the US drowns out everyone else.\n\nIf we just counted words, the US would win every category just by shouting louder. 'Most Angry'? USA. 'Most Happy'? USA. 'Most talk about Cheese'? USA.\n\nThat’s boring. We need to be fair. We need to Normalize.";
+    const s4_Narrator2 = "<strong>Statistical Correction: Normalization</strong><br><br>Because of the overwhelming US dominance, analyzing raw counts would introduce a severe bias.<br><br>To uncover the true cultural distinctiveness of each nation and in particular to compare them, we divided the number of interactions between two countries by the <span class='gold-highlight'>number of total posts</span> of the two nations.";
+    const s4_Part4 = "Exactly. We level the playing field.\n\nNow that the giants aren't cheating with their population size, let's see who cares more about religion.";
+    const s4_User = "Wait a minute, Mr. Reddit.\n\nI'm looking at the top of this list, and—speaking as someone from the Real World—it actually makes sense. Those countries are known for being religious.\n\nBut I'm scrolling down to the middle and the bottom... and honestly? It's a mess. The ranking gets fuzzy. I can't tell if Country A is actually less religious than Country B, or if it's just random noise.";
+    const s4_Narrator3 = "<strong>Data Insight: The Variance Problem</strong><br><br>You have spotted a crucial statistical limitation.<br><br>While the top of the ranking shows strong, statistically significant signals, the middle and lower sections flatten out.<br><br>In this <span class='gold-highlight'>\"Long Tail\"</span>, the scores are extremely low, and the differences between positions are microscopic. Furthermore, many of these countries have significantly fewer posts, meaning the <span class='gold-highlight'>sample size</span> is too small to draw a definitive ranking.<br><br><strong>Conclusion:</strong> The outliers tell a story. The average is just noise.";
+    const s4_Part5 = "Sharp eyes, kid.\n\nThat’s the problem with data. If you stare at the static long enough, you start seeing faces.\n\nThe top of the list is truth. The middle is just people talking about the weather. Let's ignore the boring middle and move on to something more exciting.\n\nWe know what they are saying. Now let's see who they are screaming at.";
+
+
+
+
     const scenarios = {
         'intro-text': introDialogue,
         'disclaimer-text': disclaimerDialogue,
         's1-part1': s1_Part1,
         's1-part2': s1_Part2,
         's2-part1': s2_Part1, 
-        's2-part2': s2_Part2
+        's2-part2': s2_Part2,
+        's3-part1': s3_Part1,
+        's3-part2': s3_Part2,
+        's3-part3': s3_Part3,
+        's4-part1': s4_Part1,
+        's4-part2': s4_Part2,
+        's4-part3': s4_Part3,
+        's4-part4': s4_Part4,
+        's4-user-text': s4_User,
+        's4-part5': s4_Part5
     };
     
     const typedStatus = {
@@ -38,7 +68,16 @@ document.addEventListener('DOMContentLoaded', () => {
         's1-part1': false, 
         's1-part2': false,
         's2-part1': false,
-        's2-part2': false
+        's2-part2': false,
+        's3-part1': false,
+        's3-part2': false,
+        's3-part3': false,
+        's4-part1': false,
+        's4-part2': false,
+        's4-part3': false,
+        's4-part4': false,
+        's4-user-text': false,
+        's4-part5': false
     };
 
     // --- TRIGGER GLITCH (Intro) ---
@@ -69,15 +108,22 @@ document.addEventListener('DOMContentLoaded', () => {
                         const sectionId = entry.target.id;
                         const targetId = entry.target.querySelector('.type-target')?.id;
 
-                        // LOGICA PER SCENA 1
+                        // 1. CONTROLLO SCENA 1
                         if (sectionId === 'scene-1') {
                             playScene1Sequence();
                         } 
-                        // LOGICA PER SCENA 2
+                        // 2. CONTROLLO SCENA 2
                         else if (sectionId === 'scene-2') {
                             playScene2Sequence();
                         }
-                        // LOGICA STANDARD (Intro, Disclaimer, ecc.)
+                        // 3. CONTROLLO SCENA 3 (SPOSTATO QUI SOPRA!)
+                        else if (sectionId === 'scene-3') {
+                            playScene3Sequence();
+                        }
+                        else if (sectionId === 'scene-4') {
+                        playScene4Sequence();
+                        }
+                        // 4. LOGICA STANDARD (Solo se NON è una delle scene speciali sopra)
                         else if (targetId && scenarios[targetId] && !typedStatus[targetId]) {
                             startTypeWriter(targetId);
                         }
@@ -138,6 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 1200); 
         });
     }
+
 
     // --- FUNZIONE ANIMAZIONE NUMERI (Assicurati che ci sia nel file) ---
     function animateValue(id, start, end, duration) {
@@ -220,6 +267,88 @@ function playScene2Sequence() {
         }, 1000); // Ritardo apparizione Grafico -> Analisi
     });
 }
+
+// --- SEQUENZA SCENA 3 (VERSIONE DEBUG) ---
+function playScene3Sequence() {
+    // Evita di rieseguire se sta già andando
+    if (typedStatus['s3-part1']) return;
+
+    console.log("Scene 3: Inizio sequenza...");
+
+    // 1. Mr. Reddit Intro
+    startTypeWriter('s3-part1', () => {
+        console.log("Scene 3: Testo parte 1 finito.");
+
+        // 2. Seleziona gli elementi HTML
+        const cloud = document.getElementById('s3-narrator-cloud');
+        const narratorText = document.getElementById('s3-narrator-text');
+        const nerd = document.getElementById('s3-nerd-avatar');
+
+        // CONTROLLO DI SICUREZZA
+        if (!cloud || !narratorText) {
+            console.error("ERRORE CRITICO: Non trovo 's3-narrator-cloud' o 's3-narrator-text' nell'HTML!");
+            return; // Si ferma qui se mancano gli ID
+        }
+
+        // Inserimento testo
+        narratorText.innerHTML = s3_Narrator; // Assicurati che la variabile s3_Narrator esista in alto
+        
+        // Animazione Entrata
+        cloud.classList.add('slide-in-active');
+        console.log("Scene 3: Nuvola attivata.");
+
+        setTimeout(() => {
+            if(nerd) {
+                nerd.classList.remove('hidden-opacity');
+                nerd.classList.add('visible-opacity');
+            }
+
+            // 3. Mr. Reddit Part 2 (Ready? Push button...)
+            // Ho ridotto il tempo da 6000 a 4000 per rendere il test più veloce
+            setTimeout(() => {
+                const row2 = document.getElementById('s3-row-2');
+                if (row2) {
+                    row2.classList.remove('hidden-opacity');
+                    row2.classList.add('visible-opacity');
+                    row2.scrollIntoView({behavior: "smooth", block: "center"});
+                }
+
+                startTypeWriter('s3-part2', () => {
+                    
+                    // 4. SHOW THE CHART
+                    const dataRow = document.getElementById('s3-data-row');
+                    if (dataRow) {
+                        dataRow.classList.remove('hidden-opacity');
+                        dataRow.classList.add('visible-opacity');
+                    }
+
+                    // 5. WAIT & REACTION
+                    setTimeout(() => {
+                        const row3 = document.getElementById('s3-row-3');
+                        if (row3) {
+                            row3.classList.remove('hidden-opacity');
+                            row3.classList.add('visible-opacity');
+                            row3.scrollIntoView({behavior: "smooth", block: "center"});
+                        }
+
+                        startTypeWriter('s3-part3', () => {
+                            const actionBtn = document.getElementById('s3-action');
+                            if (actionBtn) {
+                                actionBtn.classList.remove('hidden-opacity');
+                                actionBtn.classList.add('visible-opacity');
+                            }
+                        });
+
+                    }, 4000); 
+
+                });
+
+            }, 4000); // Tempo lettura Technical Brief
+
+        }, 1000);
+    });
+}
+
 
     // --- UTILITIES ---
     function startTypeWriter(elementId, callback = null) {

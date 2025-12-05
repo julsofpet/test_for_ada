@@ -176,9 +176,14 @@
         </div>
 
         <div id="s2-data-row" class="data-display-row hidden-opacity" style="justify-content: center;">
-            <div class="chart-wrapper" style="flex: unset; width: 100%; max-width: 800px;">
+            <div class="chart-wrapper" style="flex: unset; width: 100%; max-width: 1100px; margin: 0 auto;">
                 <div class="chart-header">/// METRIC: TEXTUAL PROPERTIES ANALYSIS ///</div>
-                <img src="assets/images/first_image.png" alt="Chart Analysis" class="static-chart-img">
+                
+                <img 
+                    src="assets/images/top_5_subreddits_metrics.png" 
+                    alt="Chart Analysis" 
+                    class="static-chart-img">
+                    
             </div>
         </div>
 
@@ -211,6 +216,69 @@
 
     </div>
 </section>
+
+<section id="scene-3" class="step">
+    <div class="dialogue-container">
+
+        <div id="s3-row-1" class="speech-row">
+            <div class="avatar-wrapper">
+                <img src="assets/images/mr-reddit.png" alt="Mr. Reddit VR" class="pixel-avatar-speech">
+            </div>
+            <div class="terminal-box green-style">
+                <p id="s3-part1" class="type-target"></p>
+            </div>
+        </div>
+
+        <div class="narrator-row">
+            
+            <div id="s3-narrator-cloud" class="narrator-cloud hidden-left">
+                <div id="s3-narrator-text"></div> 
+            </div>
+
+            <div id="s3-nerd-avatar" class="avatar-wrapper hidden-opacity">
+                <img src="assets/images/nerd.png" alt="Nerd Narrator" class="pixel-avatar-speech">
+            </div>
+
+        </div>
+
+        <div id="s3-row-2" class="speech-row hidden-opacity">
+            <div class="avatar-wrapper">
+                <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+            </div>
+            <div class="terminal-box green-style">
+                <p id="s3-part2" class="type-target"></p>
+            </div>
+        </div>
+
+        <div id="s3-data-row" class="data-display-row hidden-opacity" style="justify-content: center;">
+            <div class="chart-wrapper" style="flex: unset; width: 100%; max-width: 1100px; height: 650px; margin: 0 auto;">
+                <div class="chart-header">/// T-SNE PROJECTION: GLOBAL_MAP ///</div>
+                <iframe 
+                    src="assets/images/tsne_cluster_map.html" 
+                    class="chart-iframe"
+                    title="t-SNE Blob">
+                </iframe>
+            </div>
+        </div>
+
+        <div id="s3-row-3" class="speech-row hidden-opacity">
+            <div class="avatar-wrapper">
+                <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+            </div>
+            <div class="terminal-box green-style">
+                <p id="s3-part3" class="type-target"></p><span class="cursor">_</span>
+            </div>
+        </div>
+
+        <div id="s3-action" class="action-area hidden-opacity" style="text-align: center; margin-top: 40px;">
+            <button class="enter-rabbit-hole" onclick="scrollToScene('scene-4')">
+                [INITIATE GEOGRAPHY PROTOCOL]
+            </button>
+        </div>
+
+    </div>
+</section>
+
 
 </div>
     <script src="assets/js/story-script.js"></script>

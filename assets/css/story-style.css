@@ -134,7 +134,7 @@ body.dark-mode #reddit-layer {
     flex-direction: row;
     align-items: flex-start; /* Allinea gli elementi in alto */
     justify-content: center; /* Centra il tutto nella pagina */
-    max-width: 1000px;
+    max-width: 1400px;
     margin: 0 auto;
     padding-top: 15vh; /* Spazio dall'alto per centrarlo visivamente */
     gap: 50px; /* Spazio tra l'avatar e il box verde */
@@ -325,7 +325,7 @@ body.dark-mode #reddit-layer {
 /* --- SCENE 1: DIALOGUE LAYOUT --- */
 
 .dialogue-container {
-    max-width: 900px;
+    max-width: 100%;
     margin: 0 auto;
     padding-top: 10vh;
     display: flex;
@@ -471,12 +471,12 @@ body.dark-mode #reddit-layer {
 }
 
 .static-chart-img {
-    width: 100%;
-    height: auto;
+    width: 100%;        /* Occupa tutta la larghezza del box */
+    height: auto;       /* Mantiene le proporzioni originali */
     display: block;
+    margin-top: 15px;   /* Spazio sotto l'header verde */
     border: 1px solid #003300;
-    margin-top: 10px; 
-    filter: drop-shadow(0 0 5px rgba(0, 255, 65, 0.2));
+    filter: drop-shadow(0 0 5px rgba(0, 255, 65, 0.2)); /* Effetto glow leggero */
 }
 
 .chart-header {
@@ -498,7 +498,6 @@ body.dark-mode #reddit-layer {
 }
 
 /* 2. ANALYSIS PANEL (Narrator Tech Style) */
-/* --- STILE "SCREENSHOT" PER IL BOX ANALISI --- */
 
 .narrator-bubble-box {
     /* Layout e Spaziatura */
@@ -568,12 +567,41 @@ body.dark-mode #reddit-layer {
     }
 }
 
+/* --- SCENE 3 SPECIFIC: MATRIX EFFECT --- */
+#scene-3 {
+    position: relative;
+    /* Sfondo griglia stile Matrix/Cyberpunk */
+    background-image: 
+        linear-gradient(rgba(0, 255, 65, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 65, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-color: #050505;
+}
+
+/* Opzionale: Effetto 'scanline' che scende leggermente */
+#scene-3::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 255, 65, 0.02) 51%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.chart-iframe {
+    width: 100%;
+    height: 100%;       
+    border: none;
+    display: block;
+    overflow: hidden; /* Evita le barre di scorrimento doppie */
+}
 
 /* SCENE */
 .step {
     min-height: 100vh;
     padding: 4rem 2rem;
-    max-width: 900px;
+    max-width: 1400px;
     margin: 0 auto;
     border-left: 1px dashed #333;
     display: flex; flex-direction: column; justify-content: center;
