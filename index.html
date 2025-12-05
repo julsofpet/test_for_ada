@@ -127,15 +127,23 @@
             </div>
         </div>
 
-        <div id="narrator-cloud" class="narrator-cloud hidden-left">
-            <p>
-                Our journey is about looking through this <strong>"Orange Lens"</strong> to decode the vast, chaotic digital landscape of global communities.
-                <br><br>
-                We begin our odyssey equipped with data on over <strong>858,488 posts</strong> spanning <strong>67,180 unique subreddits</strong>.
-                <br><br>
-                Our tools include core variables like <strong>SOURCE_SUBREDDIT</strong> and <strong>TIMESTAMP</strong>, alongside rich text properties encapsulated in the <strong>86-element POST_PROPERTIES vector</strong> (VADER sentiment & LIWC linguistic features).
-            </p>
-        </div>
+        <div class="narrator-row">
+    
+    <div id="narrator-cloud" class="narrator-cloud hidden-left">
+        <p>
+    Our journey is about looking through this <strong>"Orange Lens"</strong> to decode the vast, chaotic digital landscape of global communities.
+    <br><br>
+    We begin our odyssey equipped with data on over <strong><span id="count-posts">0</span> posts</strong> spanning <strong><span id="count-subs">0</span> unique subreddits</strong>.
+    <br><br>
+    Our tools include core variables like <strong>SOURCE_SUBREDDIT</strong> and <strong>TIMESTAMP</strong>, alongside rich text properties encapsulated in the <strong><span id="count-vec">0</span>-element POST_PROPERTIES vector</strong> (VADER sentiment & LIWC linguistic features).
+</p>
+    </div>
+
+    <div id="nerd-avatar" class="avatar-wrapper hidden-opacity">
+        <img src="assets/images/nerd.png" alt="Nerd Narrator" class="pixel-avatar-speech">
+    </div>
+
+</div>
 
         <div id="row-part-2" class="speech-row hidden-opacity">
             <div class="avatar-wrapper">
@@ -149,6 +157,55 @@
         <div id="s1-action" class="action-area hidden-opacity" style="text-align: center; margin-top: 40px;">
             <button class="enter-rabbit-hole" onclick="scrollToScene('scene-2')">
                 [LISTEN TO THE SCREAM]
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<section id="scene-2" class="step">
+    <div class="dialogue-container">
+
+        <div id="s2-row-1" class="speech-row">
+            <div class="avatar-wrapper">
+                <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+            </div>
+            <div class="terminal-box green-style">
+                <p id="s2-part1" class="type-target"></p>
+            </div>
+        </div>
+
+        <div id="s2-data-row" class="data-display-row hidden-opacity" style="justify-content: center;">
+            <div class="chart-wrapper" style="flex: unset; width: 100%; max-width: 800px;">
+                <div class="chart-header">/// METRIC: TEXTUAL PROPERTIES ANALYSIS ///</div>
+                <img src="assets/images/first_image.png" alt="Chart Analysis" class="static-chart-img">
+            </div>
+        </div>
+
+        <div class="narrator-row">
+            
+            <div id="s2-narrator-cloud" class="narrator-cloud hidden-left">
+                <p id="s2-analysis-text"></p> 
+            </div>
+
+            <div id="s2-nerd-avatar" class="avatar-wrapper hidden-opacity">
+                <img src="assets/images/nerd.png" alt="Nerd Narrator" class="pixel-avatar-speech">
+            </div>
+
+        </div>
+
+        <div id="s2-row-2" class="speech-row hidden-opacity">
+            <div class="avatar-wrapper">
+                <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+            </div>
+            <div class="terminal-box green-style">
+                <p id="s2-part2" class="type-target"></p><span class="cursor">_</span>
+            </div>
+        </div>
+
+        <div id="s2-action" class="action-area hidden-opacity" style="text-align: center; margin-top: 40px;">
+            <button class="enter-rabbit-hole" onclick="scrollToScene('scene-3')">
+                [INITIATE EMBEDDINGS]
             </button>
         </div>
 

@@ -365,24 +365,36 @@ body.dark-mode #reddit-layer {
     box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
     position: relative;
 }
+/* --- LAYOUT RIGA NARRATORE (Nuovo) --- */
+.narrator-row {
+    display: flex;
+    align-items: center; /* Centra verticalmente Nuvola e Avatar */
+    justify-content: space-between;
+    gap: 20px; /* Spazio tra la nuvola e il nerd */
+    width: 100%;
+    margin: 30px 0; /* Il margine ora è sul contenitore, non sulla nuvola */
+    position: relative;
+}
 
-/* --- STILE NARRATORE "NUVOLA NEON" --- */
+/* --- STILE NARRATORE "NUVOLA NEON" (Aggiornato) --- */
 .narrator-cloud {
-    /* 1. OPACITÀ E SFONDO: Bianco all'85% di opacità */
+    /* LAYOUT FLEX: La nuvola prende tutto lo spazio disponibile */
+    flex: 1; 
+    margin: 0; /* Rimuoviamo il margine perché gestito dalla riga */
+
+    /* 1. OPACITÀ E SFONDO */
     background-color: rgba(255, 255, 255, 0.85); 
     color: #000;
 
-    /* 2. FORMA NUVOLA: Bordi molto arrotondati */
+    /* 2. FORMA NUVOLA */
     border-radius: 50px; 
     padding: 30px;
-    margin: 30px 0;
     
     /* 3. ALONE NEON GIALLO */
-    border: 2px solid #FFFF00; /* Bordo giallo brillante */
-    /* Doppio alone: uno esterno diffuso e uno interno leggero */
+    border: 2px solid #FFFF00;
     box-shadow: 
-        0 0 25px rgba(255, 255, 0, 0.8), /* Alone esterno forte */
-        inset 0 0 15px rgba(255, 255, 0, 0.3); /* Alone interno */
+        0 0 25px rgba(255, 255, 0, 0.8),
+        inset 0 0 15px rgba(255, 255, 0, 0.3);
 
     /* Stile Testo */
     font-family: 'Roboto', sans-serif;
@@ -392,17 +404,17 @@ body.dark-mode #reddit-layer {
     z-index: 20;
     
     /* Animazione Entrata (Slide-in) */
-    transform: translateX(-100vw);
+    transform: translateX(-100vw); /* Parte da fuori schermo a sinistra */
     opacity: 0;
     transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.2s ease;
 }
 
-/* Rimuoviamo la vecchia freccia appuntita perché le nuvole non hanno spigoli */
+/* Rimuoviamo la freccia */
 .narrator-cloud::after {
     display: none;
 }
 
-/* Classe attiva (Resta uguale) */
+/* Classe attiva per l'animazione */
 .narrator-cloud.slide-in-active {
     transform: translateX(0);
     opacity: 1;
@@ -410,11 +422,20 @@ body.dark-mode #reddit-layer {
 
 /* Colore testo forte dentro la nuvola */
 .narrator-cloud strong {
-    color: #d4a000; /* Un giallo-arancio scuro per essere leggibile sul bianco */
+    color: #d4a000;
     text-shadow: 0 0 2px rgba(255, 215, 0, 0.5);
 }
 
-/* Utility per nascondere/mostrare */
+/* --- STILE AVATAR NERD (Nuovo) --- */
+#nerd-avatar {
+    flex: 0 0 120px; /* Dimensione fissa per il contenitore del Nerd */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* L'opacità iniziale è gestita dalle classi utility sotto */
+}
+
+/* Utility per nascondere/mostrare (Resta uguale) */
 .hidden-opacity {
     opacity: 0;
     pointer-events: none;
@@ -425,6 +446,127 @@ body.dark-mode #reddit-layer {
     pointer-events: auto;
 }
 
+
+/* --- SCENE 2 SPECIFIC: DATA & ANALYSIS LAYOUT --- */
+
+/* Container for Chart + Text side by side */
+.data-display-row {
+    display: flex;
+    flex-wrap: wrap; /* Wraps on mobile */
+    gap: 20px;
+    margin: 30px 0;
+    width: 100%;
+    align-items: stretch;
+}
+
+/* 1. CHART WRAPPER */
+.chart-wrapper {
+    flex: 2; /* Takes up 2/3 of space */
+    border: 1px solid var(--terminal-green);
+    background: rgba(0, 10, 0, 0.6);
+    padding: 10px;
+    min-height: 400px;
+    position: relative;
+    box-shadow: inset 0 0 20px rgba(0, 255, 65, 0.1);
+}
+
+.static-chart-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid #003300;
+    margin-top: 10px; 
+    filter: drop-shadow(0 0 5px rgba(0, 255, 65, 0.2));
+}
+
+.chart-header {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background: #000;
+    color: var(--terminal-green);
+    padding: 0 10px;
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    border: 1px solid var(--terminal-green);
+}
+
+.plotly-chart {
+    width: 100%;
+    height: 100%;
+    min-height: 380px;
+}
+
+/* 2. ANALYSIS PANEL (Narrator Tech Style) */
+/* --- STILE "SCREENSHOT" PER IL BOX ANALISI --- */
+
+.narrator-bubble-box {
+    /* Layout e Spaziatura */
+    flex: 1;
+    padding: 30px;
+    margin: 10px;
+    
+    /* Stile Visuale identico allo screenshot */
+    background-color: #e0e0e0; /* Grigio chiaro */
+    color: #111111; /* Testo quasi nero */
+    border-radius: 40px; /* Bordi molto arrotondati */
+    border: 3px solid #FFFF00; /* Bordo Giallo Neon */
+    
+    /* Effetto Glow Esterno */
+    box-shadow: 0 0 25px rgba(255, 255, 0, 0.6); 
+    
+    /* Font */
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    
+    /* Posizionamento */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0; /* Parte nascosto per l'animazione fade-in */
+    transition: opacity 1s ease;
+}
+
+/* Classe per le parole evidenziate in Oro/Arancio */
+.gold-highlight {
+    color: #DAA520; /* Goldenrod */
+    font-weight: bold;
+    text-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+}
+
+.panel-label {
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    color: #FFFF00;
+    margin-bottom: 15px;
+    opacity: 0.7;
+    letter-spacing: 1px;
+}
+
+.tech-readout-text {
+    font-family: 'Roboto', sans-serif; /* Clean font for objective truth */
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    text-shadow: 0 0 2px rgba(0,0,0,0.8);
+}
+
+.tech-readout-text strong {
+    color: #FFFF00;
+    font-weight: 700;
+}
+
+/* Mobile Adjustment */
+@media (max-width: 768px) {
+    .data-display-row {
+        flex-direction: column;
+    }
+    .chart-wrapper, .analysis-panel {
+        flex: 1;
+        width: 100%;
+    }
+}
 
 
 /* SCENE */
