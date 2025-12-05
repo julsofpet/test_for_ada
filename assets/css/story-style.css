@@ -505,7 +505,7 @@ body.dark-mode #reddit-layer {
     padding: 30px;
     margin: 10px;
     
-    /* Stile Visuale identico allo screenshot */
+    /* Stile Visuale */
     background-color: #e0e0e0; /* Grigio chiaro */
     color: #111111; /* Testo quasi nero */
     border-radius: 40px; /* Bordi molto arrotondati */
@@ -523,13 +523,23 @@ body.dark-mode #reddit-layer {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    opacity: 0; /* Parte nascosto per l'animazione fade-in */
-    transition: opacity 1s ease;
+    
+    /* ANIMAZIONE INIZIALE (Nascosto) */
+    opacity: 0; 
+    transform: translateY(20px);
+    transition: all 0.8s ease;
 }
+
+/* --- QUESTA È LA CLASSE CHE MANCAVA --- */
+.narrator-bubble-box.visible {
+    opacity: 1 !important;
+    transform: translateY(0);
+}
+/* -------------------------------------- */
 
 /* Classe per le parole evidenziate in Oro/Arancio */
 .gold-highlight {
-    color: #DAA520; /* Goldenrod */
+    color: #DAA520; 
     font-weight: bold;
     text-shadow: 0px 0px 1px rgba(0,0,0,0.2);
 }
@@ -595,6 +605,73 @@ body.dark-mode #reddit-layer {
     border: none;
     display: block;
     overflow: hidden; /* Evita le barre di scorrimento doppie */
+}
+
+/* --- USER DIALOGUE (RIGHT SIDE) --- */
+.speech-row.user-right {
+    text-align: left;
+}
+
+/* Stile box specifico per l'User (Ciano/Blue Neon) */
+.terminal-box.cyan-style {
+    flex: 1;
+    border: 1px solid #00e5ff; /* Ciano Neon */
+    background-color: rgba(0, 20, 30, 0.8); /* Sfondo bluastro scuro */
+    padding: 20px;
+    color: #e0f7fa;
+    font-family: 'VT323', monospace;
+    font-size: 1.3rem;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+    position: relative;
+}
+
+.terminal-box.cyan-style .cursor {
+    color: #00e5ff;
+}
+
+/* --- TERMINAL TABLE STYLE --- */
+.table-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.terminal-table {
+    width: 100%;
+    max-width: 600px;
+    border-collapse: collapse;
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.terminal-table th {
+    border-bottom: 2px solid var(--terminal-green);
+    text-align: left;
+    padding: 10px;
+    color: var(--terminal-green);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.terminal-table td {
+    border-bottom: 1px dashed #333;
+    padding: 8px 10px;
+}
+
+.terminal-table tr:hover td {
+    background-color: rgba(0, 255, 65, 0.1);
+    color: #fff;
+}
+
+.terminal-table .rank-col { color: #888; width: 50px; }
+.terminal-table .num-col { text-align: right; color: #DAA520; font-weight: bold; }
+/* --- AGGIUNTA PER TABELLA DOPPIA COLONNA --- */
+.terminal-table .sep-col {
+    width: 30px; /* Spazio tra le due colonne */
+    border-bottom: none !important; /* Rimuove la riga tratteggiata nel mezzo */
 }
 
 /* SCENE */
