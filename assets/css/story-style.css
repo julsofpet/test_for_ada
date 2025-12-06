@@ -160,6 +160,40 @@ body.dark-mode #reddit-layer {
     filter: drop-shadow(0 0 10px rgba(0, 255, 65, 0.4));
 }
 
+/* --- STILE NOMI AVATAR --- */
+
+.avatar-name {
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1;
+    text-shadow: 0px 2px 2px rgba(0,0,0,0.8); /* Leggibilità su sfondo scuro */
+}
+
+/* Colori specifici per personaggio */
+.name-reddit { 
+    color: #00ff41; /* Verde Matrix */
+}
+
+.name-user { 
+    color: #00e5ff; /* Ciano Neon */
+}
+
+.name-scientist { 
+    color: #FFFF00; /* Giallo (come il bordo della nuvola) */
+}
+
+/* Fix per l'avatar sticky (Intro) */
+.avatar-sticky {
+    /* Assicura che il nome stia dentro il blocco sticky */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-15px); }
@@ -430,6 +464,9 @@ body.dark-mode #reddit-layer {
 #nerd-avatar {
     flex: 0 0 120px; /* Dimensione fissa per il contenitore del Nerd */
     display: flex;
+    
+    flex-direction: column; 
+    
     justify-content: center;
     align-items: center;
     /* L'opacità iniziale è gestita dalle classi utility sotto */
@@ -438,14 +475,13 @@ body.dark-mode #reddit-layer {
 /* Utility per nascondere/mostrare (Resta uguale) */
 .hidden-opacity {
     opacity: 0;
-    pointer-events: none;
-    transition: opacity 1s ease;
+    pointer-events: none; /* Impedisce di cliccare cose invisibili */
+    transition: opacity 1.5s ease;
 }
 .visible-opacity {
     opacity: 1;
     pointer-events: auto;
 }
-
 
 /* --- SCENE 2 SPECIFIC: DATA & ANALYSIS LAYOUT --- */
 

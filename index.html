@@ -66,19 +66,32 @@
             <div class="left-col">
                 <div class="avatar-sticky">
                     <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar">
+                    <div class="avatar-name name-reddit">Mr. Reddit</div>
                 </div>
             </div>
 
             <div class="right-col">
-                <div class="terminal-box">
-                    <p id="intro-text"></p><span class="cursor">_</span>
-                </div>
+    
+            <div class="terminal-box">
+                <p id="intro-text"></p><span class="cursor">_</span>
+            </div>
 
-                <div class="action-area">
-                    <button class="enter-rabbit-hole" onclick="scrollToScene('scene-0-5')">
-                    [ENTER THE RABBIT HOLE]
-                    </button>
+            <div id="intro-user-row" class="speech-row user-right hidden-opacity" style="justify-content: flex-end;">
+                <div class="terminal-box cyan-style">
+                    <p id="intro-user-text" class="type-target"></p>
                 </div>
+                <div class="avatar-wrapper">
+                    <img src="assets/images/user.png" alt="Citizen User" class="pixel-avatar-speech">
+                    <div class="avatar-name name-user">User</div>
+                </div>
+            </div>
+
+            <div id="intro-button-area" class="action-area hidden-opacity">
+                <button class="enter-rabbit-hole" onclick="scrollToScene('scene-0-5')">
+                    [ENTER THE RABBIT HOLE]
+                </button>
+            </div>
+
             </div>
 
         </div>
@@ -88,6 +101,7 @@
     <div class="intro-layout"> <div class="left-col">
             <div class="avatar-sticky">
                 <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
             </div>
         </div>
 
@@ -121,6 +135,7 @@
         <div id="row-part-1" class="speech-row">
             <div class="avatar-wrapper">
                 <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
             </div>
             <div class="terminal-box green-style">
                 <p id="s1-part1" class="type-target"></p>
@@ -128,26 +143,22 @@
         </div>
 
         <div class="narrator-row">
-    
-    <div id="narrator-cloud" class="narrator-cloud hidden-left">
-        <p>
-    Our journey is about looking through this <strong>"Orange Lens"</strong> to decode the vast, chaotic digital landscape of global communities.
-    <br><br>
-    We begin our odyssey equipped with data on over <strong><span id="count-posts">0</span> posts</strong> spanning <strong><span id="count-subs">0</span> unique subreddits</strong>.
-    <br><br>
-    Our tools include core variables like <strong>SOURCE_SUBREDDIT</strong> and <strong>TIMESTAMP</strong>, alongside rich text properties encapsulated in the <strong><span id="count-vec">0</span>-element POST_PROPERTIES vector</strong> (VADER sentiment & LIWC linguistic features).
-</p>
-    </div>
+            
+            <div id="narrator-cloud" class="narrator-cloud hidden-left">
+                <p id="s1-narrator-text"></p>
+            </div>
 
-    <div id="nerd-avatar" class="avatar-wrapper hidden-opacity">
-        <img src="assets/images/nerd.png" alt="Nerd Narrator" class="pixel-avatar-speech">
-    </div>
+            <div id="nerd-avatar" class="avatar-wrapper hidden-opacity">
+                <img src="assets/images/nerd.png" alt="Nerd Narrator" class="pixel-avatar-speech">
+                <div class="avatar-name name-scientist">The Scientist</div>
+            </div>
 
-</div>
+        </div>
 
         <div id="row-part-2" class="speech-row hidden-opacity">
             <div class="avatar-wrapper">
                 <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
             </div>
             <div class="terminal-box green-style">
                 <p id="s1-part2" class="type-target"></p><span class="cursor">_</span>
@@ -169,6 +180,7 @@
         <div id="s2-row-1" class="speech-row">
             <div class="avatar-wrapper">
                 <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
             </div>
             <div class="terminal-box green-style">
                 <p id="s2-part1" class="type-target"></p>
@@ -195,6 +207,7 @@
 
             <div id="s2-nerd-avatar" class="avatar-wrapper hidden-opacity">
                 <img src="assets/images/nerd.png" alt="Nerd Narrator" class="pixel-avatar-speech">
+                <div class="avatar-name name-scientist">The Scientist</div>
             </div>
 
         </div>
@@ -202,6 +215,7 @@
         <div id="s2-row-2" class="speech-row hidden-opacity">
             <div class="avatar-wrapper">
                 <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
             </div>
             <div class="terminal-box green-style">
                 <p id="s2-part2" class="type-target"></p><span class="cursor">_</span>
@@ -223,6 +237,7 @@
         <div id="s3-row-1" class="speech-row">
             <div class="avatar-wrapper">
                 <img src="assets/images/mr-reddit.png" alt="Mr. Reddit VR" class="pixel-avatar-speech">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
             </div>
             <div class="terminal-box green-style">
                 <p id="s3-part1" class="type-target"></p>
@@ -237,6 +252,7 @@
 
             <div id="s3-nerd-avatar" class="avatar-wrapper hidden-opacity">
                 <img src="assets/images/nerd.png" alt="Nerd Narrator" class="pixel-avatar-speech">
+                <div class="avatar-name name-scientist">The Scientist</div>
             </div>
 
         </div>
@@ -244,6 +260,7 @@
         <div id="s3-row-2" class="speech-row hidden-opacity">
             <div class="avatar-wrapper">
                 <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
             </div>
             <div class="terminal-box green-style">
                 <p id="s3-part2" class="type-target"></p>
@@ -264,6 +281,7 @@
         <div id="s3-row-3" class="speech-row hidden-opacity">
             <div class="avatar-wrapper">
                 <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
             </div>
             <div class="terminal-box green-style">
                 <p id="s3-part3" class="type-target"></p><span class="cursor">_</span>
@@ -285,6 +303,7 @@
         <div id="s4-row-1" class="speech-row">
             <div class="avatar-wrapper">
                 <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
             </div>
             <div class="terminal-box green-style">
                 <p id="s4-part1" class="type-target"></p>
@@ -297,12 +316,14 @@
             </div>
             <div class="avatar-wrapper">
                 <img src="assets/images/nerd.png" alt="Nerd" class="pixel-avatar-speech">
+                <div class="avatar-name name-scientist">The Scientist</div>
             </div>
         </div>
 
         <div id="s4-row-2" class="speech-row hidden-opacity">
             <div class="avatar-wrapper">
                 <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
             </div>
             <div class="terminal-box green-style">
                 <p id="s4-part2" class="type-target"></p>
@@ -319,6 +340,7 @@
         <div id="s4-row-3" class="speech-row hidden-opacity">
             <div class="avatar-wrapper">
                 <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
             </div>
             <div class="terminal-box green-style">
                 <p id="s4-part3" class="type-target"></p>
@@ -331,12 +353,14 @@
             </div>
             <div class="avatar-wrapper">
                 <img src="assets/images/nerd.png" alt="Nerd" class="pixel-avatar-speech">
+                <div class="avatar-name name-scientist">The Scientist</div>
             </div>
         </div>
 
         <div id="s4-row-4" class="speech-row hidden-opacity">
             <div class="avatar-wrapper">
                 <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
             </div>
             <div class="terminal-box green-style">
                 <p id="s4-part4" class="type-target"></p>
@@ -356,6 +380,7 @@
             </div>
             <div class="avatar-wrapper">
                 <img src="assets/images/user.png" alt="Citizen User" class="pixel-avatar-speech">
+                <div class="avatar-name name-user">User</div>
             </div>
         </div>
 
@@ -365,12 +390,14 @@
             </div>
             <div class="avatar-wrapper">
                 <img src="assets/images/nerd.png" alt="Nerd" class="pixel-avatar-speech">
+                <div class="avatar-name name-scientist">The Scientist</div>
             </div>
         </div>
 
         <div id="s4-row-5" class="speech-row hidden-opacity">
             <div class="avatar-wrapper">
                 <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
             </div>
             <div class="terminal-box green-style">
                 <p id="s4-part5" class="type-target"></p><span class="cursor">_</span>
@@ -392,6 +419,7 @@
         <div id="s5-row-1" class="speech-row">
             <div class="avatar-wrapper">
                 <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
             </div>
             <div class="terminal-box green-style">
                 <p id="s5-part1" class="type-target"></p>
@@ -415,12 +443,14 @@
             </div>
             <div class="avatar-wrapper">
                 <img src="assets/images/nerd.png" alt="Nerd" class="pixel-avatar-speech">
+                <div class="avatar-name name-scientist">The Scientist</div>
             </div>
         </div>
 
         <div id="s5-row-2" class="speech-row hidden-opacity">
             <div class="avatar-wrapper">
                 <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
             </div>
             <div class="terminal-box green-style">
                 <p id="s5-part2" class="type-target"></p><span class="cursor">_</span>
@@ -428,8 +458,98 @@
         </div>
 
         <div id="s5-action" class="action-area hidden-opacity" style="text-align: center; margin-top: 40px;">
-            <button class="enter-rabbit-hole" onclick="alert('Scene 6 Coming Soon...')">
+            <button class="enter-rabbit-hole" onclick="scrollToScene('scene-6')">
                 [BUILD THE NETWORK]
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<section id="scene-6" class="step">
+    <div class="dialogue-container">
+
+        <div id="s6-row-1" class="speech-row">
+            <div class="avatar-wrapper">
+                <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
+            </div>
+            <div class="terminal-box green-style">
+                <p id="s6-part1" class="type-target"></p>
+            </div>
+        </div>
+
+        <div id="s6-map-row" class="data-display-row hidden-opacity" style="justify-content: center;">
+            <div class="chart-wrapper" style="flex: unset; width: 100%; max-width: 1100px; height: 700px; margin: 0 auto; background: #0a0a0a;">
+                <div class="chart-header">/// ALGO: GREEDY_MODULARITY_COMMUNITIES(G) ///</div>
+                <iframe 
+                    src="assets/images/faction_world_map.html" 
+                    class="chart-iframe"
+                    title="Faction Map"
+                    style="width: 100%; height: 100%; border: none;">
+                </iframe>
+            </div>
+        </div>
+
+        <div class="narrator-row hidden-opacity" id="s6-narrator-row-1">
+            <div id="s6-narrator-bubble-1" class="narrator-bubble-box">
+                <p id="s6-narrator-text-1"></p>
+            </div>
+            <div class="avatar-wrapper">
+                <img src="assets/images/nerd.png" alt="Nerd" class="pixel-avatar-speech">
+                <div class="avatar-name name-scientist">The Scientist</div>
+            </div>
+        </div>
+
+        <div id="s6-user-row" class="speech-row user-right hidden-opacity">
+            <div class="terminal-box cyan-style">
+                <p id="s6-user-text" class="type-target"></p>
+            </div>
+            <div class="avatar-wrapper">
+                <img src="assets/images/user.png" alt="Citizen User" class="pixel-avatar-speech">
+                <div class="avatar-name name-user">User</div>
+            </div>
+        </div>
+
+        <div id="s6-comparison-row" class="data-display-row hidden-opacity" style="justify-content: center;">
+            <div style="display: flex; gap: 20px; width: 100%; max-width: 1100px; flex-wrap: wrap;">
+                
+                <div class="chart-wrapper" style="flex: 1; min-width: 300px; height: 400px;">
+                    <div class="chart-header">/// DATA: UK_CLUSTER_ZOOM ///</div>
+                    <img src="assets/images/zoom_british_faction.png" alt="UK Cluster Data" style="width:100%; height:100%; object-fit:contain;">
+                </div>
+
+                <div class="chart-wrapper" style="flex: 1; min-width: 300px; height: 400px;">
+                    <div class="chart-header">/// REF: BRITISH_EMPIRE_1920 ///</div>
+                    <img src="assets/images/british_empire_1915.png" alt="British Empire Map" style="width:100%; height:100%; object-fit:contain;">
+                </div>
+
+            </div>
+        </div>
+
+        <div class="narrator-row hidden-opacity" id="s6-narrator-row-2">
+            <div id="s6-narrator-bubble-2" class="narrator-bubble-box">
+                <p id="s6-narrator-text-2"></p>
+            </div>
+            <div class="avatar-wrapper">
+                <img src="assets/images/nerd.png" alt="Nerd" class="pixel-avatar-speech">
+                <div class="avatar-name name-scientist">The Scientist</div>
+            </div>
+        </div>
+
+        <div id="s6-row-2" class="speech-row hidden-opacity">
+            <div class="avatar-wrapper">
+                <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
+            </div>
+            <div class="terminal-box green-style">
+                <p id="s6-part2" class="type-target"></p><span class="cursor">_</span>
+            </div>
+        </div>
+
+        <div id="s6-action" class="action-area hidden-opacity" style="text-align: center; margin-top: 40px;">
+            <button class="enter-rabbit-hole" onclick="scrollToScene('scene-7')">
+                [ADD THE 4TH DIMENSION]
             </button>
         </div>
 

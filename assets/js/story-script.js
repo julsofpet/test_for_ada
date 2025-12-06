@@ -1,5 +1,5 @@
 // DEBUG: Verifica caricamento
-console.log(">>> STORY SCRIPT LOADED v8.0 (Scroll Timing Fix)");
+console.log(">>> STORY SCRIPT LOADED v9.0 (Names + Scene 4 Fix)");
 
 document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
@@ -12,12 +12,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
 
     const introDialogue = "Stop right there.\n\nYou were actually going to read that? It looked like a tax return form from 1995. How... quaint.\n\nYou are currently in the 'Real World'. Out there, people lie. They say they love art house cinema and eat kale. But I know the truth. I know what they really type at 3 AM.\n\nI am Mr. Reddit. And I'm going to show you the world not as it is on a map, but as it actually exists in the hidden \"Reddit realm\".";
+    const introUserDialogue = "Alright. You have my attention.\n\nI'm tired of the polished version of the internet.\n\nShow me the chaotic truth you are talking about.";
     const disclaimerDialogue = "Welcome to the Reddit World.\n\nBefore we start, a Mandatory Disclaimer from the Department of Internet Honesty:\n\nEverything you are about to see is biased. Heavily. Our population is skewed. It’s mostly male, mostly tech-savvy, and mostly people who have way too many opinions about things that don't matter.\n\nIf you are looking for a representative sample of your grandmother’s knitting circle, leave now. If you want raw, unfiltered, and occasionally unhinged human data... stay.\n\nLet’s look at the raw materials first.";
 
     const s1_Part1 = "Okay, let’s check our inventory before we enter the jungle.\n\nYou think we are just guessing? No. We brought heavy machinery.\n\nLook at the scope of this madness.";
+    const s1_Narrator = "Our journey is about looking through this <strong>\"Orange Lens\"</strong> to decode the vast, chaotic digital landscape of global communities.<br><br>We begin our odyssey equipped with data on over <strong><span id=\"count-posts\">0</span> posts</strong> spanning <strong><span id=\"count-subs\">0</span> unique subreddits</strong>.<br><br>Our tools include core variables like <strong>SOURCE_SUBREDDIT</strong> and <strong>TIMESTAMP</strong>, alongside rich text properties encapsulated in the <strong><span id=\"count-vec\">0</span>-element POST_PROPERTIES vector</strong> (VADER sentiment & LIWC linguistic features).";
     const s1_Part2 = "Did you catch that? 86 different ways to dissect a sentence.\n\nWe know if you are talking about God (LIWC_Relig), money, or just using too many pronouns. We literally have a mathematical vector for your feelings.\n\nVADER checks your mood. LIWC checks your soul.\n\nNow that you know how we listen... let's hear what the world is screaming.";
 
-    const s2_Part1 = "Stop right there. Put your passport away.\n\nIn the Reddit World, IDs and borders don't exist. Nobody knows who you are. Nobody cares where you were born.\n\nHere, we only exist through one thing: The Community Name.\n\nr/politics, r/aww, r/wallstreetbets. These are our nations.\n\nBut can we trust the label on the jar? If I step into a place called r/finance, are they actually talking about money, or is it just memes?\n\nLet's test the system.";
+    const s2_Part1 = "Stop right there. Put your passport away.\n\nIn the Reddit World, IDs and borders don''t exist. Nobody knows who you are. Nobody cares where you were born.\n\nHere, we only exist through one thing: The Community Name.\n\nr/politics, r/aww, r/wallstreetbets. These are our nations.\n\nBut can we trust the label on the jar? If I step into a place called r/finance, are they actually talking about money, or is it just memes?\n\nLet's test the system.";
     const s2_Part2 = "See? It’s not total anarchy. It makes sense.\n\nIf the label says 'Strawberry Jam', it contains strawberries.\n\nBut reading labels one by one is for amateurs. I don't want to just read the names. I want to cluster this entire universe.\n\nTo do that, words aren't enough. I need a magic weapon. A dataset that turns words into pure mathematics.\n\nLet me introduce you to The Embeddings.";
     const s2_Analysis = "By analyzing specific textual properties, a clear pattern emerges.<br><br>The correlation is undeniable: the linguistic content perfectly mirrors the <span class='gold-highlight'>community's label</span>.<br><br>Subreddits with the highest frequency of <span class='gold-highlight'>Money-related terms</span> are indeed money-related communities like <em>r/PersonalFinance</em>. Those scoring highest in <span class='gold-highlight'>Religious terms</span> are theology discussions.";
 
@@ -40,51 +42,100 @@ document.addEventListener('DOMContentLoaded', () => {
     const s5_Narrator = "<strong>System Validation: Interaction Mapping</strong><br><br>Based on these results, the mappings appear to be highly relevant and effective. The top-ranking interactions are not random; they clearly reflect significant real-world relationships:<br><br>1. <span class='gold-highlight'>Geographic & Cultural Neighbors</span>: The high volume of interactions between the United States and Canada, and India and Pakistan.<br><br>2. <span class='gold-highlight'>Geopolitical Hotspots</span>: Prominent ranking of pairs like Iran/USA and Israel/Palestine.<br><br>3. <span class='gold-highlight'>Linguistic Ties</span>: The presence of Brazil/Portugal links.<br><br><strong>Conclusion:</strong> The aggregated data mirrors known global relationships so closely that it serves as a strong validation.";
     const s5_Part2 = "See? I told you.\n\nEven in a chaotic digital void, you humans just can't help but replicate your real-world drama. The neighbors are still fighting. The colonies are still calling home.\n\nBut looking at pairs—'A talks to B'—is too simple. It's two-dimensional.\n\nThis is a Social Network, remember? It's not just a series of phone calls. It’s a massive, tangled mess of alliances.\n\nWe need to zoom out. We need to stop looking at countries and start looking at Factions.\n\nLet's build the Network.";
 
+
+    const s6_Part1 = "We used a Network Analysis algorithm called Greedy Modularity.\n\nBasically, we asked the computer: 'Group these countries so that they talk to each other more than they talk to outsiders.'\n\nWe also normalized the data so the USA doesn't just eat everyone.\n\nThe result? The world map repainted by Reddit.";
+    
+    const s6_Narrator1 = "<strong>Network Analysis: Key Findings</strong><br>The map reveals a geopolitical landscape that defies traditional borders:<ul style='margin-top:10px; padding-left:20px; text-align:left;'><li><span class='gold-highlight'>The Eurasian Conflict Zone:</span> Russia anchors a massive Blue block, mathematically isolated from Europe.</li><li><span class='gold-highlight'>Economic Reality:</span> Australia clusters with China (Green) rather than the USA/UK, suggesting trade defines online relations.</li><li><span class='gold-highlight'>Indo-Middle Eastern Nexus:</span> India shares a cluster with Saudi Arabia and Iran.</li><li><span class='gold-highlight'>Fractured Americas:</span> Canada and Mexico cluster together, separate from the USA.</li><li><span class='gold-highlight'>Data Gaps:</span> Vast grey areas in Central Africa highlight the digital divide.</li></ul>";
+    
+    const s6_User = "Hang on... let me zoom in on the UK cluster.\n\nI see the UK, but look who they are connected to. It's not their European neighbors. It's countries halfway across the world.\n\nI've seen this map before in my history books.\n\nIs it just me, or did Reddit just recreate the British Empire?";
+    
+    const s6_Narrator2 = "<strong>Linguistic & Historical Echoes</strong><br><br>You are correct. The network analysis reveals strong <span class='gold-highlight'>\"Linguistic Bridges\"</span> that override geography.<br><br><strong>The UK Cluster:</strong> The algorithm links the UK to India and former commonwealth nations, driven by shared language.<br><br><strong>The Lusophone Connection:</strong> Similarly, Brazil and Portugal form a trans-Atlantic bond that ignores the rest of South America.<br><br>Conclusion: On Reddit, language is the strongest border.";
+    
+    const s6_Part2 = "Old habits die hard, don't they?\n\nWe think we live in the future, but our data is just re-enacting the 19th century.\n\nBut here is the million-dollar question: Is this permanent? Are these alliances set in stone, or do they shift like sand?\n\nWe have data covering 2014 to 2017. Let's add the Fourth Dimension. Let's see who stays loyal and who betrays the family.";
+    
     // ==========================================
     // 2. CONFIGURAZIONE SCENARI
     // ==========================================
 
     const scenarios = {
-        'intro-text': introDialogue, 'disclaimer-text': disclaimerDialogue,
+        'intro-text': introDialogue, 'intro-user-text': introUserDialogue,
+        'disclaimer-text': disclaimerDialogue,
         's1-part1': s1_Part1, 's1-part2': s1_Part2,
         's2-part1': s2_Part1, 's2-part2': s2_Part2,
         's3-part1': s3_Part1, 's3-part2': s3_Part2, 's3-part3': s3_Part3,
         's4-part1': s4_Part1, 's4-part2': s4_Part2, 's4-part3': s4_Part3,
         's4-part4': s4_Part4, 's4-user-text': s4_User, 's4-part5': s4_Part5,
-        's5-part1': s5_Part1, 's5-part2': s5_Part2
+        's5-part1': s5_Part1, 's5-part2': s5_Part2,
+        's6-part1': s6_Part1, 
+        's6-narrator-text-1': s6_Narrator1, // Nota: a volte lo usiamo direttamente nella funzione, ma per coerenza puoi metterlo qui se usi il typeWriter, altrimenti la funzione showNarratorBubble usa la stringa raw. 
+        's6-user-text': s6_User,
+        's6-part2': s6_Part2
     };
     
     const typedStatus = {
-        'intro-text': false, 'disclaimer-text': false,
+        'intro-text': false, 'intro-user-text': false,
+        'disclaimer-text': false,
         's1-part1': false, 's1-part2': false,
         's2-part1': false, 's2-part2': false,
         's3-part1': false, 's3-part2': false, 's3-part3': false,
         's4-part1': false, 's4-part2': false, 's4-part3': false,
         's4-part4': false, 's4-user-text': false, 's4-part5': false,
-        's5-part1': false, 's5-part2': false
+        's5-part1': false, 's5-part2': false,
+        's6-part1': false, 
+        's6-narrator-text-1': false, // Opzionale se non scriviamo a macchina dentro la nuvola
+        's6-user-text': false,
+        's6-part2': false
     };
 
     // ==========================================
     // 3. LOGICA OBSERVER (DELAYED TRIGGER FIX)
     // ==========================================
 
-    const triggerGlitch = () => {
-        if (hasGlitched) return;
-        hasGlitched = true;
-        body.classList.add('glitch-active');
-        setTimeout(() => {
-            body.classList.remove('boring-mode');
-            body.classList.add('dark-mode');
-            body.classList.remove('glitch-active');
-            if (boringLayer) boringLayer.style.display = 'none';
-            if (redditLayer) redditLayer.style.display = 'block';
-            startTypeWriter('intro-text');
-            initObserver();
-        }, 3000);
-    };
+const triggerGlitch = () => {
+    if (hasGlitched) return;
+    hasGlitched = true;
+
+    // 1. Parte il Glitch visivo
+    body.classList.add('glitch-active');
+    
+    setTimeout(() => {
+        // 2. Cambio Stile (da Bianco a Nero)
+        body.classList.remove('boring-mode');
+        body.classList.add('dark-mode');
+        body.classList.remove('glitch-active');
+        
+        if (boringLayer) boringLayer.style.display = 'none';
+        if (redditLayer) redditLayer.style.display = 'block';
+        
+        // 3. INIZIO SEQUENZA DIALOGO
+        
+        // A) Scrive Mr. Reddit
+        startTypeWriter('intro-text', () => {
+            
+            // B) Rivela il box dell'User
+            revealElement('intro-user-row');
+            
+            // Aspettiamo 1 secondo che la transizione CSS del box finisca
+            setTimeout(() => {
+                
+                // C) Scrive User
+                startTypeWriter('intro-user-text', () => {
+                    
+                    // D) Rivela il bottone per proseguire
+                    revealElement('intro-button-area');
+                });
+                
+            }, 1000); 
+        });
+
+        // Avvia l'observer per le scene successive
+        initObserver();
+        
+    }, 3000); 
+};
 
     function initObserver() {
-        console.log(">>> OBSERVER ATTIVATO (Margin -30%)");
+        console.log(">>> OBSERVER ATTIVATO");
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -104,20 +155,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     else if (sectionId === 'scene-3') { playScene3Sequence(); }
                     else if (sectionId === 'scene-4') { playScene4Sequence(); }
                     else if (sectionId === 'scene-5') { playScene5Sequence(); }
+                    else if (sectionId === 'scene-6') { playScene6Sequence(); }
                     
-                    // FALLBACK
+                    // FALLBACK: Importante! Escludiamo scene-4 per evitare conflitti
                     else if (targetId && scenarios[targetId] && !typedStatus[targetId]) {
-                        if(!['scene-1', 'scene-2', 'scene-3', 'scene-4', 'scene-5'].includes(sectionId)) {
+                        if(!['scene-intro', 'scene-1', 'scene-2', 'scene-3', 'scene-4', 'scene-5'].includes(sectionId)) {
                              startTypeWriter(targetId);
                         }
                     }
                 }
             });
         }, { 
-            // QUESTO È IL FIX:
-            // threshold: 0.1 -> Attivati appena il 10% è visibile...
-            // rootMargin: "0px 0px -30% 0px" -> ...MA immagina che lo schermo sia tagliato del 30% in basso.
-            // Risultato: La scena deve "salire" ben oltre il bordo inferiore prima di partire.
             threshold: 0.1,
             rootMargin: "0px 0px -30% 0px" 
         });
@@ -129,15 +177,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. REGIA SCENE
     // ==========================================
 
-    // SCENA 1
+  // SCENA 1 (Aggiornata con testo dinamico)
     function playScene1Sequence() {
         if (typedStatus['s1-part1']) return;
+        
         startTypeWriter('s1-part1', () => {
+            
+            // 1. INIETTA IL TESTO DEL NARRATORE
+            const textEl = document.getElementById('s1-narrator-text');
+            if (textEl) textEl.innerHTML = s1_Narrator;
+
+            // 2. MOSTRA LA NUVOLA
             const cloud = document.getElementById('narrator-cloud');
             if(cloud) cloud.classList.add('slide-in-active');
+
+            // 3. ANIMA I NUMERI (Ora gli ID esistono nel DOM)
             animateValue("count-posts", 0, 858488, 3000);
             animateValue("count-subs", 0, 67180, 2500); 
             animateValue("count-vec", 0, 86, 1500);
+
+            // 4. PROSEGUE LA SCENA
             setTimeout(() => {
                 revealElement('nerd-avatar');
                 setTimeout(() => {
@@ -263,36 +322,111 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // SCENA 6
+    function playScene6Sequence() {
+        if (typedStatus['s6-part1']) return;
+        console.log(">>> Starting Scene 6 Sequence");
+
+        // 1. Mr Reddit inizia
+        startTypeWriter('s6-part1', () => {
+            
+            // 2. Mostra la Mappa Interattiva (Factions)
+            revealElement('s6-map-row');
+            
+            setTimeout(() => {
+                // 3. Lo Scienziato spiega i Key Findings
+                showNarratorBubble('s6-narrator-row-1', 's6-narrator-text-1', s6_Narrator1);
+                
+                setTimeout(() => {
+                    // 4. L'Utente interrompe (Zoom UK)
+                    revealElement('s6-user-row');
+                    startTypeWriter('s6-user-text', () => {
+                        
+                        // 5. Mostra il confronto Side-by-Side (Impero vs Dati)
+                        revealElement('s6-comparison-row');
+                        
+                        setTimeout(() => {
+                            // 6. Lo Scienziato conferma (Linguistic Echoes)
+                            showNarratorBubble('s6-narrator-row-2', 's6-narrator-text-2', s6_Narrator2);
+                            
+                            setTimeout(() => {
+                                // 7. Mr Reddit conclude (4th Dimension)
+                                revealElement('s6-row-2');
+                                startTypeWriter('s6-part2', () => {
+                                    // 8. Bottone finale
+                                    revealElement('s6-action');
+                                });
+                            }, 6000); // Tempo lettura Scienziato 2
+                        }, 1000); // Tempo apparizione immagini
+                    });
+                }, 8000); // Tempo lettura Scienziato 1 (lungo perché ha bullet points)
+            }, 2000); // Tempo per guardare la mappa
+        });
+    }
+
     // ==========================================
     // 5. UTILITIES
     // ==========================================
 
-    function startTypeWriter(elementId, callback = null) {
-        const element = document.getElementById(elementId);
-        if (!element) { console.error("Missing:", elementId); return; }
-        if (typedStatus[elementId]) return;
+function startTypeWriter(elementId, callback = null) {
+    const element = document.getElementById(elementId);
+    if (!element) { console.error("Missing:", elementId); return; }
+    
+    // Se abbiamo già scritto, non facciamo nulla
+    if (typedStatus[elementId]) {
+        if (callback) callback();
+        return;
+    }
+
+    // FUNZIONE DI SCRITTURA REALE
+    const runTyping = () => {
         typedStatus[elementId] = true;
         const text = scenarios[elementId] || " ... ";
         element.innerHTML = "";
         let i = 0;
+        
         function type() {
             if (i < text.length) {
                 const char = text.charAt(i);
-                if (char === '\n') { element.innerHTML += '<br>'; i++; setTimeout(type, 150); } 
-                else { element.innerHTML += char; i++; setTimeout(type, Math.floor(Math.random() * 5) + 2); }
-            } else { if (callback) callback(); }
+                
+                // Gestione ritorno a capo
+                if (char === '\n') { 
+                    element.innerHTML += '<br>'; 
+                    i++; 
+                    setTimeout(type, 400); 
+                } else { 
+                    element.innerHTML += char; 
+                    i++; 
+                    // Velocità tra 30ms e 60ms
+                    setTimeout(type, Math.floor(Math.random() * 5) + 2); 
+                }
+            } else { 
+                if (callback) callback(); 
+            }
         }
         type();
-    }
+    };
 
-    function revealElement(id) {
-        const el = document.getElementById(id);
-        if(el) {
-            el.classList.remove('hidden-opacity');
-            el.classList.add('visible-opacity');
-            el.scrollIntoView({behavior: "smooth", block: "center"});
-        }
+    // OBSERVER INTERNO
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                observer.disconnect();
+                runTyping();
+            }
+        });
+    }, { threshold: 0.3 }); 
+
+    observer.observe(element.parentElement);
+}
+
+function revealElement(id) {
+    const el = document.getElementById(id);
+    if(el) {
+        el.classList.remove('hidden-opacity');
+        el.classList.add('visible-opacity');
     }
+}
 
     function showNarratorBubble(rowId, textId, content) {
         const row = document.getElementById(rowId);
