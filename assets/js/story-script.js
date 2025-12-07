@@ -44,14 +44,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     const s6_Part1 = "We used a Network Analysis algorithm called Greedy Modularity.\n\nBasically, we asked the computer: 'Group these countries so that they talk to each other more than they talk to outsiders.'\n\nWe also normalized the data so the USA doesn't just eat everyone.\n\nThe result? The world map repainted by Reddit.";
-    
     const s6_Narrator1 = "<strong>Network Analysis: Key Findings</strong><br>The map reveals a geopolitical landscape that defies traditional borders:<ul style='margin-top:10px; padding-left:20px; text-align:left;'><li><span class='gold-highlight'>The Eurasian Conflict Zone:</span> Russia anchors a massive Blue block, mathematically isolated from Europe.</li><li><span class='gold-highlight'>Economic Reality:</span> Australia clusters with China (Green) rather than the USA/UK, suggesting trade defines online relations.</li><li><span class='gold-highlight'>Indo-Middle Eastern Nexus:</span> India shares a cluster with Saudi Arabia and Iran.</li><li><span class='gold-highlight'>Fractured Americas:</span> Canada and Mexico cluster together, separate from the USA.</li><li><span class='gold-highlight'>Data Gaps:</span> Vast grey areas in Central Africa highlight the digital divide.</li></ul>";
-    
     const s6_User = "Hang on... let me zoom in on the UK cluster.\n\nI see the UK, but look who they are connected to. It's not their European neighbors. It's countries halfway across the world.\n\nI've seen this map before in my history books.\n\nIs it just me, or did Reddit just recreate the British Empire?";
-    
     const s6_Narrator2 = "<strong>Linguistic & Historical Echoes</strong><br><br>You are correct. The network analysis reveals strong <span class='gold-highlight'>\"Linguistic Bridges\"</span> that override geography.<br><br><strong>The UK Cluster:</strong> The algorithm links the UK to India and former commonwealth nations, driven by shared language.<br><br><strong>The Lusophone Connection:</strong> Similarly, Brazil and Portugal form a trans-Atlantic bond that ignores the rest of South America.<br><br>Conclusion: On Reddit, language is the strongest border.";
-    
     const s6_Part2 = "Old habits die hard, don't they?\n\nWe think we live in the future, but our data is just re-enacting the 19th century.\n\nBut here is the million-dollar question: Is this permanent? Are these alliances set in stone, or do they shift like sand?\n\nWe have data covering 2014 to 2017. Let's add the Fourth Dimension. Let's see who stays loyal and who betrays the family.";
+    
+    const s7_Part1 = "You thought those alliances were written in stone? Please.\n\nThis is the internet. Loyalty lasts about as long as a viral meme.\n\nWe tracked these factions year by year, from 2014 to 2017.\n\nLook at this mess. Countries jumping from the 'Blue Faction' to the 'Red Faction' like they are changing socks.\n\nThey are all traitors. Except... maybe not all of them.\n\nLet's filter out the flakes and look for the die-hards. Who stuck together through thick and thin?";
+    const s7_Narrator1 = "<strong>Reading the Matrix: The Loyalty Index</strong><br>This heatmap reveals how many fiscal quarters two countries spent in the same mathematical community.<ul style='margin-top:10px; padding-left:20px; text-align:left;'><li><span class='gold-highlight'>Ignore the Diagonal:</span> The bright white line matches a country with itself.</li><li><span class='gold-highlight'>The Irony of \"Loyalty\":</span> The brightest points are not necessarily friends. They are inseparable because their discourse is locked together.</li><li><span class='gold-highlight'>Russia & Ukraine:</span> Highly connected throughout the dataset.</li><li><span class='gold-highlight'>Israel & Palestine:</span> Mathematically glued together.</li><li><span class='gold-highlight'>India & Pakistan:</span> A permanent dyad.</li></ul><br><strong>Conclusion:</strong> On Reddit, your enemies are your closest neighbors. You cannot escape them.";
+    const s7_Part2 = "Touching, isn't it? They hate each other so much they can't leave each other alone.\n\nSo we know who the couples are. But who is the Popular Kid? And who is eating lunch alone in the bathroom?\n\nLet's look at the final map of power.";
+    const s7_Narrator2 = "<strong>Network Centrality Analysis</strong><br><br><strong>The Core:</strong> The <span class='gold-highlight'>USA, UK, and Canada</span> act as the central hubs (High Degree Centrality). Information flows through them. If they sneeze, the network catches a cold.<br><br><strong>The Periphery:</strong> Countries with fewer interactions are pushed to the edges. They are statistically isolated, often forming their own small, closed loops.";
+    const s7_Part3 = "There you have it. The Popular Kids and the Outcasts.\n\nBut simply knowing who talks to whom is just gossip.\n\nI want to get inside their heads. I want to know if they are starting to think alike.\n\nWhen the USA shouts, does the UK shout back? Or do they whisper?\n\nIt’s time for the psychological test. It’s time for Style Mirroring.";
+
+    const s8_Part1 = "Stop laughing.\n\nWe have had our fun with maps and cliques. But now, I need you to focus.\n\nWe have some serious questions to answer.\n\nIf I talk to you, what are the odds you talk back? When you reply... are you actually copying me?\n\nNo more guessing. We are doing this the hard way. Statistical Hypothesis Testing.\n\nPay attention. There will be p-values.";
+    const s8_Narrator1 = "<strong>Metric 1: Global Conditional Probability of Reciprocity</strong><br><br><strong>The Question:</strong> \"If Country A posts to Country B, what is the probability that Country B will post back to Country A within 7 days?\"<br><br><strong>Methodology:</strong> We isolated the \"Initiator\" (A) and the \"Responder\" (B) using a deterministic timestamp logic. Using a <span class='gold-highlight'>merge_asof time-series operation</span>, we scanned for the first valid response within a 168-hour (7-day) window.";
+    const s8_Part2 = "Look at those numbers.\n\nYou are twice as likely to get a reply from a foreign nation (19%) than from a neighbor in your own country (8%).\n\nInternational incidents are sticky. Domestic squabbles? We ignore them.\n\nBut that's just volume. I want to know about behavior.\n\nI want to know if we are unconsciously mimicking each other.";
+    const s8_Narrator2 = "<strong>Metric 2: Linguistic Style Mirroring</strong><br><br><strong>The Hypothesis:</strong> When a post (A) triggers a reply (B), the style of the reply unconsciously mimics the style of the original post.<br><br><strong>Experimental Design:</strong><br>Test Group (N=2130): Actual reciprocal pairs.<br>Control Group (N=2130): Randomly selected pairs.<br><br>We calculated the <span class='gold-highlight'>Cosine Similarity</span> of their style vectors (LIWC/VADER features) and performed a T-Test.";
+    const s8_Narrator3 = "<strong>Test Results & Significance</strong><br><br>T-Statistic: 12.65 | <strong>P-Value: 0.0000</strong> (p < 0.05)<br><br><strong>Interpretation:</strong> The result is Statistically Significant. Look at the chart: The red line (Reciprocal) has a second peak near +1.0 (The Bimodal Distribution).<br><br>This proves that a specific subgroup of users engages in <span class='gold-highlight'>Extreme Stylistic Matching</span>—perfectly copying the tone of the person they are arguing with.";
+    const s8_Part3 = "Did you see that P-value? Zero point zero zero zero zero.\n\nThat means this isn't luck. It's human nature.\n\nWe found a ghost in the machine. A group of you aren't just replying; you are becoming clones of the person you talk to. You absorb their anger, their vocabulary, their style.\n\nThe echo chamber isn't a metaphor. It’s a mathematical fact.\n\n...Okay, that got too real. My head hurts from all this math. Take the lab coat.\n\nLet's go back to something simple. Something primal. Let's talk about Sports.";
+
+    const s9_Narrator1 = "<strong>Global Sports Analysis: The Reddit Arena</strong><br>The results highlight the unique demographic distortions of the platform:<ul style='margin-top:10px; padding-left:20px; text-align:left;'><li><span class='gold-highlight'>The Big Three:</span> The ecosystem is dominated by Soccer (Global), American Football (US-centric), and Esports.</li><li><span class='gold-highlight'>The Reddit Factor:</span> While Esports are niche in traditional media, here they are a titan. This reflects the tech-savvy, digital-native demographic.</li><li><span class='gold-highlight'>Regional Dominance:</span> Europe is unified by Soccer; USA by NFL; India by Cricket.</li><li><span class='gold-highlight'>The Outliers:</span> The <strong>UK</strong> shows a unique cluster for Cricket (distinct from Europe). <strong>France</strong> is the only major nation where Cycling appears as a top-tier topic.</li></ul>";
+    const s9_Part1 = "France talking about bicycles? The UK obsessing over Cricket while the rest of Europe watches the Champions League?\n\nIn the real world, these might look like statistical errors.\n\nBut remember where you are. You are looking at the world through Orange Glasses.\n\nHere, Esports is bigger than the Olympics. Here, a country can be defined by a card game or a bicycle race just because a few thousand passionate people decided to post about it.\n\nThese outliers aren't bugs. They are the features. They are the proof that this world is built by people, not by census bureaus.";
+
+    const s10_Part1 = "And that's it.\n\nYou've seen the maps, the feuds, the secret alliances, and the ghost in the machine that makes us copy each other.\n\nYou can take off the Orange Glasses now.\n\nYou can go back to your 'Real World' where geography is boring and people only say things they mean.\n\nBut I have a feeling you'll be back. Because once you see the code behind the matrix... the real world looks a little bit dull.\n\nNow get out of here. Go touch some grass.\n\n...And don't forget to Upvote on your way out.";
     
     // ==========================================
     // 2. CONFIGURAZIONE SCENARI
@@ -69,7 +83,11 @@ document.addEventListener('DOMContentLoaded', () => {
         's6-part1': s6_Part1, 
         's6-narrator-text-1': s6_Narrator1, // Nota: a volte lo usiamo direttamente nella funzione, ma per coerenza puoi metterlo qui se usi il typeWriter, altrimenti la funzione showNarratorBubble usa la stringa raw. 
         's6-user-text': s6_User,
-        's6-part2': s6_Part2
+        's6-part2': s6_Part2,
+        's7-part1': s7_Part1, 's7-part2': s7_Part2, 's7-part3': s7_Part3,
+        's8-part1': s8_Part1, 's8-part2': s8_Part2, 's8-part3': s8_Part3,
+        's9-part1': s9_Part1,
+        's10-part1': s10_Part1
     };
     
     const typedStatus = {
@@ -84,7 +102,11 @@ document.addEventListener('DOMContentLoaded', () => {
         's6-part1': false, 
         's6-narrator-text-1': false, // Opzionale se non scriviamo a macchina dentro la nuvola
         's6-user-text': false,
-        's6-part2': false
+        's6-part2': false,
+        's7-part1': false, 's7-part2': false, 's7-part3': false,
+        's8-part1': false, 's8-part2': false, 's8-part3': false,
+        's9-part1': false,
+        's10-part1': false
     };
 
     // ==========================================
@@ -134,7 +156,7 @@ const triggerGlitch = () => {
     }, 3000); 
 };
 
-    function initObserver() {
+function initObserver() {
         console.log(">>> OBSERVER ATTIVATO");
         
         const observer = new IntersectionObserver((entries) => {
@@ -156,10 +178,22 @@ const triggerGlitch = () => {
                     else if (sectionId === 'scene-4') { playScene4Sequence(); }
                     else if (sectionId === 'scene-5') { playScene5Sequence(); }
                     else if (sectionId === 'scene-6') { playScene6Sequence(); }
+                    else if (sectionId === 'scene-7') { playScene7Sequence(); }
+                    else if (sectionId === 'scene-8') { playScene8Sequence(); }
+                    else if (sectionId === 'scene-9') { playScene9Sequence(); }
+                    else if (sectionId === 'scene-10') { playScene10Sequence(); } // <--- AGGIUNTO QUI
                     
-                    // FALLBACK: Importante! Escludiamo scene-4 per evitare conflitti
+                    // FALLBACK: AGGIUNGI 'scene-10' ALLA LISTA QUI SOTTO
                     else if (targetId && scenarios[targetId] && !typedStatus[targetId]) {
-                        if(!['scene-intro', 'scene-1', 'scene-2', 'scene-3', 'scene-4', 'scene-5'].includes(sectionId)) {
+                        
+                        // Lista completa delle scene da escludere dal fallback generico
+                        const complexScenes = [
+                            'scene-intro', 'scene-1', 'scene-2', 'scene-3', 'scene-4', 
+                            'scene-5', 'scene-6', 'scene-7', 'scene-8', 'scene-9', 
+                            'scene-10' // <--- IMPORTANTE
+                        ];
+                        
+                        if(!complexScenes.includes(sectionId)) {
                              startTypeWriter(targetId);
                         }
                     }
@@ -364,6 +398,135 @@ const triggerGlitch = () => {
         });
     }
 
+    // SCENA 7
+    function playScene7Sequence() {
+        if (typedStatus['s7-part1']) return;
+        console.log(">>> Starting Scene 7 Sequence");
+
+        // 1. Appare il Sankey Flow
+        revealElement('s7-sankey-row');
+        
+        setTimeout(() => {
+            // 2. Mr Reddit commenta il caos
+            revealElement('s7-row-1');
+            startTypeWriter('s7-part1', () => {
+                
+                // 3. Appare la Heatmap (Loyalty)
+                revealElement('s7-heatmap-row');
+                
+                setTimeout(() => {
+                    // 4. Lo Scienziato spiega la Heatmap
+                    showNarratorBubble('s7-narrator-row-1', 's7-narrator-text-1', s7_Narrator1);
+                    
+                    setTimeout(() => {
+                        // 5. Mr Reddit commenta (Enemies/Neighbors)
+                        revealElement('s7-row-2');
+                        startTypeWriter('s7-part2', () => {
+                            
+                            // 6. Appare la Network Centrality
+                            revealElement('s7-network-row');
+                            
+                            setTimeout(() => {
+                                // 7. Lo Scienziato spiega la Centrality
+                                showNarratorBubble('s7-narrator-row-2', 's7-narrator-text-2', s7_Narrator2);
+                                
+                                setTimeout(() => {
+                                    // 8. Mr Reddit conclude
+                                    revealElement('s7-row-3');
+                                    startTypeWriter('s7-part3', () => {
+                                        revealElement('s7-action');
+                                    });
+                                }, 6000); // Tempo lettura Scienziato 2
+                            }, 1000); // Tempo apparizione Network
+                        });
+                    }, 8000); // Tempo lettura Scienziato 1
+                }, 1000); // Tempo apparizione Heatmap
+            });
+        }, 1000); // Tempo apparizione Sankey
+    }
+
+
+    // SCENA 8
+    function playScene8Sequence() {
+        if (typedStatus['s8-part1']) return;
+        console.log(">>> Starting Scene 8 Sequence");
+
+        // 1. Mr Reddit (Lab Coat) parla
+        startTypeWriter('s8-part1', () => {
+            
+            // 2. Scienziato (Metodologia Reciprocità)
+            showNarratorBubble('s8-narrator-row-1', 's8-narrator-text-1', s8_Narrator1);
+            
+            setTimeout(() => {
+                // 3. Stat Cards appaiono
+                revealElement('s8-stats-row');
+                
+                setTimeout(() => {
+                    // 4. Mr Reddit reaction
+                    revealElement('s8-row-2');
+                    startTypeWriter('s8-part2', () => {
+                        
+                        // 5. Scienziato (Style Mirroring Intro)
+                        showNarratorBubble('s8-narrator-row-2', 's8-narrator-text-2', s8_Narrator2);
+                        
+                        setTimeout(() => {
+                            // 6. KDE Plot appare
+                            revealElement('s8-kde-row');
+                            
+                            setTimeout(() => {
+                                // 7. Scienziato (Risultati P-Value)
+                                showNarratorBubble('s8-narrator-row-3', 's8-narrator-text-3', s8_Narrator3);
+                                
+                                setTimeout(() => {
+                                    // 8. Mr Reddit Conclusion
+                                    revealElement('s8-row-3');
+                                    startTypeWriter('s8-part3', () => {
+                                        revealElement('s8-action');
+                                    });
+                                }, 8000); // Lettura risultati
+                            }, 1000); // KDE Plot
+                        });
+                    }, 8000); // Lettura metodologia 2
+                }, 1000); // Stat Cards
+            });
+        });
+    }
+
+    // SCENA 9
+    function playScene9Sequence() {
+        if (typedStatus['s9-part1']) return;
+        console.log(">>> Starting Scene 9 Sequence");
+
+        // 1. Appare il Sunburst
+        revealElement('s9-sunburst-row');
+        
+        setTimeout(() => {
+            // 2. Lo Scienziato analizza i dati
+            showNarratorBubble('s9-narrator-row-1', 's9-narrator-text-1', s9_Narrator1);
+            
+            setTimeout(() => {
+                // 3. Mr Reddit commenta (ritorno all'avatar normale)
+                revealElement('s9-row-1');
+                startTypeWriter('s9-part1', () => {
+                    // 4. Bottone finale
+                    revealElement('s9-action');
+                });
+            }, 8000); // Tempo lettura Scienziato
+        }, 1500); // Tempo apparizione Sunburst
+    }
+
+    // SCENA 10
+    function playScene10Sequence() {
+        if (typedStatus['s10-part1']) return;
+        console.log(">>> Starting Scene 10 Sequence");
+
+        // 1. Mr Reddit inizia a parlare subito
+        startTypeWriter('s10-part1', () => {
+            // 2. Appare il bottone finale
+            revealElement('s10-action');
+        });
+    }
+
     // ==========================================
     // 5. UTILITIES
     // ==========================================
@@ -494,3 +657,36 @@ function revealElement(id) {
         if (target) target.scrollIntoView({ behavior: 'smooth' });
     };
 });
+
+/* --- FUNZIONE EXIT TO REALITY --- */
+window.exitToReality = function() {
+    console.log(">>> Exiting to Reality...");
+
+    const body = document.body;
+    const redditLayer = document.getElementById('reddit-layer');
+    const referenceLayer = document.getElementById('reference-layer');
+
+    // 1. Transizione visuale (Opzionale: fade out rapido)
+    body.style.opacity = '0';
+
+    setTimeout(() => {
+        // 2. Cambio Classi CSS (Ritorna allo stile Times New Roman)
+        body.classList.remove('dark-mode');
+        body.classList.add('boring-mode'); // Riattiva lo sfondo bianco e font serif
+
+        // 3. Scambio Layer
+        if (redditLayer) redditLayer.style.display = 'none';
+        if (referenceLayer) {
+            referenceLayer.style.display = 'flex'; // O block, a seconda del CSS
+            referenceLayer.style.opacity = '1';
+        }
+
+        // 4. Reset Scroll
+        window.scrollTo(0, 0);
+        
+        // 5. Riporta l'opacità a 1
+        body.style.opacity = '1';
+        body.style.transition = 'opacity 1s ease';
+
+    }, 500); // Mezzo secondo di buio per l'effetto transizione
+};

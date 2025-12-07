@@ -736,6 +736,91 @@ body.dark-mode #reddit-layer {
 .narrative-text { border-left: 3px solid var(--neon-orange); padding-left: 15px; color: #ccc; font-family: 'Roboto', sans-serif; }
 .chart-container { width: 100%; min-height: 500px; background: #111; border: 1px dashed #444; margin: 20px 0; }
 
+/* --- SCENE 8: LAB MODE & STAT CARDS --- */
+
+/* Sfondo Laboratorio Tecnico */
+.lab-mode-bg {
+    position: relative;
+    background-color: #050505;
+    background-image: 
+        linear-gradient(rgba(0, 229, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+/* Contenitore delle Stat Cards */
+.stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+/* Design della singola Stat Card */
+.stat-card {
+    background: rgba(0, 20, 20, 0.9);
+    border: 2px solid #00e5ff; /* Ciano Lab */
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'VT323', monospace;
+}
+
+.stat-title {
+    color: #00e5ff;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 229, 255, 0.3);
+    width: 100%;
+}
+
+.stat-value {
+    color: #fff;
+    font-size: 3.5rem; /* Numero grande */
+    font-weight: bold;
+    margin: 15px 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.stat-desc {
+    color: #aaa;
+    font-size: 1.1rem;
+    line-height: 1.2;
+}
+
+/* --- STILE REFERENCES (Uguale a Boring Mode) --- */
+
+#reference-layer {
+    position: fixed; /* O absolute, a seconda di come vuoi gestire lo scroll */
+    top: 0; left: 0; 
+    width: 100%; 
+    min-height: 100vh;
+    background: #ffffff;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    /* align-items: center;  <-- Rimuoviamo center verticale per permettere lo scroll se la lista è lunga */
+    padding: 50px 20px;
+    overflow-y: auto; /* Permette lo scroll se le references sono tante */
+}
+
+.reference-item p {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: #000;
+    /* Hanging indent per stile accademico */
+    padding-left: 30px;
+    text-indent: -30px;
+}
+
 /* GLITCH EFFECT */
 .glitch-active { animation: glitch-anim 0.3s infinite; filter: invert(1); }
 @keyframes glitch-anim {

@@ -58,6 +58,51 @@
       </div>
     </div>
 
+    </div>
+
+    <div id="reference-layer" style="display: none;">
+        <div class="paper-content">
+            
+            <div class="paper-header-group">
+                <h1 class="paper-title">References</h1>
+            </div>
+
+            <div class="paper-abstract" style="text-align: left; margin-top: 2rem;">
+                
+                <div class="reference-item">
+                    <p><strong>[1] Liuzzo, D., Pettersen, J., Ortona, N., Streuli, S., & Casagrande, P. (2017).</strong> <em>Statistical Analysis of Global User Interactions and Linguistic Patterns.</em> EPFL Digital Humanities Laboratory.</p>
+                </div>
+
+                <div class="reference-item">
+                    <p><strong>[2] Pennebaker, J. W., Boyd, R. L., Jordan, K., & Blackburn, K. (2015).</strong> <em>The Development and Psychometric Properties of LIWC2015.</em> University of Texas at Austin.</p>
+                </div>
+
+                <div class="reference-item">
+                    <p><strong>[3] Hutto, C.J. & Gilbert, E.E. (2014).</strong> <em>VADER: A Parsimonious Rule-based Model for Sentiment Analysis of Social Media Text.</em> Eighth International AAAI Conference on Weblogs and Social Media.</p>
+                </div>
+
+                <div class="reference-item">
+                    <p><strong>[4] Maaten, L.v.d. & Hinton, G. (2008).</strong> <em>Visualizing Data using t-SNE.</em> Journal of Machine Learning Research, 9(Nov), 2579-2605.</p>
+                </div>
+
+                <div class="reference-item">
+                    <p><strong>[5] Reddit Inc. (2017).</strong> <em>Public Dataset: All comments and submissions from 2014 to 2017.</em> Accessed via Google BigQuery.</p>
+                </div>
+
+                <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #000;">
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <p><em>Thank you for reading.</em></p>
+                    <button onclick="location.reload()" style="background: none; border: 1px solid #000; padding: 10px 20px; font-family: 'Times New Roman', serif; cursor: pointer; margin-top: 20px; font-size: 1rem;">
+                        [ Return to Title Page ]
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
     <div id="reddit-layer" style="display: none;">
     
     <section id="scene-intro" class="step active-scene">
@@ -550,6 +595,264 @@
         <div id="s6-action" class="action-area hidden-opacity" style="text-align: center; margin-top: 40px;">
             <button class="enter-rabbit-hole" onclick="scrollToScene('scene-7')">
                 [ADD THE 4TH DIMENSION]
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<section id="scene-7" class="step">
+    <div class="dialogue-container">
+
+        <div id="s7-sankey-row" class="data-display-row hidden-opacity" style="justify-content: center;">
+            <div class="chart-wrapper" style="flex: unset; width: 100%; max-width: 1100px; height: 600px; margin: 0 auto; background: #0a0a0a;">
+                <div class="chart-header">/// TEMPORAL_FLOW: FACTION_ALLIANCES_2014-2017 ///</div>
+                <iframe 
+                    src="assets/images/faction_evolution.html" 
+                    class="chart-iframe"
+                    title="Sankey Diagram"
+                    style="width: 100%; height: 100%; border: none;">
+                </iframe>
+            </div>
+        </div>
+
+        <div id="s7-row-1" class="speech-row hidden-opacity">
+            <div class="avatar-wrapper">
+                <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
+            </div>
+            <div class="terminal-box green-style">
+                <p id="s7-part1" class="type-target"></p>
+            </div>
+        </div>
+
+        <div id="s7-heatmap-row" class="data-display-row hidden-opacity" style="justify-content: center;">
+            <div class="chart-wrapper" style="flex: unset; width: 100%; max-width: 1100px; height: 600px; margin: 0 auto; background: #0a0a0a;">
+                <div class="chart-header">/// MATRIX: LOYALTY_INDEX (HEATMAP) ///</div>
+                <iframe 
+                    src="assets/images/heatmap_co_occurrence.html" 
+                    class="chart-iframe"
+                    title="Heatmap loyalty couples"
+                    style="width: 100%; height: 100%; border: none;">
+                </iframe>
+            </div>
+        </div>
+
+        <div class="narrator-row hidden-opacity" id="s7-narrator-row-1">
+            <div id="s7-narrator-bubble-1" class="narrator-bubble-box">
+                <p id="s7-narrator-text-1"></p>
+            </div>
+            <div class="avatar-wrapper">
+                <img src="assets/images/nerd.png" alt="Nerd" class="pixel-avatar-speech">
+                <div class="avatar-name name-scientist">The Scientist</div>
+            </div>
+        </div>
+
+        <div id="s7-row-2" class="speech-row hidden-opacity">
+            <div class="avatar-wrapper">
+                <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
+            </div>
+            <div class="terminal-box green-style">
+                <p id="s7-part2" class="type-target"></p>
+            </div>
+        </div>
+
+        <div id="s7-network-row" class="data-display-row hidden-opacity" style="justify-content: center;">
+             <div class="chart-wrapper" style="flex: unset; width: 100%; max-width: 1100px; height: 600px; margin: 0 auto; background: #0a0a0a;">
+                <div class="chart-header">/// GRAPH: PAGERANK_CENTRALITY ///</div>
+                <iframe 
+                    src="assets/images/mds_shortest_path.html" 
+                    class="chart-iframe"
+                    title="Shortest path"
+                    style="width: 100%; height: 100%; border: none;">
+                </iframe>
+            </div>
+        </div>
+
+        <div class="narrator-row hidden-opacity" id="s7-narrator-row-2">
+            <div id="s7-narrator-bubble-2" class="narrator-bubble-box">
+                <p id="s7-narrator-text-2"></p>
+            </div>
+            <div class="avatar-wrapper">
+                <img src="assets/images/nerd.png" alt="Nerd" class="pixel-avatar-speech">
+                <div class="avatar-name name-scientist">The Scientist</div>
+            </div>
+        </div>
+
+        <div id="s7-row-3" class="speech-row hidden-opacity">
+            <div class="avatar-wrapper">
+                <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
+            </div>
+            <div class="terminal-box green-style">
+                <p id="s7-part3" class="type-target"></p><span class="cursor">_</span>
+            </div>
+        </div>
+
+        <div id="s7-action" class="action-area hidden-opacity" style="text-align: center; margin-top: 40px;">
+            <button class="enter-rabbit-hole" onclick="scrollToScene('scene-8')">
+                [INITIATE STYLE MIRRORING]
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<section id="scene-8" class="step lab-mode-bg">
+    <div class="dialogue-container">
+
+        <div id="s8-row-1" class="speech-row">
+            <div class="avatar-wrapper">
+                <img src="assets/images/mr-reddit.png" alt="Mr. Reddit Lab" class="pixel-avatar-speech">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
+            </div>
+            <div class="terminal-box green-style">
+                <p id="s8-part1" class="type-target"></p>
+            </div>
+        </div>
+
+        <div class="narrator-row hidden-opacity" id="s8-narrator-row-1">
+            <div id="s8-narrator-bubble-1" class="narrator-bubble-box">
+                <p id="s8-narrator-text-1"></p>
+            </div>
+            <div class="avatar-wrapper">
+                <img src="assets/images/nerd.png" alt="Nerd" class="pixel-avatar-speech">
+                <div class="avatar-name name-scientist">The Scientist</div>
+            </div>
+        </div>
+
+        <div id="s8-stats-row" class="data-display-row hidden-opacity" style="justify-content: center;">
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-title">INTERNATIONAL RECIPROCITY</div>
+                    <div class="stat-value">19.27%</div>
+                    <div class="stat-desc">Input: 551 Country Pairs<br>Prob. of Nation-to-Nation Reply</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">DOMESTIC RECIPROCITY</div>
+                    <div class="stat-value">7.92%</div>
+                    <div class="stat-desc">Input: 861 Subreddit Pairs<br>Prob. of Intra-Country Reply</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="s8-row-2" class="speech-row hidden-opacity">
+            <div class="avatar-wrapper">
+                <img src="assets/images/mr-reddit.png" alt="Mr. Reddit Lab" class="pixel-avatar-speech">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
+            </div>
+            <div class="terminal-box green-style">
+                <p id="s8-part2" class="type-target"></p>
+            </div>
+        </div>
+
+        <div class="narrator-row hidden-opacity" id="s8-narrator-row-2">
+            <div id="s8-narrator-bubble-2" class="narrator-bubble-box">
+                <p id="s8-narrator-text-2"></p>
+            </div>
+            <div class="avatar-wrapper">
+                <img src="assets/images/nerd.png" alt="Nerd" class="pixel-avatar-speech">
+                <div class="avatar-name name-scientist">The Scientist</div>
+            </div>
+        </div>
+
+        <div id="s8-kde-row" class="data-display-row hidden-opacity" style="justify-content: center;">
+            <div class="chart-wrapper" style="flex: unset; width: 100%; max-width: 900px; padding: 0; background: #000;">
+                <div class="chart-header">/// DATA: KERNEL_DENSITY_ESTIMATE (STYLE_VEC) ///</div>
+                <img src="assets/images/kde_plot.png" alt="KDE Style Mirroring Plot" style="width:100%; height:auto; display:block; border: 1px solid #333;">
+            </div>
+        </div>
+
+        <div class="narrator-row hidden-opacity" id="s8-narrator-row-3">
+            <div id="s8-narrator-bubble-3" class="narrator-bubble-box">
+                <p id="s8-narrator-text-3"></p>
+            </div>
+            <div class="avatar-wrapper">
+                <img src="assets/images/nerd.png" alt="Nerd" class="pixel-avatar-speech">
+                <div class="avatar-name name-scientist">The Scientist</div>
+            </div>
+        </div>
+
+        <div id="s8-row-3" class="speech-row hidden-opacity">
+            <div class="avatar-wrapper">
+                <img src="assets/images/mr-reddit.png" alt="Mr. Reddit Lab" class="pixel-avatar-speech">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
+            </div>
+            <div class="terminal-box green-style">
+                <p id="s8-part3" class="type-target"></p><span class="cursor">_</span>
+            </div>
+        </div>
+
+        <div id="s8-action" class="action-area hidden-opacity" style="text-align: center; margin-top: 40px;">
+            <button class="enter-rabbit-hole" onclick="scrollToScene('scene-9')">
+                [TALK ABOUT SPORTS]
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<section id="scene-9" class="step">
+    <div class="dialogue-container">
+
+        <div id="s9-sunburst-row" class="data-display-row hidden-opacity" style="justify-content: center;">
+            <div class="chart-wrapper" style="flex: unset; width: 100%; max-width: 1100px; height: 750px; margin: 0 auto; background: #0a0a0a;">
+                <div class="chart-header">/// GLOBAL_TOPIC_ANALYSIS: SPORTS_SUNBURST ///</div>
+                <iframe 
+                    src="assets/images/sport_sunburst.html" 
+                    class="chart-iframe"
+                    title="Sports Sunburst Chart"
+                    style="width: 100%; height: 100%; border: none;">
+                </iframe>
+            </div>
+        </div>
+
+        <div class="narrator-row hidden-opacity" id="s9-narrator-row-1">
+            <div id="s9-narrator-bubble-1" class="narrator-bubble-box">
+                <p id="s9-narrator-text-1"></p>
+            </div>
+            <div class="avatar-wrapper">
+                <img src="assets/images/nerd.png" alt="Nerd" class="pixel-avatar-speech">
+                <div class="avatar-name name-scientist">The Scientist</div>
+            </div>
+        </div>
+
+        <div id="s9-row-1" class="speech-row hidden-opacity">
+            <div class="avatar-wrapper">
+                <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
+            </div>
+            <div class="terminal-box green-style">
+                <p id="s9-part1" class="type-target"></p><span class="cursor">_</span>
+            </div>
+        </div>
+
+        <div id="s9-action" class="action-area hidden-opacity" style="text-align: center; margin-top: 40px;">
+            <button class="enter-rabbit-hole" onclick="scrollToScene('scene-10')">
+                [CONCLUSION]
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<section id="scene-10" class="step">
+    <div class="dialogue-container">
+
+        <div id="s10-row-1" class="speech-row">
+            <div class="avatar-wrapper">
+                <img src="assets/images/mr-reddit.png" alt="Mr. Reddit" class="pixel-avatar-speech">
+                <div class="avatar-name name-reddit">Mr. Reddit</div>
+            </div>
+            <div class="terminal-box green-style">
+                <p id="s10-part1" class="type-target"></p><span class="cursor">_</span>
+            </div>
+        </div>
+
+        <div id="s10-action" class="action-area hidden-opacity" style="text-align: center; margin-top: 60px;">
+            <button class="enter-rabbit-hole" onclick="exitToReality()">
+                [EXIT TO REALITY]
             </button>
         </div>
 
