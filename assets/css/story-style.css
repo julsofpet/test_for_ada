@@ -4,7 +4,7 @@
   --bg-dark: #0a0a0a;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0;}
 html { scroll-behavior: smooth; }
 
 /* --- STATO 1: BORING MODE (Stile LaTeX/Paper REPLICA) --- */
@@ -319,31 +319,61 @@ body.dark-mode #reddit-layer {
 /* --- SFONDO BINARIO SCORREVOLE PER SCENE 0.5 --- */
 
 /* 1. Prepariamo la scena */
-#scene-0-5 {
-    position: relative;
-    overflow: hidden; 
-    /* Garantisce che la scena sia alta almeno quanto lo schermo */
-    min-height: 100vh; 
-    background-color: #050505; 
-}
-
-/* 2. Lo strato con i numeri binari */
-#scene-0-5::before {
+/* --- GLOBAL BINARY BACKGROUND (Applied to all scenes) --- */
+body.dark-mode::before {
     content: '';
-    position: absolute;
-    /* Ancoraggio ai 4 angoli per coprire TUTTO lo spazio sempre */
-    top: 0; left: 0; right: 0; bottom: 0;
+    position: fixed; /* Fixed so it stays while scrolling */
+    top: 0; left: 0; width: 100%; height: 100%;
     
-    z-index: 0; /* Dietro al pannello ma davanti allo sfondo nero */
+    z-index: -1; /* Behind everything */
     opacity: 0.6; 
     
-    /* Immagine SVG generata via codice */
+    /* The Binary Pattern */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='20'%3E%3Ctext x='0' y='15' fill='%23555555' font-family='monospace' font-size='14'%3E0 1 0 1 1 0 0 1 0 1 0 1 1 1 0 0 1 0 1 0 1 0 1 1 0 1 0 0 1 0 1 1%3C/text%3E%3C/svg%3E");
-    
     background-repeat: repeat;
     
-    /* Animazione infinita */
-    animation: scrollBinaryBg 10s linear infinite;
+    /* Animation */
+    animation: scrollBinaryBg 20s linear infinite;
+    pointer-events: none;
+}
+/* Remove the background specific to scene-0-5 since it's now global */
+#scene-0-5 { background: transparent; } /* Remove old specific background */
+
+/* --- 2. ORANGE LENS & GLASSES CURSOR --- */
+/* This class is added via JS in Scene 1 and persists */
+
+body.orange-lens-active {
+    /* Change cursor to glasses everywhere */
+    /* Ensure you have a 'glasses.png' in your assets folder! */
+    cursor: url("../cursor.png"), auto !important;
+}
+
+/* Force glasses cursor on buttons/links too when lens is active */
+body.orange-lens-active a, 
+body.orange-lens-active button, 
+body.orange-lens-active .enter-rabbit-hole {
+    cursor: url("../cursor.png"), pointer !important;
+}
+
+/* --- ORANGE LENS EFFECT (Glasses) --- */
+/* This class will be added to the body via JS */
+body.orange-lens-active::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 999; /* On top of everything */
+    
+    /* Simulates looking through orange glasses */
+    background: rgba(255, 69, 0, 0.15); /* Orange Tint */
+    box-shadow: inset 0 0 100px rgba(255, 69, 0, 0.5); /* Vignette */
+    pointer-events: none; /* Let clicks pass through */
+    
+    animation: lensFadeIn 0.5s ease-out;
+}
+
+@keyframes lensFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* 3. Definizione animazione */
@@ -741,11 +771,20 @@ body.dark-mode #reddit-layer {
 /* Sfondo Laboratorio Tecnico */
 .lab-mode-bg {
     position: relative;
-    background-color: #050505;
-    background-image: 
+    
+    /* --- FIX START --- */
+    /* We remove the specific black background and grid so the global layers show through */
+    background: transparent; 
+    /* --- FIX END --- */
+    
+    /* OPTIONAL: If you still want the faint Cyan Grid to overlay the binary code, 
+       uncomment the lines below. Otherwise, leave them removed to match other scenes exactly. */
+    
+    /* background-image: 
         linear-gradient(rgba(0, 229, 255, 0.05) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0, 229, 255, 0.05) 1px, transparent 1px);
-    background-size: 50px 50px;
+    background-size: 50px 50px; 
+    */
 }
 
 /* Contenitore delle Stat Cards */
@@ -830,4 +869,55 @@ body.dark-mode #reddit-layer {
   60% { transform: translate(3px, 3px) }
   80% { transform: translate(3px, -3px) }
   100% { transform: translate(0) }
+}
+
+#answer-42-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.85); /* Darkens the background */
+    z-index: 100;
+    pointer-events: none; /* Let clicks pass through if needed */
+    backdrop-filter: blur(2px);
+}
+
+.huge-42 {
+    font-size: 12rem;
+    font-family: 'VT323', monospace;
+    color: #fff;
+    line-height: 1;
+    margin: 0;
+    /* Glitchy Text Shadow */
+    text-shadow: 
+        5px 5px 0px var(--neon-orange), 
+        -5px -5px 0px var(--terminal-green);
+    animation: shake-42 0.5s infinite;
+}
+
+.sub-42 {
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--terminal-green);
+    font-size: 1.5rem;
+    margin-top: 10px;
+    letter-spacing: 5px;
+}
+
+@keyframes shake-42 {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
 }

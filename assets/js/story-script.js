@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const s9_Narrator1 = "<strong>Global Sports Analysis: The Reddit Arena</strong><br>The results highlight the unique demographic distortions of the platform:<ul style='margin-top:10px; padding-left:20px; text-align:left;'><li><span class='gold-highlight'>The Big Three:</span> The ecosystem is dominated by Soccer (Global), American Football (US-centric), and Esports.</li><li><span class='gold-highlight'>The Reddit Factor:</span> While Esports are niche in traditional media, here they are a titan. This reflects the tech-savvy, digital-native demographic.</li><li><span class='gold-highlight'>Regional Dominance:</span> Europe is unified by Soccer; USA by NFL; India by Cricket.</li><li><span class='gold-highlight'>The Outliers:</span> The <strong>UK</strong> shows a unique cluster for Cricket (distinct from Europe). <strong>France</strong> is the only major nation where Cycling appears as a top-tier topic.</li></ul>";
     const s9_Part1 = "France talking about bicycles? The UK obsessing over Cricket while the rest of Europe watches the Champions League?\n\nIn the real world, these might look like statistical errors.\n\nBut remember where you are. You are looking at the world through Orange Glasses.\n\nHere, Esports is bigger than the Olympics. Here, a country can be defined by a card game or a bicycle race just because a few thousand passionate people decided to post about it.\n\nThese outliers aren't bugs. They are the features. They are the proof that this world is built by people, not by census bureaus.";
 
-    const s10_Part1 = "And that's it.\n\nYou've seen the maps, the feuds, the secret alliances, and the ghost in the machine that makes us copy each other.\n\nYou can take off the Orange Glasses now.\n\nYou can go back to your 'Real World' where geography is boring and people only say things they mean.\n\nBut I have a feeling you'll be back. Because once you see the code behind the matrix... the real world looks a little bit dull.\n\nNow get out of here. Go touch some grass.\n\n...And don't forget to Upvote on your way out.";
+    const s10_Part1 = "And that's it.\n\nYou've seen the maps, the feuds, the secret alliances, and the ghost in the machine that makes us copy each other.\n\nYou can take off the Orange Glasses now.\n\nYou can go back to your 'Real World' where geography is boring and people only say things they mean.\n\nBut I have a feeling you'll be back. Because once you see the code behind the matrix... the real world looks a little bit dull.\n\nNow get out of here. Go touch some grass.\n\n...And don't forget to Upvote on your way out. \n\n So Reddit is the answer to many questions. Reddit is one answer to the ultimate question of life: Where do we b...";
     
     // ==========================================
     // 2. CONFIGURAZIONE SCENARI
@@ -213,41 +213,54 @@ function initObserver() {
 
   // SCENA 1 (Aggiornata con testo dinamico)
     function playScene1Sequence() {
-        if (typedStatus['s1-part1']) return;
+    if (typedStatus['s1-part1']) return;
+    
+    startTypeWriter('s1-part1', () => {
         
-        startTypeWriter('s1-part1', () => {
-            
-            // 1. INIETTA IL TESTO DEL NARRATORE
-            const textEl = document.getElementById('s1-narrator-text');
-            if (textEl) textEl.innerHTML = s1_Narrator;
+        // 1. Trigger Text
+        const textEl = document.getElementById('s1-narrator-text');
+        if (textEl) textEl.innerHTML = s1_Narrator;
 
-            // 2. MOSTRA LA NUVOLA
-            const cloud = document.getElementById('narrator-cloud');
-            if(cloud) cloud.classList.add('slide-in-active');
+        // --- NEW: ACTIVATE ORANGE LENS HERE ---
+        // We wait slightly for the narrator text to appear, then trigger the effect
+        setTimeout(() => {
+            console.log(">>> ORANGE LENS ACTIVATED");
+            document.body.classList.add('orange-lens-active');
+        }, 500);
+        // --------------------------------------
 
-            // 3. ANIMA I NUMERI (Ora gli ID esistono nel DOM)
-            animateValue("count-posts", 0, 858488, 3000);
-            animateValue("count-subs", 0, 67180, 2500); 
-            animateValue("count-vec", 0, 86, 1500);
+        // 2. Show Cloud
+        const cloud = document.getElementById('narrator-cloud');
+        if(cloud) cloud.classList.add('slide-in-active');
 
-            // 4. PROSEGUE LA SCENA
+        // 3. Animate Numbers
+        animateValue("count-posts", 0, 858488, 3000);
+        animateValue("count-subs", 0, 67180, 2500); 
+        animateValue("count-vec", 0, 86, 1500);
+
+        // 4. Continue Sequence...
+        setTimeout(() => {
+            revealElement('nerd-avatar');
             setTimeout(() => {
-                revealElement('nerd-avatar');
+                revealElement('row-part-2');
                 setTimeout(() => {
-                    revealElement('row-part-2');
-                    setTimeout(() => {
-                        startTypeWriter('s1-part2', () => {
-                            revealElement('s1-action');
-                        });
-                    }, 500);
-                }, 6000); 
-            }, 1200); 
-        });
-    }
+                    startTypeWriter('s1-part2', () => {
+                        revealElement('s1-action');
+                    });
+                }, 500);
+            }, 6000); 
+        }, 1200); 
+    });
+}
 
     // SCENA 2
     function playScene2Sequence() {
-        if (typedStatus['s2-part1']) return;
+    
+    // --- NEW: REMOVE ORANGE LENS WHEN ENTERING SCENE 2 ---
+    document.body.classList.remove('orange-lens-active');
+    // -----------------------------------------------------
+
+    if (typedStatus['s2-part1']) return;
         startTypeWriter('s2-part1', () => {
             revealElement('s2-data-row');
             setTimeout(() => {
@@ -515,17 +528,60 @@ function initObserver() {
         }, 1500); // Tempo apparizione Sunburst
     }
 
-    // SCENA 10
-    function playScene10Sequence() {
-        if (typedStatus['s10-part1']) return;
-        console.log(">>> Starting Scene 10 Sequence");
+   // SCENA 10
+// SCENA 10
+function playScene10Sequence() {
+    if (typedStatus['s10-part1']) return;
+    console.log(">>> Starting Scene 10 Sequence with Delayed 42");
 
-        // 1. Mr Reddit inizia a parlare subito
-        startTypeWriter('s10-part1', () => {
-            // 2. Appare il bottone finale
-            revealElement('s10-action');
-        });
-    }
+    // 1. Remove Lens (as per previous request)
+    setTimeout(() => {
+        document.body.classList.remove('orange-lens-active');
+    }, 2000);
+
+    startTypeWriter('s10-part1', () => {
+        
+        // --- DELAY THE DISRUPTION ---
+        // We wait 3000ms (3 seconds) after the text finishes before triggering the glitch.
+        setTimeout(() => {
+            
+            const overlay = document.getElementById('answer-42-overlay');
+            
+            if (overlay) {
+                // A) Trigger Visual Glitch
+                document.body.classList.add('glitch-active');
+                
+                setTimeout(() => {
+                    document.body.classList.remove('glitch-active');
+                    
+                    // B) Show the "42" Overlay
+                    overlay.classList.remove('hidden-opacity');
+                    overlay.classList.add('visible-opacity');
+                    
+                    // --- C) ENABLE CLICK-TO-DISMISS ---
+                    // By default, CSS has pointer-events: none. We force it to auto so it captures clicks.
+                    overlay.style.pointerEvents = "auto"; 
+                    overlay.style.cursor = "pointer"; // Visual cue that it's clickable
+
+                    // Add click listener to hide the overlay
+                    overlay.onclick = function() {
+                        // Fade out
+                        overlay.classList.remove('visible-opacity');
+                        overlay.classList.add('hidden-opacity');
+                        
+                        // Disable interactions again after hiding
+                        overlay.style.pointerEvents = "none";
+                    };
+
+                    // D) Reveal the final exit button underneath immediately
+                    // so it is ready when the user clicks away the overlay.
+                    revealElement('s10-action');
+                    
+                }, 200); // Short sync delay for the glitch effect
+            }
+        }, 3000); // <--- HERE IS THE 3 SECOND DELAY YOU REQUESTED
+    });
+}
 
     // ==========================================
     // 5. UTILITIES
@@ -666,18 +722,22 @@ window.exitToReality = function() {
     const redditLayer = document.getElementById('reddit-layer');
     const referenceLayer = document.getElementById('reference-layer');
 
-    // 1. Transizione visuale (Opzionale: fade out rapido)
+    // --- NEW: ENSURE GLASSES ARE REMOVED ---
+    body.classList.remove('orange-lens-active');
+    // ---------------------------------------
+
+    // 1. Transizione visuale
     body.style.opacity = '0';
 
     setTimeout(() => {
-        // 2. Cambio Classi CSS (Ritorna allo stile Times New Roman)
+        // 2. Cambio Classi CSS
         body.classList.remove('dark-mode');
-        body.classList.add('boring-mode'); // Riattiva lo sfondo bianco e font serif
+        body.classList.add('boring-mode'); 
 
         // 3. Scambio Layer
         if (redditLayer) redditLayer.style.display = 'none';
         if (referenceLayer) {
-            referenceLayer.style.display = 'flex'; // O block, a seconda del CSS
+            referenceLayer.style.display = 'flex'; 
             referenceLayer.style.opacity = '1';
         }
 
@@ -688,5 +748,5 @@ window.exitToReality = function() {
         body.style.opacity = '1';
         body.style.transition = 'opacity 1s ease';
 
-    }, 500); // Mezzo secondo di buio per l'effetto transizione
+    }, 500); 
 };
