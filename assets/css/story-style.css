@@ -345,14 +345,14 @@ body.dark-mode::before {
 body.orange-lens-active {
     /* Change cursor to glasses everywhere */
     /* Ensure you have a 'glasses.png' in your assets folder! */
-    cursor: url("../cursor.png"), auto !important;
+    cursor: url("../images/cursor.png"), auto !important;
 }
 
 /* Force glasses cursor on buttons/links too when lens is active */
 body.orange-lens-active a, 
 body.orange-lens-active button, 
 body.orange-lens-active .enter-rabbit-hole {
-    cursor: url("../cursor.png"), pointer !important;
+    cursor: url("../images/cursor.png"), pointer !important;
 }
 
 /* --- ORANGE LENS EFFECT (Glasses) --- */
