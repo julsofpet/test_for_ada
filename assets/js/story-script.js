@@ -11,33 +11,68 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. DEFINIZIONE DEI TESTI
     // ==========================================
 
-    const introDialogue = "Stop right there.\n\nYou were actually going to read that? It looked like a tax return form from 1995. How... quaint.\n\nYou are currently in the 'Real World'. Out there, people lie. They say they love art house cinema and eat kale. But I know the truth. I know what they really type at 3 AM.\n\nI am Mr. Reddit. And I'm going to show you the world not as it is on a map, but as it actually exists in the hidden \"Reddit realm\".";
-    const introUserDialogue = "Alright. You have my attention.\n\nI'm tired of the polished version of the internet.\n\nShow me the chaotic truth you are talking about.";
-    const disclaimerDialogue = "Welcome to the Reddit World.\n\nBefore we start, a Mandatory Disclaimer from the Department of Internet Honesty:\n\nEverything you are about to see is biased. Heavily. Our population is skewed. It’s mostly male, mostly tech-savvy, and mostly people who have way too many opinions about things that don't matter.\n\nIf you are looking for a representative sample of your grandmother’s knitting circle, leave now. If you want raw, unfiltered, and occasionally unhinged human data... stay.\n\nLet’s look at the raw materials first.";
+    const introDialogue = "Stop right there.\n\nYou were actually going to read that? It looked like a tax return form from 1995. How... quaint.\n\nYou are currently in the 'Real World'. Out there, people lie.\
+    They say they love art house cinema and eat kale. But I know the truth. I know what they really type at 3 AM.\n\nHere, you’re about to put on a different pair of glasses: bright orange ones. \
+    The Reddit lenses.\n\nI am Mr. Reddit. And I'm going to show you the world not as it is on a map, but as it actually exists in the hidden \"Reddit realm\".";
+    const introUserDialogue = "Alright, Mr. Reddit. You have my attention.\n\nI’m tired of the polished version of the internet.\n\nHand me the orange glasses.\
+    \n\nShow me what the world looks like when you stop asking people what they think… and just read what they actually write.";
+    const disclaimerDialogue = "Welcome to the Reddit World.\n\nBefore we fully lock in the orange lenses, a quick but important disclaimer from the Department of Internet Honesty:\
+    \n\nEverything you are about to see is biased.\n\nReddit’s population is not the world. It is largely male, more tech-oriented, and more likely to express strong opinions online than the average person.\
+    \n\nThese are not statistically representative samples of humanity. They are signals from a specific online community.\n\nIf you’re looking for a perfect mirror of the general population, this is the wrong dataset.\
+    \n\nBut if you want a transparent view into what a certain corner of the internet really thinks and feels… keep the lenses on.\n\nFirst, let’s look at the raw material we’re working with.";
 
-    const s1_Part1 = "Okay, let’s check our inventory before we enter the jungle.\n\nYou think we are just guessing? No. We brought heavy machinery.\n\nLook at the scope of this madness.";
-    const s1_Narrator = "Our journey is about looking through this <strong>\"Orange Lens\"</strong> to decode the vast, chaotic digital landscape of global communities.<br><br>We begin our odyssey equipped with data on over <strong><span id=\"count-posts\">0</span> posts</strong> spanning <strong><span id=\"count-subs\">0</span> unique subreddits</strong>.<br><br>Our tools include core variables like <strong>SOURCE_SUBREDDIT</strong> and <strong>TIMESTAMP</strong>, alongside rich text properties encapsulated in the <strong><span id=\"count-vec\">0</span>-element POST_PROPERTIES vector</strong> (VADER sentiment & LIWC linguistic features).";
-    const s1_Part2 = "Did you catch that? 86 different ways to dissect a sentence.\n\nWe know if you are talking about God (LIWC_Relig), money, or just using too many pronouns. We literally have a mathematical vector for your feelings.\n\nVADER checks your mood. LIWC checks your soul.\n\nNow that you know how we listen... let's hear what the world is screaming.";
+    const s1_Part1 = "Okay, let’s check our inventory before we enter the jungle.\n\nYou think we’re just guessing? Not quite.\
+    \n\nWith the orange lenses on, we’re walking in with real tools: large-scale Reddit data, structured features, and models that dissect every sentence.\n\nTime to see the scale of this madness.";
+    const s1_Narrator = "Our journey is about looking through this <strong>\"Orange Lens\"</strong> to decode the vast, chaotic digital landscape of global communities.\
+    <br><br>We begin our odyssey with data on over <strong><span id=\"count-posts\">0</span> posts</strong> spanning <strong><span id=\"count-subs\">0</span> unique subreddits</strong>.\
+    \n\nOur core fields include <strong>SOURCE_SUBREDDIT</strong> and <strong>TIMESTAMP</strong>, enriched by a <strong><span id=\"count-vec\">0</span>-element POST_PROPERTIES vector</strong>.\
+    <br><br>The feature vector combines basic text statistics (length, punctuation, readability) with two established text-analysis tools: <strong>VADER</strong> and <strong>LIWC</strong>.\
+    <br><br></strong>VADER</strong> is a </strong>rule-based sentiment model</strong> designed for online text. It relies on a sentiment lexicon and adjusts scores using punctuation, capitalization and intensifiers to produce positive, negative and overall (compound) sentiment for each post.\
+    <br><br></strong>LIWC</strong> (Linguistic Inquiry and Word Count) is a </strong>psycholinguistic dictionary</strong>. Every word is mapped to one or more categories—such as pronouns, time references, emotions or social terms—and we compute the proportion of words in each category.\
+    <br><br>Together, these measurements transform language use and emotional tone into numerical signals that we can systematically compare across communities.";
+    const s1_Part2 = "Did you catch that? Dozens of different signals packed into every sentence.\
+    \n\nNow that you know how we listen… let’s hear what the world is actually screaming.";
 
-    const s2_Part1 = "Stop right there. Put your passport away.\n\nIn the Reddit World, IDs and borders don''t exist. Nobody knows who you are. Nobody cares where you were born.\n\nHere, we only exist through one thing: The Community Name.\n\nr/politics, r/aww, r/wallstreetbets. These are our nations.\n\nBut can we trust the label on the jar? If I step into a place called r/finance, are they actually talking about money, or is it just memes?\n\nLet's test the system.";
-    const s2_Part2 = "See? It’s not total anarchy. It makes sense.\n\nIf the label says 'Strawberry Jam', it contains strawberries.\n\nBut reading labels one by one is for amateurs. I don't want to just read the names. I want to cluster this entire universe.\n\nTo do that, words aren't enough. I need a magic weapon. A dataset that turns words into pure mathematics.\n\nLet me introduce you to The Embeddings.";
-    const s2_Analysis = "By analyzing specific textual properties, a clear pattern emerges.<br><br>The correlation is undeniable: the linguistic content perfectly mirrors the <span class='gold-highlight'>community's label</span>.<br><br>Subreddits with the highest frequency of <span class='gold-highlight'>Money-related terms</span> are indeed money-related communities like <em>r/PersonalFinance</em>. Those scoring highest in <span class='gold-highlight'>Religious terms</span> are theology discussions.";
+    const s2_Part1 = "In the Reddit World, IDs and borders don''t exist. Nobody knows who you are. Nobody cares where you were born.\n\nHere, we only exist through one thing: The Community Name, these are our nations.\
+    \n\nBut can we trust the label on the jar? If I step into a place called r/finance, are they actually talking about money, or is it just memes?\n\nLet's test the system.";
+    const s2_Part2 = "See? It’s not total anarchy. There is structure.\n\nIf a community like r/chronicpain shows very high values on Health-related terms, it’s because people there are actually talking about health, pain and medical issues.\
+    \n\nBut reading labels one by one is for amateurs. I don’t just want to read names; I want to cluster the entire universe.\n\nFor that, words alone aren’t enough. We need a representation that turns language into geometry.\
+    \n\nEnter embeddings: a dataset where every community is encoded as a point in a high-dimensional space, based on the words people actually use.";
+    const s2_Analysis = "The chart above summarizes how different communities score on a set of key linguistic dimensions derived from LIWC.\
+    <br><br>From a methodological perspective, all posts are first aggregated by subreddit: for each community we compute the average value of every LIWC feature, building a table of mean scores per subreddit.\
+    <br><br>From this table we focus on six dimensions — <code>LIWC_Swear</code>, <code>LIWC_Money</code>, <code>LIWC_Relig</code>, <code>LIWC_Posemo</code>, <code>LIWC_Health</code> and <code>LIWC_Death</code> — which in the code are grouped in the <code>target_metrics</code> list.\
+    <br><br>For each of these dimensions, we then select the five subreddits with the highest average score and display them as the bars we see in the chart.";
 
-    const s3_Part1 = "Words are slippery. Humans use sarcasm, slang, and memes that make no sense.\n\nIf I want to organize this entire universe, I can't just read the posts. I need to convert them into something pure. Something uncorrupted by human stupidity.\n\nMathematics.\n\nWe used a neural network to turn every subreddit into a vector—a coordinate in a multi-dimensional space. We call them Embeddings.";
-    const s3_Narrator = "<h3>Technical Brief: The Embedding Layer</h3><p>An 'embedding' transforms high-dimensional data (like text) into a dense vector space.</p><p>By calculating the semantic similarity between subreddit descriptions and content, we projected all <strong>67,180 communities</strong> into a 2D interactive map using <strong>t-SNE</strong>.</p><p><strong>The Hypothesis:</strong> Distinct, isolated islands of topics (Sports, Politics, Gaming) should naturally emerge.</p>";
-    const s3_Part2 = "It’s a map of meaning. In this space, r/cats should be right next to r/dogs, and r/wallstreetbets should be... well, probably in a casino.\n\nReady? Let's push the button and watch the order emerge from the chaos.\n\nBehold, the map of the Reddit Mind!";
-    const s3_Part3 = "...Well. That’s disappointing.\n\nLook at it. It looks like a clown sneezed on a windshield.\n\nWhere are the clusters? Why is everything overlapping? The AI didn't find 'islands of meaning'. It found a giant, screaming soup of noise.\n\nYou know why? Because this is Reddit. Everything is connected to everything. You can't separate 'Politics' from 'Memes'.\n\nThe machine failed because it tried to use logic. Rookie mistake.\n\nWe need a simpler filter. Something rigid. Something old-school.\n\nGeography.";
+    const s3_Part1 = "Words are slippery. Sarcasm, slang, inside jokes: humans are very good at confusing both each other and machines.\n\nIf we want to organize the Reddit universe, we can’t just read posts one by one.\
+    We need a way to represent communities in a consistent, numeric form.\n\nSo we step behind the orange lenses and translate Reddit into its native language:\n\nvectors in a high-dimensional space.";
+    const s3_Narrator = "<h3>Technical Brief: How the Embeddings Were Built</h3>\
+    The embedding dataset we use represents <strong>text, users, and communities</strong> as 300-dimensional vectors.<br><br>\
+    For communities and users, the original authors start from the bipartite network that links them: every time a user posts in a subreddit, this creates an edge between that user and that community. Vectors are then learned so that users are close to the communities where they post frequently, and communities are close to each other when they share many of the same users.<br><br>\
+    In practice, the model is trained with a negative-sampling objective: observed user–community pairs are pulled together in the vector space, while random pairs are pushed apart. This yields embeddings where geometric distance encodes behavioral similarity.<br><br>\
+    In our analysis, we focus on the <strong>community embeddings</strong> only. Each community is a point in a 300-dimensional space. We then use <strong>t-SNE</strong>, a nonlinear dimensionality reduction method, to project these vectors into 2D while preserving local neighborhood structure — communities that appear close on the map tend to share similar audiences and linguistic patterns.<br><br>\
+    <strong>The expectation:</strong> coherent regions of the map should roughly correspond to broad themes such as sports, politics, gaming, etc.<br><br>";
+    const s3_Part2 = "What you see is not a geographic map, but a map of behavior and language.\n\nIn this space, r/cats should end up close to r/dogs because they attract similar users and use similar words. Finance subreddits cluster together, gaming subreddits cluster together, and so on.\n\nWith the embeddings in place, we can finally look at Reddit as a single landscape instead of millions of isolated threads.\n\nReady? Let’s project everything onto the plane and see what structure actually appears.";
+    const s3_Part3 = "...Well. That’s not exactly the neat atlas we were hoping for.\n\nThe projection looks messy, dense, almost tangled—more like a colorful cloud than clean continents of meaning.\n\nCommunities overlap, bleed into each other, and refuse to stay inside tidy topic boundaries. On Reddit, politics mixes with memes, news with jokes, finance with chaos.\n\nThe embedding space didn’t fail; it just revealed how interconnected everything is.\n\nIf we want a stricter way to slice the world, we need a different lens—something simpler, more rigid, almost old-fashioned.\n\nGeography.";
 
-    const s4_Part1 = "Okay, we ditched the AI clustering. We are going back to basics: Geography.\n\nBut we have a problem. The data doesn't come with GPS coordinates. It just comes with names.\n\nI look at r/france and I know it's France. I look at r/de and I know it's Germany. But the computer? The computer is stupid. It just sees strings of text.\n\nIf only there was a way to force these subreddit names to confess which country they belong to...";
-    const s4_Narrator1 = "<strong>Methodology: Fuzzy String Matching</strong><br><br>To bridge the gap between digital communities and physical borders, we utilized the <span class='gold-highlight'>thefuzz Python library</span>.<br><br>By cross-referencing subreddit names against a database of ISO country codes and demonyms (e.g., \"German\", \"Deutsch\"), we calculated the <span class='gold-highlight'>Levenshtein distance</span> to find the best matches. This allowed us to successfully map thousands of communities to their real-world counterparts.";
-    const s4_Part2 = "Gotcha. Now every subreddit has a flag.\n\nSo, who owns this place? Is Reddit a global democracy? Let's look at the sheer volume of posts per country.";
-    const s4_Part3 = "Well... that’s awkward.\n\nLook at the gap between Number 1 and Number 2.\n\nReddit isn't a 'Global Village'. It’s basically the United States, plus a few friends we invited to the party. The volume of content coming from the US drowns out everyone else.\n\nIf we just counted words, the US would win every category just by shouting louder. 'Most Angry'? USA. 'Most Happy'? USA. 'Most talk about Cheese'? USA.\n\nThat’s boring. We need to be fair. We need to Normalize.";
-    const s4_Narrator2 = "<strong>Statistical Correction: Normalization</strong><br><br>Because of the overwhelming US dominance, analyzing raw counts would introduce a severe bias.<br><br>To uncover the true cultural distinctiveness of each nation and in particular to compare them, we divided the number of interactions between two countries by the <span class='gold-highlight'>number of total posts</span> of the two nations.";
-    const s4_Part4 = "Exactly. We level the playing field.\n\nNow that the giants aren't cheating with their population size, let's see who cares more about religion.";
-    const s4_User = "Wait a minute, Mr. Reddit.\n\nI'm looking at the top of this list, and—speaking as someone from the Real World—it actually makes sense. Those countries are known for being religious.\n\nBut I'm scrolling down to the middle and the bottom... and honestly? It's a mess. The ranking gets fuzzy. I can't tell if Country A is actually less religious than Country B, or if it's just random noise.";
-    const s4_Narrator3 = "<strong>Data Insight: The Variance Problem</strong><br><br>You have spotted a crucial statistical limitation.<br><br>While the top of the ranking shows strong, statistically significant signals, the middle and lower sections flatten out.<br><br>In this <span class='gold-highlight'>\"Long Tail\"</span>, the scores are extremely low, and the differences between positions are microscopic. Furthermore, many of these countries have significantly fewer posts, meaning the <span class='gold-highlight'>sample size</span> is too small to draw a definitive ranking.<br><br><strong>Conclusion:</strong> The outliers tell a story. The average is just noise.";
-    const s4_Part5 = "Sharp eyes, kid.\n\nThat’s the problem with data. If you stare at the static long enough, you start seeing faces.\n\nThe top of the list is truth. The middle is just people talking about the weather. Let's ignore the boring middle and move on to something more exciting.\n\nWe know what they are saying. Now let's see who they are screaming at.";
+    const s4_Part1 = "Okay, we ditched the AI clustering. We are going back to basics: Geography.\n\nBut the data doesn't come with GPS coordinates. It just comes with names.\n\nI look at r/france and I know it's France. The computer just sees strings of text.\n\nIf only there was a way to force these subreddit names to confess which country they belong to...";
+    
+    const s4_Narrator1 = "<strong>Methodology: Mapping Communities to Countries</strong><br><br>\
+    We infer country labels using <span class='gold-highlight'>fuzzy string matching</span>. We compare subreddit names against a reference table of nations, ISO codes, and demonyms using Levenshtein distance.<br><br>\
+    Result: A mapping that translates digital activity into geographic space.";
 
+    const s4_Part2 = "Gotcha. Now every subreddit has a flag.\n\nBut we can't just count posts, or the USA would win every category by sheer volume. We need to <strong>Normalize</strong>.\n\nWe don't ask 'Who has the most religious posts?'. We ask: 'In which country is religion a higher percentage of their total conversation?'.\n\nLet's see who is praying the hardest.";
+
+    const s4_User = "Wait... look at the top of that chart.\n\nPhilippines, Pakistan, Egypt, India...\n\nMr. Reddit, this actually works. These are countries deeply connected to their faith in the real world.\n\nThe data isn't lying.";
+
+    const s4_Part3 = "The top explains the world. But look closer at the bottom of the list, or the countries with weird spikes.\n\nAre they really that extreme, or is the data just thin?\n\nLet's look at the raw volume behind these percentages.";
+
+    const s4_Narrator2 = "<strong>Data Insight: The Variance Problem</strong><br><br>\
+    The top rankings are reliable because the signal is strong. But observe the raw post counts in the table below.<br><br>\
+    The USA has <strong>18,000+ posts</strong>. Many other nations have fewer than <strong>1,000</strong>.<br><br>\
+    <strong>The Law of Large Numbers:</strong> With small sample sizes (the 'Long Tail'), a few angry posts can skew the average significantly. The top of the ranking tells a story; the outliers with low volume are just statistical noise.";
+
+    const s4_Part4 = "Exactly. The big players tell the truth. The small players are just erratic.\n\nSo, we trust the signal, we ignore the noise, and we move on.\n\nWe know what they are saying. Now let's see who they are screaming at.";
+    
     const s5_Part1 = "We've seen what countries look like alone. But let's be honest: isolation is boring.\n\nThe fun starts when they collide.\n\nWe tracked every time a subreddit from one country linked to another.\n\nWho is talking to whom? Who is watching whom?\n\nBehold the web of global attention.";
     const s5_Narrator = "<strong>System Validation: Interaction Mapping</strong><br><br>Based on these results, the mappings appear to be highly relevant and effective. The top-ranking interactions are not random; they clearly reflect significant real-world relationships:<br><br>1. <span class='gold-highlight'>Geographic & Cultural Neighbors</span>: The high volume of interactions between the United States and Canada, and India and Pakistan.<br><br>2. <span class='gold-highlight'>Geopolitical Hotspots</span>: Prominent ranking of pairs like Iran/USA and Israel/Palestine.<br><br>3. <span class='gold-highlight'>Linguistic Ties</span>: The presence of Brazil/Portugal links.<br><br><strong>Conclusion:</strong> The aggregated data mirrors known global relationships so closely that it serves as a strong validation.";
     const s5_Part2 = "See? I told you.\n\nEven in a chaotic digital void, you humans just can't help but replicate your real-world drama. The neighbors are still fighting. The colonies are still calling home.\n\nBut looking at pairs—'A talks to B'—is too simple. It's two-dimensional.\n\nThis is a Social Network, remember? It's not just a series of phone calls. It’s a massive, tangled mess of alliances.\n\nWe need to zoom out. We need to stop looking at countries and start looking at Factions.\n\nLet's build the Network.";
@@ -77,8 +112,11 @@ document.addEventListener('DOMContentLoaded', () => {
         's1-part1': s1_Part1, 's1-part2': s1_Part2,
         's2-part1': s2_Part1, 's2-part2': s2_Part2,
         's3-part1': s3_Part1, 's3-part2': s3_Part2, 's3-part3': s3_Part3,
-        's4-part1': s4_Part1, 's4-part2': s4_Part2, 's4-part3': s4_Part3,
-        's4-part4': s4_Part4, 's4-user-text': s4_User, 's4-part5': s4_Part5,
+        's4-part1': s4_Part1, 
+        's4-part2': s4_Part2, 
+        's4-user-text': s4_User, // Spostato prima
+        's4-part3': s4_Part3,
+        's4-part4': s4_Part4,
         's5-part1': s5_Part1, 's5-part2': s5_Part2,
         's6-part1': s6_Part1, 
         's6-narrator-text-1': s6_Narrator1, // Nota: a volte lo usiamo direttamente nella funzione, ma per coerenza puoi metterlo qui se usi il typeWriter, altrimenti la funzione showNarratorBubble usa la stringa raw. 
@@ -97,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         's2-part1': false, 's2-part2': false,
         's3-part1': false, 's3-part2': false, 's3-part3': false,
         's4-part1': false, 's4-part2': false, 's4-part3': false,
-        's4-part4': false, 's4-user-text': false, 's4-part5': false,
+        's4-part4': false, 's4-user-text': false,
         's5-part1': false, 's5-part2': false,
         's6-part1': false, 
         's6-narrator-text-1': false, // Opzionale se non scriviamo a macchina dentro la nuvola
@@ -309,45 +347,54 @@ function initObserver() {
         });
     }
 
-    // SCENA 4
+    // SCENA 4 - REFACTORED
     function playScene4Sequence() {
         if (typedStatus['s4-part1']) return;
-        console.log(">>> Starting Scene 4 Sequence");
+        console.log(">>> Starting Scene 4 Sequence (New Flow)");
 
         startTypeWriter('s4-part1', () => {
+            // 1. Spiegazione Metodologia Mapping
             showNarratorBubble('s4-narrator-row-1', 's4-narrator-text-1', s4_Narrator1);
+            
             setTimeout(() => {
                 revealElement('s4-row-2');
+                // 2. Mr Reddit introduce Normalizzazione e Religione
                 startTypeWriter('s4-part2', () => {
-                    revealElement('s4-data-table');
-                    renderScene4Table();
+                    
+                    // 3. APPARE IL GRAFICO RELIGIONE (Prima della tabella)
+                    revealElement('s4-data-chart');
+                    renderScene4Chart();
+                    
                     setTimeout(() => {
-                        revealElement('s4-row-3');
-                        startTypeWriter('s4-part3', () => {
-                            showNarratorBubble('s4-narrator-row-2', 's4-narrator-text-2', s4_Narrator2);
-                            setTimeout(() => {
-                                revealElement('s4-row-4');
-                                startTypeWriter('s4-part4', () => {
-                                    revealElement('s4-data-chart');
-                                    renderScene4Chart();
+                        revealElement('s4-user-row');
+                        // 4. L'utente commenta che "Funziona" (Top ranking valid)
+                        startTypeWriter('s4-user-text', () => {
+                            
+                            revealElement('s4-row-3');
+                            // 5. Mr Reddit introduce il dubbio (Guardiamo i volumi)
+                            startTypeWriter('s4-part3', () => {
+                                
+                                // 6. APPARE LA TABELLA VOLUMI
+                                revealElement('s4-data-table');
+                                renderScene4Table();
+                                
+                                setTimeout(() => {
+                                    // 7. Scienziato spiega il problema della Varianza
+                                    showNarratorBubble('s4-narrator-row-2', 's4-narrator-text-2', s4_Narrator2);
+                                    
                                     setTimeout(() => {
-                                        revealElement('s4-user-row');
-                                        startTypeWriter('s4-user-text', () => {
-                                            showNarratorBubble('s4-narrator-row-3', 's4-narrator-text-3', s4_Narrator3);
-                                            setTimeout(() => {
-                                                revealElement('s4-row-5');
-                                                startTypeWriter('s4-part5', () => {
-                                                    revealElement('s4-action');
-                                                });
-                                            }, 8000); 
+                                        revealElement('s4-row-4');
+                                        // 8. Conclusione e bottone next
+                                        startTypeWriter('s4-part4', () => {
+                                            revealElement('s4-action');
                                         });
-                                    }, 2000); 
-                                });
-                            }, 5000); 
+                                    }, 8000); // Tempo lettura Scienziato Varianza
+                                }, 1000); // Tempo apparizione Tabella
+                            });
                         });
-                    }, 2000); 
+                    }, 2000); // Tempo apparizione Grafico
                 });
-            }, 6000); 
+            }, 6000); // Tempo lettura Scienziato Metodologia
         });
     }
 
