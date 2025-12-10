@@ -531,7 +531,8 @@ function initObserver() {
                         
                         setTimeout(() => {
                             // 6. KDE Plot appare
-                            revealElement('s8-kde-row');
+                            revealElement('s8-kde-comp-row');
+                            revealElement('s8-kde-dist-row');
                             
                             setTimeout(() => {
                                 // 7. Scienziato (Risultati P-Value)
