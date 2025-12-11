@@ -200,21 +200,31 @@ function initObserver() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    
+            
+                    // 1. Manage Active Scene Class
                     document.querySelectorAll('.step').forEach(s => s.classList.remove('active-scene'));
                     entry.target.classList.add('active-scene');
 
                     const sectionId = entry.target.id;
+                    const targetId = entry.target.querySelector('.type-target')?.id;
 
+                    // 2. --- STRICT ORANGE LENS CONTROL ---
+                    // Only allow the glasses in Scene 1. Force remove everywhere else.
+                    if (sectionId === 'scene-1') {
+                        document.body.classList.add('orange-lens-active');
+                    } else {
+                        document.body.classList.remove('orange-lens-active');
+                    }
+                    // ------------------------------------------
+
+                    // 3. Update Side Navigation Dots 
                     document.querySelectorAll('.nav-dot').forEach(dot => dot.classList.remove('active'));
                     const activeDot = document.querySelector(`.nav-dot[href="#${sectionId}"]`);
                     if (activeDot) activeDot.classList.add('active');
 
-                    const targetId = entry.target.querySelector('.type-target')?.id;
-
                     console.log("Scene Active:", sectionId);
 
-                    // REGIA SCENE
+                    // 4. Trigger Scene Sequences
                     if (sectionId === 'scene-1') { playScene1Sequence(); } 
                     else if (sectionId === 'scene-2') { playScene2Sequence(); }
                     else if (sectionId === 'scene-3') { playScene3Sequence(); }
@@ -224,20 +234,17 @@ function initObserver() {
                     else if (sectionId === 'scene-7') { playScene7Sequence(); }
                     else if (sectionId === 'scene-8') { playScene8Sequence(); }
                     else if (sectionId === 'scene-9') { playScene9Sequence(); }
-                    else if (sectionId === 'scene-10') { playScene10Sequence(); } // <--- AGGIUNTO QUI
+                    else if (sectionId === 'scene-10') { playScene10Sequence(); }
                     
-                    // FALLBACK: AGGIUNGI 'scene-10' ALLA LISTA QUI SOTTO
+                    // Fallback for typing text
                     else if (targetId && scenarios[targetId] && !typedStatus[targetId]) {
-                        
-                        // Lista completa delle scene da escludere dal fallback generico
                         const complexScenes = [
                             'scene-intro', 'scene-1', 'scene-2', 'scene-3', 'scene-4', 
                             'scene-5', 'scene-6', 'scene-7', 'scene-8', 'scene-9', 
-                            'scene-10' // <--- IMPORTANTE
+                            'scene-10'
                         ];
-                        
                         if(!complexScenes.includes(sectionId)) {
-                             startTypeWriter(targetId);
+                            startTypeWriter(targetId);
                         }
                     }
                 }
