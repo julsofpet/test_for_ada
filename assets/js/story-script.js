@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const s1_Part2 = "Did you catch that? Dozens of different signals packed into every sentence.\
     \n\nNow that you know how we listen… let’s hear what the world is actually screaming.";
 
-    const s2_Part1 = "In the Reddit World, IDs and borders don''t exist. Nobody knows who you are. Nobody cares where you were born.\n\nHere, we only exist through one thing: The Community Name, these are our nations.\
+    const s2_Part1 = "In the Reddit World, IDs and borders don’t exist. Nobody knows who you are. Nobody cares where you were born.\n\nHere, we only exist through one thing: The Community Name, these are our nations.\
     \n\nBut can we trust the label on the jar? If I step into a place called r/finance, are they actually talking about money, or is it just memes?\n\nLet's test the system.";
     const s2_Part2 = "See? It’s not total anarchy. There is structure.\n\nIf a community like r/chronicpain shows very high values on Health-related terms, it’s because people there are actually talking about health, pain and medical issues.\
     \n\nBut reading labels one by one is for amateurs. I don’t just want to read names; I want to cluster the entire universe.\n\nFor that, words alone aren’t enough. We need a representation that turns language into geometry.\
@@ -205,6 +205,11 @@ function initObserver() {
                     entry.target.classList.add('active-scene');
 
                     const sectionId = entry.target.id;
+
+                    document.querySelectorAll('.nav-dot').forEach(dot => dot.classList.remove('active'));
+                    const activeDot = document.querySelector(`.nav-dot[href="#${sectionId}"]`);
+                    if (activeDot) activeDot.classList.add('active');
+
                     const targetId = entry.target.querySelector('.type-target')?.id;
 
                     console.log("Scene Active:", sectionId);
