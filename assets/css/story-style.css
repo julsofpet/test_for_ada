@@ -643,27 +643,6 @@ body.orange-lens-active::after {
     }
 }
 
-/* --- SCENE 3 SPECIFIC: MATRIX EFFECT --- */
-#scene-3 {
-    position: relative;
-    /* Sfondo griglia stile Matrix/Cyberpunk */
-    background-image: 
-        linear-gradient(rgba(0, 255, 65, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 65, 0.05) 1px, transparent 1px);
-    background-size: 30px 30px;
-    background-color: #050505;
-}
-
-/* Opzionale: Effetto 'scanline' che scende leggermente */
-#scene-3::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to bottom, transparent 50%, rgba(0, 255, 65, 0.02) 51%);
-    background-size: 100% 4px;
-    pointer-events: none;
-    z-index: 0;
-}
 
 .chart-iframe {
     width: 100%;
