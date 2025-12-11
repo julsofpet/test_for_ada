@@ -6,6 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const boringLayer = document.getElementById('boring-layer');
     const redditLayer = document.getElementById('reddit-layer');
     let hasGlitched = false;
+    
+    // --- So that the glasses only play once ---
+    let hasGlassesPlayed = false; // Remembers if we've ever shown them
+    let glassesTimer = null;      // Holds the timer so we can cancel it
+    // ---------------------
 
     // ==========================================
     // 1. DEFINIZIONE DEI TESTI
@@ -208,16 +213,28 @@ function initObserver() {
                     const sectionId = entry.target.id;
                     const targetId = entry.target.querySelector('.type-target')?.id;
 
-                    // 2. --- STRICT ORANGE LENS CONTROL ---
-                    // Only allow the glasses in Scene 1. Force remove everywhere else.
+                    // 2. --- STRICT "ONE-TIME" GLASSES LOGIC ---
                     if (sectionId === 'scene-1') {
-                        document.body.classList.add('orange-lens-active');
+                        // Only trigger if we haven't done it before
+                        if (!hasGlassesPlayed) {
+                            hasGlassesPlayed = true; // Mark as done forever
+                            
+                            // Start the 0.5s delay
+                            glassesTimer = setTimeout(() => {
+                                document.body.classList.add('orange-lens-active');
+                            }, 500);
+                        }
                     } else {
+                        // If we are ANYWHERE else:
+                        // A) Cancel the timer if it's still counting down (e.g. fast scroll)
+                        if (glassesTimer) clearTimeout(glassesTimer);
+                        
+                        // B) Force remove the glasses
                         document.body.classList.remove('orange-lens-active');
                     }
                     // ------------------------------------------
 
-                    // 3. Update Side Navigation Dots 
+                    // 3. Update Side Navigation Dots
                     document.querySelectorAll('.nav-dot').forEach(dot => dot.classList.remove('active'));
                     const activeDot = document.querySelector(`.nav-dot[href="#${sectionId}"]`);
                     if (activeDot) activeDot.classList.add('active');
@@ -270,14 +287,6 @@ function initObserver() {
         // 1. Trigger Text
         const textEl = document.getElementById('s1-narrator-text');
         if (textEl) textEl.innerHTML = s1_Narrator;
-
-        // --- NEW: ACTIVATE ORANGE LENS HERE ---
-        // We wait slightly for the narrator text to appear, then trigger the effect
-        setTimeout(() => {
-            console.log(">>> ORANGE LENS ACTIVATED");
-            document.body.classList.add('orange-lens-active');
-        }, 500);
-        // --------------------------------------
 
         // 2. Show Cloud
         const cloud = document.getElementById('narrator-cloud');
