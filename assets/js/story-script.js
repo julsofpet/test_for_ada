@@ -674,19 +674,28 @@ function playScene10Sequence() {
     // 5. UTILITIES
     // ==========================================
 
+// Add a new object to track pending initializations
+const pendingStatus = {}; 
+
 function startTypeWriter(elementId, callback = null) {
     const element = document.getElementById(elementId);
     if (!element) { console.error("Missing:", elementId); return; }
     
-    // Se abbiamo già scritto, non facciamo nulla
-    if (typedStatus[elementId]) {
-        if (callback) callback();
+    // FIX: Check if already typed OR if we are already waiting to type (pending)
+    if (typedStatus[elementId] || pendingStatus[elementId]) {
+        // If it's already done/pending, just run the callback if provided
+        // (But be careful not to run callback twice if strictly sequential logic is needed)
         return;
     }
 
+    // LOCK IT IMMEDIATELY so subsequent triggers are blocked
+    pendingStatus[elementId] = true;
+
     // FUNZIONE DI SCRITTURA REALE
     const runTyping = () => {
-        typedStatus[elementId] = true;
+        // Note: We don't need to check pendingStatus here, we are already committed
+        typedStatus[elementId] = true; 
+        
         const text = scenarios[elementId] || " ... ";
         element.innerHTML = "";
         let i = 0;
@@ -809,14 +818,17 @@ window.exitToReality = function() {
     const redditLayer = document.getElementById('reddit-layer');
     const referenceLayer = document.getElementById('reference-layer');
 
+    // CLEANUP: Remove all special effects immediately
     body.classList.remove('orange-lens-active');  // Via il filtro
-    body.classList.remove('glasses-cursor-mode'); // Via il cursore (se per caso è rimasto)
+    body.classList.remove('glasses-cursor-mode'); // Via il cursore
+    body.classList.remove('glitch-active');      
     // ---------------------------------------
 
     // 1. Transizione visuale
     body.style.opacity = '0';
 
     setTimeout(() => {
+        // ... rest of the function remains the same ...
         // 2. Cambio Classi CSS
         body.classList.remove('dark-mode');
         body.classList.add('boring-mode'); 
