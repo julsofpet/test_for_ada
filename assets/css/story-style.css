@@ -209,11 +209,14 @@ body.dark-mode #reddit-layer {
 
 /* Il Box Verde (Terminale) */
 .terminal-box {
-    border: 1px solid var(--terminal-green); /* Usa la variabile definita in root */
+    border: 1px solid var(--terminal-green); 
     padding: 30px;
-    background-color: rgba(0, 20, 0, 0.5); /* Sfondo scuro semitrasparente */
+    
+    /* MODIFICA QUI: Da rgba(0, 20, 0, 0.5) a quasi nero solido */
+    background-color: rgba(0, 5, 0, 0.95); 
+    
     box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
-    min-height: 200px; /* Altezza minima per estetica */
+    min-height: 200px; 
 }
 
 /* Il testo che si scrive da solo */
@@ -339,36 +342,36 @@ body.dark-mode::before {
 /* Remove the background specific to scene-0-5 since it's now global */
 #scene-0-5 { background: transparent; } /* Remove old specific background */
 
-/* --- 2. ORANGE LENS & GLASSES CURSOR --- */
-/* This class is added via JS in Scene 1 and persists */
+/* --- 1. IL FILTRO ARANCIONE (Persistente) --- */
+/* Questa classe gestisce SOLO l'effetto visivo (sfondo e ombra).
+   Rimarrà attiva per tutto il sito. */
 
-body.orange-lens-active {
-    /* Change cursor to glasses everywhere */
-    /* Ensure you have a 'glasses.png' in your assets folder! */
-    cursor: url("../images/cursor.png"), auto !important;
-}
-
-/* Force glasses cursor on buttons/links too when lens is active */
-body.orange-lens-active a, 
-body.orange-lens-active button, 
-body.orange-lens-active .enter-rabbit-hole {
-    cursor: url("../images/cursor.png"), pointer !important;
-}
-
-/* --- ORANGE LENS EFFECT (Glasses) --- */
-/* This class will be added to the body via JS */
 body.orange-lens-active::after {
     content: '';
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    z-index: 999; /* On top of everything */
+    z-index: 999; /* Sopra tutto */
     
-    /* Simulates looking through orange glasses */
-    background: rgba(255, 69, 0, 0.15); /* Orange Tint */
-    box-shadow: inset 0 0 100px rgba(255, 69, 0, 0.5); /* Vignette */
-    pointer-events: none; /* Let clicks pass through */
+    /* MODIFICA 1: Sfondo (Tinta) - Molto leggero (5%) */
+    background: rgba(255, 69, 0, 0.05); 
     
+    /* MODIFICA 2: Vignettatura - Leggera (25%) */
+    box-shadow: inset 0 0 100px rgba(255, 69, 0, 0.25); 
+    
+    pointer-events: none; /* Lascia passare i click */
     animation: lensFadeIn 0.5s ease-out;
+}
+
+/* --- 2. IL CURSORE OCCHIALI (Temporaneo) --- */
+/* Questa è la NUOVA classe che attiveremo SOLO nella Scena 1.
+   Gestisce solo l'icona del mouse. */
+
+body.glasses-cursor-mode,
+body.glasses-cursor-mode a, 
+body.glasses-cursor-mode button, 
+body.glasses-cursor-mode .enter-rabbit-hole {
+    /* Ensure you have a 'glasses.png' in your assets folder! */
+    cursor: url("../images/cursor.png"), auto !important;
 }
 
 @keyframes lensFadeIn {
@@ -419,9 +422,12 @@ body.orange-lens-active::after {
 
 /* BOX VERDE (Stile Terminale Identico all'Intro) */
 .terminal-box.green-style {
-    flex: 1; /* Prende tutto lo spazio rimanente */
-    border: 1px solid #00ff41; /* Verde Terminale */
-    background-color: rgba(0, 20, 0, 0.8); /* Sfondo scuro */
+    flex: 1; 
+    border: 1px solid #00ff41; 
+    
+    /* MODIFICA QUI: Da 0.8 a 0.95 per coprire i numeri dietro */
+    background-color: rgba(0, 5, 0, 0.95); 
+    
     padding: 20px;
     color: #fff;
     font-family: 'VT323', monospace;
@@ -533,7 +539,7 @@ body.orange-lens-active::after {
     padding: 10px;
     min-height: 400px;
     position: relative;
-    box-shadow: inset 0 0 20px rgba(0, 255, 65, 0.1);
+    box-shadow: inset 0 0 20px rgba(0, 255, 65, 0.1)
 }
 
 .static-chart-img {
@@ -660,8 +666,11 @@ body.orange-lens-active::after {
 /* Stile box specifico per l'User (Ciano/Blue Neon) */
 .terminal-box.cyan-style {
     flex: 1;
-    border: 1px solid #00e5ff; /* Ciano Neon */
-    background-color: rgba(0, 20, 30, 0.8); /* Sfondo bluastro scuro */
+    border: 1px solid #00e5ff; 
+    
+    /* MODIFICA QUI: Sfondo più scuro e più coprente */
+    background-color: rgba(0, 5, 15, 0.95); 
+    
     padding: 20px;
     color: #e0f7fa;
     font-family: 'VT323', monospace;

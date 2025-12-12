@@ -16,9 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. DEFINIZIONE DEI TESTI
     // ==========================================
 
-    const introDialogue = "Stop right there.\n\nYou were actually going to read that? It looked like a tax return form from 1995. How... quaint.\n\nYou are currently in the 'Real World'. Out there, people lie.\
-    They say they love art house cinema and eat kale. But I know the truth. I know what they really type at 3 AM.\n\nHere, you’re about to put on a different pair of glasses: bright orange ones. \
-    The Reddit lenses.\n\nI am Mr. Reddit. And I'm going to show you the world not as it is on a map, but as it actually exists in the hidden \"Reddit realm\".";
+    const introDialogue = "Stop right there.\n\nYou were actually going to read that? It looked like a tax return form from 1995. How... quaint.\n\nYou are currently in the 'Real World'. Out there, people lie. They say they love art house cinema and eat kale. But I know the truth. I know what they really type at 3 AM.\n\nHere, you’re about to put on a different pair of glasses: bright orange ones. The Reddit lenses.\n\nI am Mr. Reddit. And I'm going to show you the world not as it is on a map, but as it actually exists in the hidden \"Reddit realm\".";
     const introUserDialogue = "Alright, Mr. Reddit. You have my attention.\n\nI’m tired of the polished version of the internet.\n\nHand me the orange glasses.\
     \n\nShow me what the world looks like when you stop asking people what they think… and just read what they actually write.";
     const disclaimerDialogue = "Welcome to the Reddit World.\n\nBefore we fully lock in the orange lenses, a quick but important disclaimer from the Department of Internet Honesty:\
@@ -59,22 +57,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const s3_Part2 = "What you see is not a geographic map, but a map of behavior and language.\n\nIn this space, r/cats should end up close to r/dogs because they attract similar users and use similar words. Finance subreddits cluster together, gaming subreddits cluster together, and so on.\n\nWith the embeddings in place, we can finally look at Reddit as a single landscape instead of millions of isolated threads.\n\nReady? Let’s project everything onto the plane and see what structure actually appears.";
     const s3_Part3 = "...Well. That’s not exactly the neat atlas we were hoping for.\n\nThe projection looks messy, dense, almost tangled—more like a colorful cloud than clean continents of meaning.\n\nCommunities overlap, bleed into each other, and refuse to stay inside tidy topic boundaries. On Reddit, politics mixes with memes, news with jokes, finance with chaos.\n\nThe embedding space didn’t fail; it just revealed how interconnected everything is.\n\nIf we want a stricter way to slice the world, we need a different lens—something simpler, more rigid, almost old-fashioned.\n\nGeography.";
 
-    const s4_Part1 = "Okay, we ditched the AI clustering. We are going back to basics: Geography.\n\nBut the data doesn't come with GPS coordinates. It just comes with names.\n\nI look at r/france and I know it's France. The computer just sees strings of text.\n\nIf only there was a way to force these subreddit names to confess which country they belong to...";
+    const s4_Part1 = "Okay, we discarded the embedding clustering. We are going back to basics: Geography.\n\nBut the data doesn't come with GPS coordinates. It just comes with names.\n\nI look at r/france and I know it's France. The computer just sees strings of text.\n\nIf only there was a way to force these subreddit names to confess which country they belong to...";
     
     const s4_Narrator1 = "<strong>Methodology: Mapping Communities to Countries</strong><br><br>\
     We infer country labels using <span class='gold-highlight'>fuzzy string matching</span>. We compare subreddit names against a reference table of nations, ISO codes, and demonyms using Levenshtein distance.<br><br>\
     Result: A mapping that translates digital activity into geographic space.";
 
-    const s4_Part2 = "Gotcha. Now every subreddit has a flag.\n\nBut we can't just count posts, or the USA would win every category by sheer volume. We need to <strong>Normalize</strong>.\n\nWe don't ask 'Who has the most religious posts?'. We ask: 'In which country is religion a higher percentage of their total conversation?'.\n\nLet's see who is praying the hardest.";
+    const s4_Part2 = "Gotcha. Now every subreddit has a flag.\n\nLet's analyse if the predicted countries actually make sense starting from religion. We don't ask 'Who has the most religious posts?'. We ask: 'In which country is religion a higher percentage of their total conversation?'.\n\nLet's see who is praying the hardest.";
 
-    const s4_User = "Wait... look at the top of that chart.\n\nPhilippines, Pakistan, Egypt, India...\n\nMr. Reddit, this actually works. These are countries deeply connected to their faith in the real world.\n\nThe data isn't lying.";
+    const s4_User = "Wait... look at the top of that chart.\n\nSri Lanka, Israel, Mongolia, Saudi Arabia...\n\nMr. Reddit, this actually works. These are countries deeply connected to their faith in the real world.\n\nThe data isn't lying.";
 
-    const s4_Part3 = "The top explains the world. But look closer at the bottom of the list, or the countries with weird spikes.\n\nAre they really that extreme, or is the data just thin?\n\nLet's look at the raw volume behind these percentages.";
+    const s4_Part3 = "The top explains the world. But look closer at the bottom of the list.\n\nAre they really that extreme, or is the data just thin?\n\nLet's look at the raw volume behind these percentages.";
 
     const s4_Narrator2 = "<strong>Data Insight: The Variance Problem</strong><br><br>\
     The top rankings are reliable because the signal is strong. But observe the raw post counts in the table below.<br><br>\
     The USA has <strong>18,000+ posts</strong>. Many other nations have fewer than <strong>1,000</strong>.<br><br>\
-    <strong>The Law of Large Numbers:</strong> With small sample sizes (the 'Long Tail'), a few angry posts can skew the average significantly. The top of the ranking tells a story; the outliers with low volume are just statistical noise.";
+    <strong>The Law of Large Numbers:</strong> With small sample sizes (the 'Long Tail'), a few angry posts can skew the average significantly. The top of the ranking tells a story; the outliers with low volume are just statistical noise.<br><br>\
+    For the following analyses we can't just count posts, or the USA would win every category by sheer volume. We computed a <strong>normalization</strong> for each country penlizing high difference in number of posts when looking for interactions.\n\n";
 
     const s4_Part4 = "Exactly. The big players tell the truth. The small players are just erratic.\n\nSo, we trust the signal, we ignore the noise, and we move on.\n\nWe know what they are saying. Now let's see who they are screaming at.";
     
@@ -213,27 +212,34 @@ function initObserver() {
                     const sectionId = entry.target.id;
                     const targetId = entry.target.querySelector('.type-target')?.id;
 
-                    // 2. --- STRICT "ONE-TIME" GLASSES LOGIC ---
+                    // 1. GESTIONE FILTRO ARANCIONE (Si accende alla Scena 1 e RESTA acceso)
                     if (sectionId === 'scene-1') {
-                        // Only trigger if we haven't done it before
-                        if (!hasGlassesPlayed) {
-                            hasGlassesPlayed = true; // Mark as done forever
-                            
-                            // Start the 0.5s delay
-                            glassesTimer = setTimeout(() => {
+                        // Attiva il filtro globale se non c'è già
+                        if (!document.body.classList.contains('orange-lens-active')) {
+                            // Piccolo delay opzionale per l'ingresso scenico
+                            setTimeout(() => {
                                 document.body.classList.add('orange-lens-active');
                             }, 500);
                         }
-                    } else {
-                        // If we are ANYWHERE else:
-                        // A) Cancel the timer if it's still counting down (e.g. fast scroll)
-                        if (glassesTimer) clearTimeout(glassesTimer);
-                        
-                        // B) Force remove the glasses
-                        document.body.classList.remove('orange-lens-active');
                     }
-                    // ------------------------------------------
+                    // Nota: NON c'è un 'else' che rimuove 'orange-lens-active'. Resta per sempre.
 
+
+                    // 2. GESTIONE CURSORE OCCHIALI (Solo dentro Scena 1)
+                    if (sectionId === 'scene-1') {
+                        // Se siamo in Scena 1, aggiungiamo la classe del cursore (con un delay se vuoi sync)
+                        if (!document.body.classList.contains('glasses-cursor-mode')) {
+                            glassesTimer = setTimeout(() => {
+                                document.body.classList.add('glasses-cursor-mode');
+                            }, 500);
+                        }
+                    } else {
+                        // Se siamo in QUALSIASI altra scena (Intro, Scena 2, 3...):
+                        // Uccidiamo il cursore speciale.
+                        
+                        if (glassesTimer) clearTimeout(glassesTimer); // Ferma il timer se stavi scrollando veloce
+                        document.body.classList.remove('glasses-cursor-mode'); // Torna al cursore normale
+                    }
                     // 3. Update Side Navigation Dots
                     document.querySelectorAll('.nav-dot').forEach(dot => dot.classList.remove('active'));
                     const activeDot = document.querySelector(`.nav-dot[href="#${sectionId}"]`);
@@ -315,10 +321,6 @@ function initObserver() {
     // SCENA 2
     function playScene2Sequence() {
     
-    // --- NEW: REMOVE ORANGE LENS WHEN ENTERING SCENE 2 ---
-    document.body.classList.remove('orange-lens-active');
-    // -----------------------------------------------------
-
     if (typedStatus['s2-part1']) return;
         startTypeWriter('s2-part1', () => {
             revealElement('s2-data-row');
@@ -383,7 +385,7 @@ function initObserver() {
                 startTypeWriter('s4-part2', () => {
                     
                     // 3. APPARE IL GRAFICO RELIGIONE (Prima della tabella)
-                    revealElement('s4-data-chart');
+                    revealElement('s4-data-row');
                     renderScene4Chart();
                     
                     setTimeout(() => {
@@ -603,10 +605,6 @@ function playScene10Sequence() {
     if (typedStatus['s10-part1']) return;
     console.log(">>> Starting Scene 10 Sequence with Delayed 42");
 
-    // 1. Remove Lens (as per previous request)
-    setTimeout(() => {
-        document.body.classList.remove('orange-lens-active');
-    }, 2000);
 
     startTypeWriter('s10-part1', () => {
         
@@ -791,8 +789,8 @@ window.exitToReality = function() {
     const redditLayer = document.getElementById('reddit-layer');
     const referenceLayer = document.getElementById('reference-layer');
 
-    // --- NEW: ENSURE GLASSES ARE REMOVED ---
-    body.classList.remove('orange-lens-active');
+    body.classList.remove('orange-lens-active');  // Via il filtro
+    body.classList.remove('glasses-cursor-mode'); // Via il cursore (se per caso è rimasto)
     // ---------------------------------------
 
     // 1. Transizione visuale
