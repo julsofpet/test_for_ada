@@ -689,7 +689,12 @@ body.glasses-cursor-mode .enter-rabbit-hole {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background-color: rgba(0,0,0,0.3);
+    
+    /* MODIFICA QUI: Da rgba(0,0,0,0.3) a quasi nero solido */
+    background-color: rgba(0, 5, 0, 0.95); 
+    
+    /* Opzionale: Aggiungi un bordo per definirla meglio */
+    border: 1px solid var(--terminal-green);
 }
 
 .terminal-table {
