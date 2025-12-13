@@ -114,17 +114,19 @@ document.addEventListener('DOMContentLoaded', () => {
     </ul>";
     const s7_Part3 = "There you have it. The Popular Kids and the Outcasts.\n\nBut simply knowing who talks to whom is just gossip.\n\nI want to get inside their heads. I want to know if they are starting to think alike.\n\nWhen the USA shouts, does the UK shout back? Or do they whisper?\n\nIt’s time for the psychological test. It’s time for Style Mirroring.";
 
-    const s8_Part1 = "Stop laughing.\n\nWe have had our fun with maps and cliques. But now, I need you to focus.\n\nWe have some serious questions to answer.\n\nIf I talk to you, what are the odds you talk back? When you reply... are you actually copying me?\n\nNo more guessing. We are doing this the hard way. Statistical Hypothesis Testing.\n\nPay attention. There will be p-values.";
-    const s8_Narrator1 = "<strong>Metric 1: Global Conditional Probability of Reciprocity</strong><br><br><strong>The Question:</strong> \"If Country A posts to Country B, what is the probability that Country B will post back to Country A within 7 days?\"<br><br><strong>Methodology:</strong> We isolated the \"Initiator\" (A) and the \"Responder\" (B) using a deterministic timestamp logic. Using a <span class='gold-highlight'>merge_asof time-series operation</span>, we scanned for the first valid response within a 168-hour (7-day) window.";
-    const s8_Part2 = "Look at those numbers.\n\nYou are twice as likely to get a reply from a foreign nation (19%) than from a neighbor in your own country (8%).\n\nInternational incidents are sticky. Domestic squabbles? We ignore them.\n\nBut that's just volume. I want to know about behavior.\n\nI want to know if we are unconsciously mimicking each other.";
-    const s8_Narrator2 = "<strong>Metric 2: Linguistic Style Mirroring</strong><br><br><strong>The Hypothesis:</strong> When a post (A) triggers a reply (B), the style of the reply unconsciously mimics the style of the original post.<br><br><strong>Experimental Design:</strong><br>Test Group (N=2130): Actual reciprocal pairs.<br>Control Group (N=2130): Randomly selected pairs.<br><br>We calculated the <span class='gold-highlight'>Cosine Similarity</span> of their style vectors (LIWC/VADER features) and performed a T-Test.";
-    const s8_Narrator3 = "<strong>Test Results & Significance</strong><br><br>T-Statistic: 12.65 | <strong>P-Value: 0.0000</strong> (p < 0.05)<br><br><strong>Interpretation:</strong> The result is Statistically Significant. Look at the chart: The red line (Reciprocal) has a second peak near +1.0 (The Bimodal Distribution).<br><br>This proves that a specific subgroup of users engages in <span class='gold-highlight'>Extreme Stylistic Matching</span>—perfectly copying the tone of the person they are arguing with.";
-    const s8_Part3 = "Did you see that P-value? Zero point zero zero zero zero.\n\nThat means this isn't luck. It's human nature.\n\nWe found a ghost in the machine. A group of you aren't just replying; you are becoming clones of the person you talk to. You absorb their anger, their vocabulary, their style.\n\nThe echo chamber isn't a metaphor. It’s a mathematical fact.\n\n...Okay, that got too real. My head hurts from all this math. Take the lab coat.\n\nLet's go back to something simple. Something primal. Let's talk about Sports.";
 
-    const s9_Narrator1 = "<strong>Global Sports Analysis: The Reddit Arena</strong><br>The results highlight the unique demographic distortions of the platform:<ul style='margin-top:10px; padding-left:20px; text-align:left;'><li><span class='gold-highlight'>The Big Three:</span> The ecosystem is dominated by Soccer (Global), American Football (US-centric), and Esports.</li><li><span class='gold-highlight'>The Reddit Factor:</span> While Esports are niche in traditional media, here they are a titan. This reflects the tech-savvy, digital-native demographic.</li><li><span class='gold-highlight'>Regional Dominance:</span> Europe is unified by Soccer; USA by NFL; India by Cricket.</li><li><span class='gold-highlight'>The Outliers:</span> The <strong>UK</strong> shows a unique cluster for Cricket (distinct from Europe). <strong>France</strong> is the only major nation where Cycling appears as a top-tier topic.</li></ul>";
-    const s9_Part1 = "France talking about bicycles? The UK obsessing over Cricket while the rest of Europe watches the Champions League?\n\nIn the real world, these might look like statistical errors.\n\nBut remember where you are. You are looking at the world through Orange Glasses.\n\nHere, Esports is bigger than the Olympics. Here, a country can be defined by a card game or a bicycle race just because a few thousand passionate people decided to post about it.\n\nThese outliers aren't bugs. They are the features. They are the proof that this world is built by people, not by census bureaus.";
+    const s8_Part1 = "Oi. Stop scrolling. Look at me.\n\nWe are done with the pretty maps. Maps are for tourists. I want to see what makes you tick.\n\nI have a theory. I think you humans are desperate for attention. I think if a stranger shouts at you, you can't help but shout back.\n\nBut let's not guess. Let's run the numbers.\n\nHey, Calculator-Face! What are the odds of these people actually replying to each other?";
+    const s8_Narrator1 = "<strong>Conditional Probability of Reciprocity</strong><br><br>To analyze social influence, we must first establish a baseline for engagement. We define a \"dialogue\" not as a single post, but as a closed loop where an initiator sends a post to someone that replies back to them.<br><br><strong>The Question:</strong> \"Given a post from Country X, what is the conditional probability of a response from Country Y within 7 days?\" <br><br><strong>Experimental Design:</strong> We isolated the \"Initiator\" (X) and the \"Responder\" (Y) using a deterministic timestamp logic. Then we identified the first valid response from either the country itself or another nation within a 168 hour window.";
+    const s8_Part2 = "See? 19% vs 8%.\n\nYou are twice as likely to reply to a foreigner than to your own neighbor. Typical.\n\nDomestic issues? Boring. But someone from halfway across the world says you're wrong? You just have to type back. You love the drama.\n\nBut here is what I really want to know. When you reply... are you actually yourself? Or are you just a parrot?\n\nI think you unconsciously copy the people you argue with. I think you have no spine.";
+    const s8_Narrator2 = "<strong>Linguistic Style Mirroring</strong><br><br><strong>Hypothesis (Communication Accommodation Theory):</strong> Do users unconsciously align their linguistic features (complexity, tone, vocabulary) with their correspondent to maximize social signaling.<br><br><strong>Experimental Design:</strong> We compute the <strong>Cosine Similarity</strong> between the <em>Origin Vector</em> and the <em>Response Vector</em>. <br><br>If the responses don't mirror the initial messages, then the linguistic profiles of the replies should have the same distribution as a random sample of posts. If mirroring exists, we expect a deviation.";
+    const s8_Narrator3 = "<strong>Results of Mirroring Analysis:</strong><br><br><strong>Statistical Significance:</strong> P-Value < 0.0001.<br><br><strong>Interpretation:</strong> Please observe the chart. The Random Control Group (Orange) has a large peak around 0.0, and two small bumps around the extremes (+1.0 and -1.0).<br><br>However, the Reciprocal Group (Blue) shows a much more pronounced peak near +1.0, indicating a significant subset of responses almost perfectly mirror the style of the original post.<br><br>This confirms that in many cases, users are not just replying; they are adopting the linguistic style of their correspondent.";
+    const s8_Part3 = "Did you hear that?\n\nThe Scientist calls it a 'mirroring of linguistic profiles'. I call it being a sheep.\n\nThat 'pronounced peak' on the graph? That's you. That's you losing your personality to win an argument.\n\nYou absorb their anger, their words, their style. You don't communicate; you just reflect.\n\nMy head hurts from all this math.\n\nLet's go back to something simple. Something primal. Let's talk about Sports.";
 
-    const s10_Part1 = "And that's it.\n\nYou've seen the maps, the feuds, the secret alliances, and the ghost in the machine that makes us copy each other.\n\nYou can take off the Orange Glasses now.\n\nYou can go back to your 'Real World' where geography is boring and people only say things they mean.\n\nBut I have a feeling you'll be back. Because once you see the code behind the matrix... the real world looks a little bit dull.\n\nNow get out of here. Go touch some grass.\n\n...And don't forget to Upvote on your way out. \n\n So Reddit is the answer to many questions. Reddit is one answer to the ultimate question of life: Where do we b...";
+    const s9_Part0 = "So, we've established that you copy each other when you fight. But surely, when you have fun, you have your own personalities, right?\n\nAll over the world you humans are dedicated to chasing balls, clicking mice, and sweating in lycra. Behold the grand hierarchy of each nation's distractions.";
+    const s9_Narrator1 = "<strong>Global Topic Analysis: The Sports Sunburst</strong><br><br><strong>Methodology:</strong> We aggregated activity across sports-related subreddits for each country and found the most popular sport for each nation. Then we visualized how the global sports discourse is divided between different disciplines in a sunburst chart.<br><br><strong>Key Findings:</strong><br><ul style='margin-top:5px; padding-left:15px;'><li><strong>The Digital Skew:</strong> Esports statistically rivals traditional heavyweights like Soccer and the NFL. This reflects the platform's tech-savvy demographic.</li><li><strong>Regional Anomalies:</strong> While Europe clusters around Soccer, we can see some interesting anomalies. France exhibits a unique, statistically significant deviation towards Cycling, probably since it's the host for the world-renowned Tour-de-France. The UK is the place for many of the world's greatest football teams, but it still maintains a distinct cluster for Cricket, which reveals its true national sport.</li></ul>";
+    const s9_Part1 = "Did you see that? The 'Digital Skew'?\n\nThat's a polite way of saying the people of Reddit would rather watch pixels than go outside.\n\nIn the real world, the Super Bowl is king. Here? You treat 'League of Legends' like a religion.\n\nBut this isn't a bug. It's a feature.\n\nThe Census Bureau counts people. I count your obsessions.\n\n...Alright, I'm bored now. We have looked at the maps, the fights, and the games. There is nothing left to show you.\n\nLet's wrap this up.";
+
+    const s10_Part1 = "And that's it.\n\nYou've seen the maps, the feuds, the secret alliances, and the ghost in the machine that makes us copy each other.\n\nYou can take off the Orange Glasses now.\n\nYou can go back to your 'Real World' where geography is boring and people only say things they mean.\n\nBut I have a feeling you'll be back. Because once you see the code behind the matrix... the real world looks a little bit dull.\n\nNow get out of here. Go touch some grass. \n\n So Reddit is the answer to many questions. Reddit is one answer to the ultimate question of life: Where do we b...";
     
     // ==========================================
     // 2. CONFIGURAZIONE SCENARI
@@ -148,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         's6-part2': s6_Part2,
         's7-part1': s7_Part1, 's7-part2': s7_Part2, 's7-part3': s7_Part3,
         's8-part1': s8_Part1, 's8-part2': s8_Part2, 's8-part3': s8_Part3,
-        's9-part1': s9_Part1,
+        's9-part0': s9_Part0, 's9-part1': s9_Part1,
         's10-part1': s10_Part1
     };
     
@@ -167,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
         's6-part2': false,
         's7-part1': false, 's7-part2': false, 's7-part3': false,
         's8-part1': false, 's8-part2': false, 's8-part3': false,
-        's9-part1': false,
+        's9-part0': false, 's9-part1': false,
         's10-part1': false
     };
 
@@ -598,25 +600,29 @@ function initObserver() {
 
     // SCENA 9
     function playScene9Sequence() {
-        if (typedStatus['s9-part1']) return;
+        if (typedStatus['s9-part0']) return; // Check the NEW first step
         console.log(">>> Starting Scene 9 Sequence");
 
-        // 1. Appare il Sunburst
-        revealElement('s9-sunburst-row');
-        
-        setTimeout(() => {
-            // 2. Lo Scienziato analizza i dati
-            showNarratorBubble('s9-narrator-row-1', 's9-narrator-text-1', s9_Narrator1);
+        // 1. New Intro Dialogue (Mr. Reddit)
+        startTypeWriter('s9-part0', () => {
+
+            // 2. Appare il Sunburst
+            revealElement('s9-sunburst-row');
             
             setTimeout(() => {
-                // 3. Mr Reddit commenta (ritorno all'avatar normale)
-                revealElement('s9-row-1');
-                startTypeWriter('s9-part1', () => {
-                    // 4. Bottone finale
-                    revealElement('s9-action');
-                });
-            }, 8000); // Tempo lettura Scienziato
-        }, 1500); // Tempo apparizione Sunburst
+                // 3. Lo Scienziato analizza i dati
+                showNarratorBubble('s9-narrator-row-1', 's9-narrator-text-1', s9_Narrator1);
+                
+                setTimeout(() => {
+                    // 4. Mr Reddit commenta (Outro)
+                    revealElement('s9-row-1');
+                    startTypeWriter('s9-part1', () => {
+                        // 5. Bottone finale
+                        revealElement('s9-action');
+                    });
+                }, 8000); // Tempo lettura Scienziato
+            }, 2000); // Tempo apparizione Sunburst
+        });
     }
 
    // SCENA 10
