@@ -118,36 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const s8_Part1 = "Stop laughing, now, I need you to focus.\n\nWe have some serious questions to answer.\n\nIf I talk to you, will you mimic my tone, wording, and overall style in your reply?\n\nNo more guessing. We are doing this the hard way. Statistical Hypothesis Testing.\n\nPay attention.";
     const s8_Narrator1 = "<strong>Conditional Probability of Reciprocity</strong><br><br>To analyze social influence, we must first establish a baseline for engagement. We define a \"dialogue\" not as a single post, but as a closed loop where an initiator sends a post to someone that replies back to them.<br><br><strong>The Question:</strong> \"Given a post from Country X, what is the conditional probability of a response from Country Y within 7 days?\" <br><br><strong>Experimental Design:</strong> We isolated the \"Initiator\" (X) and the \"Responder\" (Y) using a deterministic timestamp logic. Then we identified the first valid response from either the country itself or another nation within a 168 hour window.";
     const s8_Part2 = "See? 19% vs 8%.\n\nYou are twice as likely to reply to a foreigner than to your own neighbor. Typical.\n\nDomestic issues? Boring. But someone from halfway across the world says you're wrong? You just have to type back. You love the drama.\n\nBut here is what I really want to know. When you reply... are you actually yourself? Or are you just a parrot?\n\nI think you unconsciously copy the people you argue with. I think you have no spine.";
-    const s8_Narrator2 =
-  "<p><strong>Metric 2: Linguistic Style Mirroring</strong></p>" +
-
-  "<p><strong>The Hypothesis:</strong><br>" +
-  "When a post (A) triggers a reply (B), the respondent unconsciously mimics the <em>structural style</em> of the original post.</p>" +
-
-  "<p><strong>Important:</strong> We measure alignment in <strong>style</strong> (tone, function words, pronouns) rather than <strong>topic</strong> (work, money), intentionally isolating linguistic behavior from content.</p>" +
-
-  "<p><strong>Experimental Design:</strong></p>" +
-  "<ul style='margin: 0.25rem 0 0.75rem 1.25rem; padding-left: 1.1rem;'>" +
-    "<li><strong>Test Group (N = 2130):</strong> pairs of real interactions where a response occurred within a specific 7-day window.</li>" +
-    "<li><strong>Control Group (N = 2130):</strong> randomly sampled <em>unconnected</em> pairs from the entire dataset, representing similarity expected by <em>pure chance</em>.</li>" +
-  "</ul>" +
-
-  "<p><strong>Methodology &amp; Statistical Validation:</strong></p>" +
-  "<ul style='margin: 0.25rem 0 0.75rem 1.25rem; padding-left: 1.1rem;'>" +
-    "<li>We calculated <strong>Cosine Similarity</strong> between style vectors (derived from LIWC/VADER features) for every pair in both groups.</li>" +
-    "<li>We performed an <strong>Independent Samples T-Test</strong> with a directional hypothesis.</li>" +
-  "</ul>" +
-
-  "<p><strong>Key question:</strong> <em>Is the similarity of the Reciprocal group significantly greater than that of the Random group?</em></p>" +
-
-  "<p>If <strong>p-value &lt; 0.05</strong>, we reject the null hypothesis, indicating the effect is unlikely to be a random fluke.</p>" +
-
-  "<p><strong>Formal Statistical Hypotheses (one-tailed):</strong></p>" +
-  "<ul style='margin: 0.25rem 0 0 1.25rem; padding-left: 1.1rem;'>" +
-    "<li><strong>Null Hypothesis (H0):</strong> no evidence of mirroring (<em>&mu;<sub>reciprocal</sub> &le; &mu;<sub>random</sub></em>).</li>" +
-    "<li><strong>Alternative Hypothesis (H1):</strong> mirroring exists (<em>&mu;<sub>reciprocal</sub> &gt; &mu;<sub>random</sub></em>).</li>" +
-  "</ul>";
-
+    const s8_Narrator2 = "<p><strong>Metric 2: Linguistic Style Mirroring</strong></p><p><strong>The Hypothesis:</strong><br>When a post (A) triggers a reply (B), the respondent unconsciously mimics the <em>structural style</em> of the original post.</p><p><strong>Important:</strong> We measure alignment in <strong>style</strong> (tone, function words, pronouns) rather than <strong>topic</strong> (work, money), intentionally isolating linguistic behavior from content.</p><p><strong>Experimental Design:</strong></p><ul style='margin: 0.25rem 0 0.75rem 1.25rem; padding-left: 1.1rem;'><li><strong>Test Group (N = 2130):</strong> pairs of real interactions where a response occurred within a specific 7-day window.</li><li><strong>Control Group (N = 2130):</strong> randomly sampled <em>unconnected</em> pairs from the entire dataset, representing similarity expected by <em>pure chance</em>.</li></ul><p><strong>Methodology &amp; Statistical Validation:</strong></p><ul style='margin: 0.25rem 0 0.75rem 1.25rem; padding-left: 1.1rem;'><li>We calculated <strong>Cosine Similarity</strong> between style vectors (derived from LIWC/VADER features) for every pair in both groups.</li><li>We performed an <strong>Independent Samples T-Test</strong> with a directional hypothesis.</li></ul><p><strong>Key question:</strong> <em>Is the similarity of the Reciprocal group significantly greater than that of the Random group?</em></p><p>If <strong>p-value &lt; 0.05</strong>, we reject the null hypothesis, indicating the effect is unlikely to be a random fluke.</p><p><strong>Formal Statistical Hypotheses (one-tailed):</strong></p><ul style='margin: 0.25rem 0 0 1.25rem; padding-left: 1.1rem;'><li><strong>Null Hypothesis (H0):</strong> no evidence of mirroring (<em>&mu;<sub>reciprocal</sub> &le; &mu;<sub>random</sub></em>).</li><li><strong>Alternative Hypothesis (H1):</strong> mirroring exists (<em>&mu;<sub>reciprocal</sub> &gt; &mu;<sub>random</sub></em>).</li></ul>";
     const s8_Narrator3 = "<strong>Results of Mirroring Analysis:</strong><br><br><strong>Statistical Significance:</strong> P-Value < 0.0001.<br><br><strong>Interpretation:</strong> Please observe the chart. The Random Control Group (Orange) has a large peak around 0.0, and two small bumps around the extremes (+1.0 and -1.0).<br><br>However, the Reciprocal Group (Blue) shows a much more pronounced peak near +1.0, indicating a significant subset of responses almost perfectly mirror the style of the original post.<br><br><strong>Important note:</strong> This does <em>not</em> mean that all reciprocal interactions involve mirroring. Instead, the data suggests that a distinct subgroup of reciprocal posts exhibits extreme stylistic matching.<br><br>In other words, this subgroup is largely responsible for &quot;pulling&quot; the test group’s average upward and driving the overall statistical significance—confirming the presence of a powerful, though not universal, mirroring behavior.";
     const s8_Part3 = "Did you hear that?\n\nThe Scientist calls it a 'mirroring of linguistic profiles'. I’d describe it as blending in more than you might realize.\n\nThat 'pronounced peak' on the graph? It could be moments where people lean hard into matching the other person’s tone to be understood, or to be persuasive.\n\nYou start absorbing their anger, their words, their style. Sometimes you’re not communicating as much as you’re echoing.\n\nAnd after all that echoing, I need a break.\n\nLet’s go back to something simple. Something primal. Let’s talk about Sports.";
 
