@@ -969,3 +969,31 @@ body.glasses-cursor-mode .enter-rabbit-hole {
 .nav-dot:hover::after {
     opacity: 1;
 }
+
+body.review-mode .step {
+    opacity: 1 !important; /* Rende tutte le scene luminose */
+    transition: none !important;
+}
+
+/* Forza la visibilità di tutti gli elementi nascosti */
+body.review-mode .hidden-opacity {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+/* Forza l'apertura delle nuvolette del narratore */
+body.review-mode .narrator-cloud {
+    transform: translateX(0) !important;
+    opacity: 1 !important;
+}
+
+/* Forza l'apertura dei box di analisi scientifica */
+body.review-mode .narrator-bubble-box {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Nascondiamo il cursore lampeggiante perché il testo è tutto scritto */
+body.review-mode .cursor {
+    display: none !important;
+}

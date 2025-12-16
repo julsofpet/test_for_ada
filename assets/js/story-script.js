@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         's6-part2': s6_Part2,
         's7-part1': s7_Part1, 's7-part2': s7_Part2, 's7-part3': s7_Part3,
         's8-part1': s8_Part1, 's8-part2': s8_Part2, 's8-part3': s8_Part3,
-        's9-part0': s9_Part0, 's9-part1': s9_Part1,
+        's9-part1': s9_Part0,  's9-part2': s9_Part1,
         's10-part1': s10_Part1
     };
     
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
         's6-part2': false,
         's7-part1': false, 's7-part2': false, 's7-part3': false,
         's8-part1': false, 's8-part2': false, 's8-part3': false,
-        's9-part0': false, 's9-part1': false,
+        's9-part1': false, 's9-part2': false,
         's10-part1': false
     };
 
@@ -599,40 +599,48 @@ function initObserver() {
     }
 
     // SCENA 9
-    function playScene9Sequence() {
-        if (typedStatus['s9-part0']) return; // Check the NEW first step
-        console.log(">>> Starting Scene 9 Sequence");
+function playScene9Sequence() {
+    // Controlliamo s9-part1 (ex part0)
+    if (typedStatus['s9-part1']) return; 
+    console.log(">>> Starting Scene 9 Sequence (Standardized)");
 
-        // 1. New Intro Dialogue (Mr. Reddit)
-        startTypeWriter('s9-part0', () => {
+    // 1. New Intro Dialogue (Mr. Reddit) -> s9-part1
+    startTypeWriter('s9-part1', () => {
 
-            // 2. Appare il Sunburst
-            revealElement('s9-sunburst-row');
+        // 2. Appare il Sunburst
+        revealElement('s9-sunburst-row');
+        
+        setTimeout(() => {
+            // 3. Lo Scienziato analizza i dati
+            showNarratorBubble('s9-narrator-row-1', 's9-narrator-text-1', s9_Narrator1);
             
             setTimeout(() => {
-                // 3. Lo Scienziato analizza i dati
-                showNarratorBubble('s9-narrator-row-1', 's9-narrator-text-1', s9_Narrator1);
-                
-                setTimeout(() => {
-                    // 4. Mr Reddit commenta (Outro)
-                    revealElement('s9-row-1');
-                    startTypeWriter('s9-part1', () => {
-                        // 5. Bottone finale
-                        revealElement('s9-action');
-                    });
-                }, 8000); // Tempo lettura Scienziato
-            }, 2000); // Tempo apparizione Sunburst
-        });
-    }
+                // 4. Mr Reddit commenta (Outro) -> s9-part2 (ex part1)
+                revealElement('s9-row-1'); // Nota: l'ID del div contenitore rimane s9-row-1, va bene.
+                startTypeWriter('s9-part2', () => {
+                    // 5. Bottone finale
+                    revealElement('s9-action');
+                });
+            }, 8000); 
+        }, 2000); 
+    });
+}
 
    // SCENA 10
 // SCENA 10
 function playScene10Sequence() {
     if (typedStatus['s10-part1']) return;
-    console.log(">>> Starting Scene 10 Sequence with Delayed 42");
+    console.log(">>> Starting Scene 10 Sequence");
 
+    // Avvia la scrittura del testo finale
+    startTypeWriter('s10-part1', () => {
 
-    startTypeWriter('s10-part1', () => {});
+        // Soluzione Standard: Mostra i bottoni subito dopo il testo
+        setTimeout(() => {
+            revealElement('s10-action');
+        }, 500); // Un piccolo ritardo di mezzo secondo per eleganza
+
+    });
 }
 
     // ==========================================
@@ -646,21 +654,26 @@ function startTypeWriter(elementId, callback = null) {
     const element = document.getElementById(elementId);
     if (!element) { console.error("Missing:", elementId); return; }
     
-    // FIX: Check if already typed OR if we are already waiting to type (pending)
+    // --- MODIFICA FONDAMENTALE PER REVIEW MODE ---
+    // Se siamo in Review Mode, scrivi subito tutto, esegui il callback ed esci.
+    if (document.body.classList.contains('review-mode')) {
+        const text = scenarios[elementId] || "";
+        element.innerHTML = text.replace(/\n/g, '<br>');
+        typedStatus[elementId] = true;
+        if (callback) callback();
+        return; // STOP! Non animare nulla.
+    }
+    // ---------------------------------------------
+
+    // Check normale
     if (typedStatus[elementId] || pendingStatus[elementId]) {
-        // If it's already done/pending, just run the callback if provided
-        // (But be careful not to run callback twice if strictly sequential logic is needed)
         return;
     }
 
-    // LOCK IT IMMEDIATELY so subsequent triggers are blocked
     pendingStatus[elementId] = true;
 
-    // FUNZIONE DI SCRITTURA REALE
     const runTyping = () => {
-        // Note: We don't need to check pendingStatus here, we are already committed
         typedStatus[elementId] = true; 
-        
         const text = scenarios[elementId] || " ... ";
         element.innerHTML = "";
         let i = 0;
@@ -668,8 +681,6 @@ function startTypeWriter(elementId, callback = null) {
         function type() {
             if (i < text.length) {
                 const char = text.charAt(i);
-                
-                // Gestione ritorno a capo
                 if (char === '\n') { 
                     element.innerHTML += '<br>'; 
                     i++; 
@@ -677,7 +688,6 @@ function startTypeWriter(elementId, callback = null) {
                 } else { 
                     element.innerHTML += char; 
                     i++; 
-                    // Velocità tra 30ms e 60ms
                     setTimeout(type, Math.floor(Math.random() * 5) + 2); 
                 }
             } else { 
@@ -687,7 +697,6 @@ function startTypeWriter(elementId, callback = null) {
         type();
     };
 
-    // OBSERVER INTERNO
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -813,4 +822,92 @@ window.exitToReality = function() {
         body.style.transition = 'opacity 1s ease';
 
     }, 500); 
+};
+
+
+window.enterReviewMode = function() {
+    console.log(">>> Entering Review Mode (Instant Text)...");
+
+    const body = document.body;
+    const redditLayer = document.getElementById('reddit-layer');
+    const referenceLayer = document.getElementById('reference-layer');
+    const boringLayer = document.getElementById('boring-layer');
+    const overlay42 = document.getElementById('answer-42-overlay');
+
+    // 1. GESTIONE DISPLAY
+    if (referenceLayer) referenceLayer.style.display = 'none';
+    if (boringLayer) boringLayer.style.display = 'none';
+    if (overlay42) overlay42.style.display = 'none';
+
+    if (redditLayer) {
+        redditLayer.style.display = 'block';
+        redditLayer.style.opacity = '1';
+    }
+
+    // 2. CLASSI CSS (Review Mode attiva opacity:1 !important su tutto nel CSS)
+    body.classList.remove('boring-mode');
+    body.classList.add('dark-mode');
+    body.classList.add('review-mode'); 
+    body.classList.add('orange-lens-active');
+
+    // 3. RIEMPIMENTO ISTANTANEO TESTI (Senza animazione)
+    for (const [id, text] of Object.entries(scenarios)) {
+        const el = document.getElementById(id);
+        if (el) {
+            // Inietta il testo formattato
+            el.innerHTML = text.replace(/\n/g, '<br>');
+            // IMPORTANTE: Segna come "già fatto" per bloccare logiche future
+            typedStatus[id] = true; 
+            pendingStatus[id] = true; 
+        }
+    }
+
+    // 4. RIVELA TUTTI GLI ELEMENTI NASCOSTI
+    document.querySelectorAll('.hidden-opacity').forEach(el => {
+        el.classList.remove('hidden-opacity');
+        el.classList.add('visible-opacity');
+    });
+
+    // 5. NASCONDI TUTTI I CURSORI LAMPEGGIANTI
+    document.querySelectorAll('.cursor').forEach(el => {
+        el.style.display = 'none';
+    });
+
+    // 6. FORZA NARRATORI E GRAFICI (Hardcoded per sicurezza)
+    // Se un elemento non è in scenarios, lo riempiamo qui
+    const manualFills = [
+        { id: 's1-narrator-text', content: s1_Narrator },
+        { id: 's2-analysis-text', content: s2_Analysis },
+        { id: 's3-narrator-text', content: s3_Narrator },
+        { id: 's4-narrator-text-1', content: s4_Narrator1 },
+        { id: 's4-narrator-text-2', content: s4_Narrator2 },
+        { id: 's5-narrator-text-1', content: s5_Narrator },
+        { id: 's6-narrator-text-1', content: s6_Narrator1 },
+        { id: 's6-narrator-text-2', content: s6_Narrator2 },
+        { id: 's7-narrator-text-1', content: s7_Narrator1 },
+        { id: 's7-narrator-text-2', content: s7_Narrator2 },
+        { id: 's8-narrator-text-1', content: s8_Narrator1 },
+        { id: 's8-narrator-text-2', content: s8_Narrator2 },
+        { id: 's8-narrator-text-3', content: s8_Narrator3 },
+        { id: 's9-narrator-text-1', content: s9_Narrator1 }
+    ];
+
+    manualFills.forEach(item => {
+        const el = document.getElementById(item.id);
+        if (el) el.innerHTML = item.content;
+    });
+
+    // Forza i grafici specifici
+    renderScene4Chart();
+    renderScene4Table();
+    animateValue("count-posts", 858488, 858488, 1);
+    animateValue("count-subs", 67180, 67180, 1);
+    animateValue("count-vec", 86, 86, 1);
+
+    // Forza visibilità nuvole narratore
+    document.querySelectorAll('.narrator-bubble-box').forEach(el => el.classList.add('visible'));
+    document.querySelectorAll('.narrator-cloud').forEach(el => el.classList.add('slide-in-active'));
+
+    // 7. Scrolla in cima
+    window.scrollTo(0, 0);
 };
