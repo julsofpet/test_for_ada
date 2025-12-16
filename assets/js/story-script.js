@@ -632,48 +632,7 @@ function playScene10Sequence() {
     console.log(">>> Starting Scene 10 Sequence with Delayed 42");
 
 
-    startTypeWriter('s10-part1', () => {
-        
-        // --- DELAY THE DISRUPTION ---
-        // We wait 3000ms (3 seconds) after the text finishes before triggering the glitch.
-        setTimeout(() => {
-            
-            const overlay = document.getElementById('answer-42-overlay');
-            
-            if (overlay) {
-                // A) Trigger Visual Glitch
-                document.body.classList.add('glitch-active');
-                
-                setTimeout(() => {
-                    document.body.classList.remove('glitch-active');
-                    
-                    // B) Show the "42" Overlay
-                    overlay.classList.remove('hidden-opacity');
-                    overlay.classList.add('visible-opacity');
-                    
-                    // --- C) ENABLE CLICK-TO-DISMISS ---
-                    // By default, CSS has pointer-events: none. We force it to auto so it captures clicks.
-                    overlay.style.pointerEvents = "auto"; 
-                    overlay.style.cursor = "pointer"; // Visual cue that it's clickable
-
-                    // Add click listener to hide the overlay
-                    overlay.onclick = function() {
-                        // Fade out
-                        overlay.classList.remove('visible-opacity');
-                        overlay.classList.add('hidden-opacity');
-                        
-                        // Disable interactions again after hiding
-                        overlay.style.pointerEvents = "none";
-                    };
-
-                    // D) Reveal the final exit button underneath immediately
-                    // so it is ready when the user clicks away the overlay.
-                    revealElement('s10-action');
-                    
-                }, 200); // Short sync delay for the glitch effect
-            }
-        }, 3000); // <--- HERE IS THE 3 SECOND DELAY YOU REQUESTED
-    });
+    startTypeWriter('s10-part1', () => {});
 }
 
     // ==========================================
