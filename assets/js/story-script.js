@@ -173,6 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
         's10-part1': false
     };
 
+
     // ==========================================
     // 3. LOGICA OBSERVER (DELAYED TRIGGER FIX)
     // ==========================================
@@ -367,30 +368,49 @@ function initObserver() {
     }
 
     // SCENA 3
-    function playScene3Sequence() {
-        if (typedStatus['s3-part1']) return;
-        startTypeWriter('s3-part1', () => {
-            const cloud = document.getElementById('s3-narrator-cloud');
-            const narratorText = document.getElementById('s3-narrator-text');
-            if (cloud && narratorText) {
-                narratorText.innerHTML = s3_Narrator;
-                cloud.classList.add('slide-in-active');
-                revealElement('s3-nerd-avatar');
-                setTimeout(() => {
-                    revealElement('s3-row-2');
-                    startTypeWriter('s3-part2', () => {
-                        revealElement('s3-data-row');
+// SCENA 3
+function playScene3Sequence() {
+    if (typedStatus['s3-part1']) return;
+    startTypeWriter('s3-part1', () => {
+        const cloud = document.getElementById('s3-narrator-cloud');
+        const narratorText = document.getElementById('s3-narrator-text');
+        if (cloud && narratorText) {
+            narratorText.innerHTML = s3_Narrator;
+            cloud.classList.add('slide-in-active');
+            revealElement('s3-nerd-avatar');
+            setTimeout(() => {
+                revealElement('s3-row-2');
+                startTypeWriter('s3-part2', () => {
+                    
+                    // 1. Reveal the row containing the chart
+                    revealElement('s3-data-row');
+
+                    // --- [START FIX] ---
+                    // The chart is inside an <embed>, so we can't call .resize() directly.
+                    // Instead, we reset the 'src' attribute. This forces the embed to 
+                    // reload and recalculate its width/legend based on the now-visible container.
+                    const embed = document.querySelector('#s3-data-row embed');
+                    if (embed) {
                         setTimeout(() => {
-                            revealElement('s3-row-3');
-                            startTypeWriter('s3-part3', () => {
-                                revealElement('s3-action');
-                            });
-                        }, 4000); 
-                    });
-                }, 4000); 
-            }
-        });
-    }
+                            const currentSrc = embed.getAttribute('src');
+                            // Detach and reattach source to trigger a fresh render
+                            embed.setAttribute('src', ''); 
+                            embed.setAttribute('src', currentSrc);
+                        }, 100); // Short delay to ensure CSS layout is settled
+                    }
+                    // --- [END FIX] ---
+
+                    setTimeout(() => {
+                        revealElement('s3-row-3');
+                        startTypeWriter('s3-part3', () => {
+                            revealElement('s3-action');
+                        });
+                    }, 4000); 
+                });
+            }, 4000); 
+        }
+    });
+}
 
     // SCENA 4 - REFACTORED
     function playScene4Sequence() {
@@ -462,6 +482,7 @@ function initObserver() {
     }
 
     // SCENA 6
+    // SCENA 6
     function playScene6Sequence() {
         if (typedStatus['s6-part1']) return;
         console.log(">>> Starting Scene 6 Sequence");
@@ -471,6 +492,19 @@ function initObserver() {
             
             // 2. Mostra la Mappa Interattiva (Factions)
             revealElement('s6-map-row');
+
+            // --- [FIX: RELOAD EMBED TO FIX CUT-OFF LEGEND] ---
+            // This forces the chart to re-initialize now that the container is visible.
+            const embed = document.querySelector('#s6-map-row embed');
+            if (embed) {
+                setTimeout(() => {
+                    const currentSrc = embed.getAttribute('src');
+                    // Detach and reattach source to trigger a fresh render
+                    embed.setAttribute('src', ''); 
+                    embed.setAttribute('src', currentSrc);
+                }, 100); 
+            }
+            // --------------------------------------------------
             
             setTimeout(() => {
                 // 3. Lo Scienziato spiega i Key Findings
