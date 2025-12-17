@@ -829,17 +829,20 @@ body.glasses-cursor-mode .enter-rabbit-hole {
 /* --- STILE REFERENCES (Uguale a Boring Mode) --- */
 
 #reference-layer {
-    position: fixed; /* O absolute, a seconda di come vuoi gestire lo scroll */
+    position: fixed; 
     top: 0; left: 0; 
     width: 100%; 
-    min-height: 100vh;
+    
+    height: 100vh; 
+    
     background: #ffffff;
     z-index: 9999;
     display: flex;
     justify-content: center;
-    /* align-items: center;  <-- Rimuoviamo center verticale per permettere lo scroll se la lista è lunga */
-    padding: 50px 20px;
-    overflow-y: auto; /* Permette lo scroll se le references sono tante */
+
+    padding: 50px 20px 150px 20px;
+    
+    overflow-y: auto; 
 }
 
 .reference-item p {
