@@ -1023,3 +1023,17 @@ body.review-mode .narrator-bubble-box {
 body.review-mode .cursor {
     display: none !important;
 }
+
+/* Prevent website CSS from breaking the Treemap labels */
+#s4-data-table .chart-wrapper iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Ensure Plotly text isn't shrunk by global font settings */
+#s4-data-table text {
+    font-family: inherit !important;
+    letter-spacing: normal !important;
+}
