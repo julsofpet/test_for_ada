@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const s4_Narrator2 = "<strong>Data Analysis: Signal vs. Volume</strong><br><br>\
     <strong>1. The Religion Chart:</strong> You correctly identified that the data is significant only at the top of the distribution. The \"Long Tail\" represents values so small that they are statistically negligible.<br><br>\
-    <strong>2. The Volume Disparity:</strong> The table above reveals a new challenge. The USA generates <strong>18,000+ posts</strong>, while others have fewer than 1,000.<br><br>\
+    <strong>2. The Volume Disparity:</strong> The plot above reveals a new challenge. The USA generates <strong>18,000+ posts</strong>, while others have fewer than 1,000.<br><br>\
     <strong>Correction Strategy:</strong> For our upcoming <em>Interaction Analysis</em>, we cannot simply count links, or the USA would dominate every metric. We will apply a <strong>Normalization Protocol</strong> to penalize sheer volume and highlight genuine cultural connections.";
     const s4_Part4 = "Exactly. The big players tell the truth. The small players are just erratic.\n\nSo, we trust the signal, we ignore the noise, and we move on.\n\nWe know what they are saying. Now let's see who they are screaming at.";
     
