@@ -440,7 +440,16 @@ function playScene3Sequence() {
                                 
                                 // 6. APPARE LA TABELLA VOLUMI
                                 revealElement('s4-data-table');
-                                renderScene4Table();
+                                
+                                // 2. FORCE RELOAD THE IFRAME
+                                const treemapIframe = document.querySelector('#s4-data-table iframe');
+                                if (treemapIframe) {
+                                    setTimeout(() => {
+                                        const currentSrc = treemapIframe.getAttribute('src');
+                                        treemapIframe.setAttribute('src', ''); 
+                                        treemapIframe.setAttribute('src', currentSrc);
+                                    }, 300); // 300ms delay ensures the CSS 'visible' transition is done
+                                }
                                 
                                 setTimeout(() => {
                                     // 7. Scienziato spiega il problema della Varianza
